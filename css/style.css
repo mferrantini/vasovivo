@@ -1,0 +1,340 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f9f8f6;
+  --surface: #ffffff;
+  --border: #e5e3de;
+  --text: #1a1a18;
+  --muted: #6b6860;
+  --accent: #3d7a4f;
+  --accent-light: #edf5f0;
+  --radius: 12px;
+  --max-w: 760px;
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── HEADER ── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 24px 40px;
+  text-align: center;
+}
+
+header img {
+  height: 80px;
+  width: auto;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+header p.tagline {
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── BADGE MAKERFAIRE ── */
+.mf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-top: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ── LAYOUT ── */
+main {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* ── SEZIONI ── */
+section {
+  margin-bottom: 56px;
+}
+
+section h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+section p {
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+section p:last-child { margin-bottom: 0; }
+
+/* ── CARD PARAMETRI ── */
+.params {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.param-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+
+.param-card .icon {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.param-card .label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.param-card .value {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+/* ── CARD SPECIE ── */
+.species-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .species-grid { grid-template-columns: 1fr; }
+}
+
+.species-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.species-card.featured {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.species-card .name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.species-card .sci {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.species-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.badge-ideal {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── STAND BOX ── */
+.stand-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.stand-box .stand-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.stand-box p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.stand-box p + p {
+  margin-top: 10px;
+}
+
+/* ── DIVISORE ── */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 56px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+footer a {
+  font-weight: 500;
+}
+
+/* ── NAVIGAZIONE HEADER ── */
+.header-link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  text-decoration: none;
+}
+
+.header-link h1 {
+  color: var(--text);
+}
+
+/* ── PAGINA HARDWARE ── */
+.page-intro {
+  margin-bottom: 32px;
+  color: var(--muted);
+}
+
+.hardware-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hardware-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+.hardware-item-header {
+  margin-bottom: 6px;
+}
+
+.hardware-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hardware-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.hardware-params {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.hardware-item p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.item-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.item-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.item-links .amazon-link {
+  color: var(--muted);
+}
+
+.back-link {
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* ── CTA BOX (home) ── */
+.cta-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+
+.cta-box p {
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+}
+
+.cta-link {
+  font-weight: 500;
+  font-size: 0.95rem;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware — VasoVivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="header-link">
+      <img src="img/logo.png" alt="VasoVivo logo" />
+      <h1>VasoVivo</h1>
+    </a>
+    <p class="tagline">Componenti hardware del progetto</p>
+  </header>
+
+  <main>
+
+    <p class="page-intro">
+      Elenco della scheda e dei sensori utilizzabili in VasoVivo. Per ogni sensore trovi nella repository
+      documentazione, schema di collegamento e uno sketch di esempio per ESP32.
+    </p>
+
+    <ul class="hardware-list">
+
+      <li class="hardware-item">
+        <div class="hardware-item-header">
+          <h3><span class="hardware-icon" aria-hidden="true">🔌</span> ESP32-WROOM-32</h3>
+          <span class="hardware-params">Microcontrollore · Wi-Fi · Bluetooth</span>
+        </div>
+        <p>Scheda principale del progetto: collega i sensori e gestisce lettura e invio dei dati.</p>
+        <div class="item-links">
+          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+        </div>
+      </li>
+
+      <li class="hardware-item">
+        <div class="hardware-item-header">
+          <h3><span class="hardware-icon" aria-hidden="true">🌿</span> ENS160 + AHT21</h3>
+          <span class="hardware-params">CO₂eq · TVOC · temperatura · umidità aria</span>
+        </div>
+        <p>Modulo combinato per monitorare qualità dell'aria e condizioni ambientali nel barattolo.</p>
+        <div class="item-links">
+          <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/ens160-aht21" target="_blank" rel="noopener">Documentazione su GitHub →</a>
+          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+        </div>
+      </li>
+
+      <li class="hardware-item">
+        <div class="hardware-item-header">
+          <h3><span class="hardware-icon" aria-hidden="true">🌡️</span> DHT22</h3>
+          <span class="hardware-params">Temperatura · umidità aria</span>
+        </div>
+        <p>Alternativa consigliata per misurare temperatura e umidità dell'aria con maggiore precisione.</p>
+        <div class="item-links">
+          <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/dht22" target="_blank" rel="noopener">Documentazione su GitHub →</a>
+          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+        </div>
+      </li>
+
+      <li class="hardware-item">
+        <div class="hardware-item-header">
+          <h3><span class="hardware-icon" aria-hidden="true">🌡️</span> DHT11</h3>
+          <span class="hardware-params">Temperatura · umidità aria</span>
+        </div>
+        <p>Alternativa economica per temperatura e umidità dell'aria, adatta a un primo approccio al progetto.</p>
+        <div class="item-links">
+          <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/dht11" target="_blank" rel="noopener">Documentazione su GitHub →</a>
+          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+        </div>
+      </li>
+
+      <li class="hardware-item">
+        <div class="hardware-item-header">
+          <h3><span class="hardware-icon" aria-hidden="true">💧</span> Sensore a forchetta</h3>
+          <span class="hardware-params">Umidità substrato</span>
+        </div>
+        <p>Misura direttamente l'umidità della zolletta per capire se il substrato è troppo secco o troppo bagnato.</p>
+        <div class="item-links">
+          <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/fork-sensor" target="_blank" rel="noopener">Documentazione su GitHub →</a>
+          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+        </div>
+      </li>
+
+      <li class="hardware-item">
+        <div class="hardware-item-header">
+          <h3><span class="hardware-icon" aria-hidden="true">🌱</span> DS18B20</h3>
+          <span class="hardware-params">Temperatura substrato</span>
+        </div>
+        <p>Sonda impermeabile per la temperatura interna al substrato, complementare alla temperatura dell'aria.</p>
+        <div class="item-links">
+          <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/ds18b20" target="_blank" rel="noopener">Documentazione su GitHub →</a>
+          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+        </div>
+      </li>
+
+      <li class="hardware-item">
+        <div class="hardware-item-header">
+          <h3><span class="hardware-icon" aria-hidden="true">☀️</span> Fotoresistenza (LDR)</h3>
+          <span class="hardware-params">Luminosità</span>
+        </div>
+        <p>Rileva la luce ambientale per verificare l'esposizione e correlarla con l'andamento della coltivazione.</p>
+        <div class="item-links">
+          <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/ldr" target="_blank" rel="noopener">Documentazione su GitHub →</a>
+          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+        </div>
+      </li>
+
+    </ul>
+
+    <p class="back-link">
+      <a href="index.html">← Torna alla home</a>
+    </p>
+
+  </main>
+
+  <footer>
+    Progetto open source &mdash;
+    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">Vedi su GitHub</a>
+    &nbsp;·&nbsp; Maker Faire Roma 2026
+  </footer>
+
+</body>
+</html>

@@ -1,10 +1,141 @@
-<html>
-  <head>
-    <title>VasoVivo - Coming soon
-  </head>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VasoVivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
 
-  <body>
-    <h1>VasoVivo - MakerFaire 2026</h1>
-    <h4>La pagina è attualmente in costruzione.</h4>
-  </body>
+  <header>
+    <img src="img/logo.png" alt="VasoVivo logo" />
+    <h1>VasoVivo</h1>
+    <p class="tagline">Monitoraggio intelligente per la coltivazione di funghi in barattolo, con ESP32 e sensori ambientali.</p>
+    <span class="mf-badge">&#9679; Maker Faire Roma 2026</span>
+  </header>
+
+  <main>
+
+    <!-- IL PROGETTO -->
+    <section>
+      <h2>Il progetto</h2>
+      <p>
+        <strong>VasoVivo</strong> è un sistema di monitoraggio attivo per la coltivazione di funghi in piccolo contenitore:
+        un barattolo che ospita una zolletta di substrato, chiuso da un coperchio "intelligente" su cui è integrata una sensoristica completa.
+      </p>
+      <p>
+        I sensori, collegati a una scheda <strong>ESP32</strong>, misurano in tempo reale i parametri ambientali rilevanti per la crescita.
+        I dati sono accessibili in diversi modi — tramite <strong>Bluetooth</strong>, <strong>Wi-Fi</strong> o un <strong>bot Telegram</strong> —
+        a seconda di come si sceglie di configurare la scheda. Ognuno può adattare il sistema alle proprie esigenze.
+      </p>
+
+      <div class="params">
+        <div class="param-card">
+          <div class="icon">🌡️</div>
+          <div class="label">Temperatura</div>
+          <div class="value">aria &amp; substrato</div>
+        </div>
+        <div class="param-card">
+          <div class="icon">💧</div>
+          <div class="label">Umidità</div>
+          <div class="value">aria &amp; substrato</div>
+        </div>
+        <div class="param-card">
+          <div class="icon">🌿</div>
+          <div class="label">CO₂ / VOC</div>
+          <div class="value">qualità dell'aria</div>
+        </div>
+        <div class="param-card">
+          <div class="icon">☀️</div>
+          <div class="label">Luminosità</div>
+          <div class="value">luce ambientale</div>
+        </div>
+      </div>
+
+      <p>
+        Il contenitore di riferimento è il barattolo <a href="https://www.ikea.com/it/it/p/eklatant-contenitore-con-coperchio-vetro-trasparente-bambu-50621766/" target="_blank" rel="noopener"><strong>IKEA EKLATANT</strong></a> — una scelta in pieno spirito <em>IKEA hack</em>,
+        pratica ben radicata nella cultura maker. I componenti stampati in 3D sono progettati per adattarsi a diversi modelli
+        del catalogo IKEA senza adattamenti custom. Tutta l'elettronica è composta da componenti <strong>economici e facilmente
+        reperibili online</strong>: il costo complessivo è volutamente contenuto per rendere il progetto accessibile a chiunque.
+      </p>
+      <p>
+        Codice, istruzioni di montaggio e schema elettrico sono disponibili pubblicamente su
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>, aperti ai contributi della community.
+      </p>
+    </section>
+
+    <hr />
+
+    <!-- HARDWARE -->
+    <section>
+      <h2>Hardware</h2>
+      <div class="cta-box">
+        <p>
+          Per replicare VasoVivo servono una scheda ESP32 e i sensori per monitorare aria, substrato e luminosità.
+          Nella repository trovi documentazione e sketch di esempio; nella pagina dedicata puoi anche trovare i link per l'acquisto.
+        </p>
+        <a href="hardware.html" class="cta-link">Vedi l'elenco hardware →</a>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- LE SPECIE -->
+    <section>
+      <h2>Le specie coltivate</h2>
+      <p>
+        Le specie coltivabili con substrato in zolletta variano per dimensioni e facilità di gestione.
+        Il formato barattolo si adatta meglio a specie con corpi fruttiferi contenuti.
+      </p>
+
+      <div class="species-grid">
+        <div class="species-card featured">
+          <span class="badge-ideal">Ideale per il barattolo</span>
+          <div class="name">Pioppino</div>
+          <div class="sci">Cyclocybe aegerita</div>
+          <p>Fungo commestibile tipico della tradizione italiana, dal sapore deciso. Le sue dimensioni contenute lo rendono perfetto per la coltivazione in barattolo. Dopo la prima raccolta, la zolletta può essere riutilizzata.</p>
+        </div>
+        <div class="species-card">
+          <div class="name">Pleurotus ostreatus</div>
+          <div class="sci">Fungo ostrica</div>
+          <p>Specie molto diffusa in cucina, adatta alla coltivazione in zolletta. Tende a sviluppare corpi fruttiferi di dimensioni considerevoli: preferibile con contenitori più grandi.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ALLO STAND -->
+    <section>
+      <h2>Cosa trovi allo stand</h2>
+      <div class="stand-box">
+        <div class="stand-icon">🍄</div>
+        <div>
+          <p>
+            Allo stand puoi vedere <strong>VasoVivo</strong> in funzione: più contenitori con coltivazioni attive,
+            i funghi in crescita e tutti i sensori al lavoro. Un <strong>display</strong> mostra i dati ambientali
+            in tempo reale — temperatura, umidità, CO₂, luminosità — di ciascun contenitore.
+          </p>
+          <p>
+            Trovi anche la <strong>documentazione del progetto</strong> e un <strong>QR code</strong> che rimanda
+            direttamente alla repository GitHub con tutti i file per replicarlo: schema elettrico, file per la stampa 3D,
+            codice sorgente e guida al montaggio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Progetto open source &mdash;
+    <a href="https://github.com" target="_blank" rel="noopener">Vedi su GitHub</a>
+    &nbsp;·&nbsp; Maker Faire Roma 2026
+  </footer>
+
+</body>
 </html>
