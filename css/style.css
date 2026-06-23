@@ -252,12 +252,13 @@ footer a {
   color: var(--text);
 }
 
-/* ── PAGINA HARDWARE ── */
+/* ── PAGINE ELENCO (hardware, stampa 3D) ── */
 .page-intro {
   margin-bottom: 32px;
   color: var(--muted);
 }
 
+.item-list,
 .hardware-list {
   list-style: none;
   display: flex;
@@ -265,6 +266,7 @@ footer a {
   gap: 16px;
 }
 
+.item-card,
 .hardware-item {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -272,10 +274,12 @@ footer a {
   padding: 20px 24px;
 }
 
+.item-card-header,
 .hardware-item-header {
   margin-bottom: 6px;
 }
 
+.item-card h3,
 .hardware-item h3 {
   font-size: 1rem;
   font-weight: 600;
@@ -285,16 +289,19 @@ footer a {
   gap: 8px;
 }
 
+.item-icon,
 .hardware-icon {
   font-size: 1.1rem;
   line-height: 1;
 }
 
+.item-params,
 .hardware-params {
   font-size: 0.82rem;
   color: var(--muted);
 }
 
+.item-card p,
 .hardware-item p {
   font-size: 0.92rem;
   color: var(--muted);

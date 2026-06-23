@@ -34,6 +34,15 @@ Ogni sensore ha una cartella in [`sensors/`](sensors/) con pinout, librerie Ardu
 
 L'elenco completo con link per l'acquisto è disponibile sul sito: [hardware.html](hardware.html).
 
+## Stampa 3D
+
+| Modello | Compatibilità | Documentazione |
+|---|---|---|
+| [Coperchio generico](prints/generic-lid/) | Barattoli adattabili | README |
+| [Coperchio per EKLATANT](prints/eklatant/) | IKEA EKLATANT | README |
+
+Vedi [`prints/README.md`](prints/README.md) per l'indice completo. I file STL verranno aggiunti nelle rispettive cartelle.
+
 ---
 
 ## Struttura della repository
@@ -42,17 +51,21 @@ L'elenco completo con link per l'acquisto è disponibile sul sito: [hardware.htm
 VASOVIVO/
 ├── index.html          # Homepage (GitHub Pages)
 ├── hardware.html       # Elenco componenti e link acquisto
+├── prints.html         # Elenco file stampa 3D
 ├── css/
 ├── img/
 ├── docs/
 │   └── mf_intro.md     # Testo introduttivo per la Maker Faire
-└── sensors/            # Documentazione e sketch per ogni sensore
-    ├── ens160-aht21/
-    ├── dht22/
-    ├── dht11/
-    ├── fork-sensor/
-    ├── ds18b20/
-    └── ldr/
+├── sensors/            # Documentazione e sketch per ogni sensore
+│   ├── ens160-aht21/
+│   ├── dht22/
+│   ├── dht11/
+│   ├── fork-sensor/
+│   ├── ds18b20/
+│   └── ldr/
+└── prints/             # Modelli STL e documentazione per ogni barattolo
+    ├── generic-lid/
+    └── eklatant/
 ```
 
 ---
