@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elementi UI — VasoVivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="vv-header--compact">
+    <a href="index.html" class="vv-header-link">
+      <img src="../img/logo.png" alt="VasoVivo logo" />
+      <h1>VasoVivo</h1>
+    </a>
+    <p class="vv-tagline">Glossario componenti UI</p>
+  </header>
+
+  <main class="vv-main--dashboard">
+
+    <p class="vv-intro">
+      Riferimento per costruire dashboard VasoVivo. Tutti i componenti usano il prefisso <code>vv-</code>
+      e sono definiti in <code>css/vv-ui/</code>. Includi <code>../css/style.css</code> e il font Lexend nella pagina.
+    </p>
+
+    <!-- TOKEN -->
+    <section>
+      <h2>Token e tipografia</h2>
+      <p>Paragrafo base con <strong>testo in evidenza</strong> e <a href="#">link</a>.</p>
+      <div class="vv-swatch-row">
+        <span class="vv-swatch vv-swatch--accent">--accent</span>
+        <span class="vv-swatch vv-swatch--accent-light">--accent-light</span>
+        <span class="vv-swatch vv-swatch--muted">--muted</span>
+      </div>
+      <code class="vv-code">body · font Lexend · 16px · weight 300</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <!-- LAYOUT -->
+    <section>
+      <h2>Layout</h2>
+      <p class="vv-intro">.vv-intro — testo introduttivo attenuato</p>
+      <p class="vv-back-link"><a href="#">.vv-back-link</a></p>
+      <code class="vv-code">.vv-header--compact · .vv-header-link · .vv-tagline · .vv-main--dashboard · .vv-divider · .vv-section-title</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <!-- DASHBOARD HEADER -->
+    <section>
+      <h2>Intestazione dashboard</h2>
+      <div class="vv-dashboard-header">
+        <div class="vv-dashboard-header__info">
+          <h2>EKLATANT #1</h2>
+          <p class="vv-dashboard-header__meta">IKEA EKLATANT · 4.2 l · Pioppino</p>
+        </div>
+        <div class="vv-dashboard-header__badges">
+          <span class="vv-status vv-status--ok">&#9679; Connesso</span>
+          <span class="vv-ts">Ultimo aggiornamento: 14:32:05</span>
+        </div>
+      </div>
+      <code class="vv-code">.vv-dashboard-header · .vv-dashboard-header__info · .vv-dashboard-header__meta · .vv-dashboard-header__badges · .vv-ts</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <!-- BADGE -->
+    <section>
+      <h2>Badge e stato</h2>
+      <span class="vv-status vv-status--ok">&#9679; .vv-status--ok</span>
+      <span class="vv-status vv-status--warn" style="margin-left: 8px;">&#9679; .vv-status--warn</span>
+      <br /><br />
+      <span class="vv-badge vv-badge--no-margin">&#9679; .vv-badge</span>
+      <code class="vv-code">.vv-status · .vv-status--ok · .vv-status--warn · .vv-badge · .vv-badge--no-margin</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <!-- GROUPS -->
+    <section>
+      <h2>Gruppi di metriche</h2>
+      <div class="vv-dashboard-group">
+        <h3 class="vv-dashboard-group__title">Aria</h3>
+        <div class="vv-metric-grid">
+          <div class="vv-metric">
+            <div class="vv-metric__icon">🌡️</div>
+            <div class="vv-metric__label">Temperatura aria</div>
+            <div class="vv-metric__value">22.4 <span class="vv-metric__unit">°C</span></div>
+          </div>
+          <div class="vv-metric">
+            <div class="vv-metric__icon">💧</div>
+            <div class="vv-metric__label">Umidità aria</div>
+            <div class="vv-metric__value">78 <span class="vv-metric__unit">% RH</span></div>
+          </div>
+        </div>
+      </div>
+      <code class="vv-code">.vv-dashboard-group · .vv-dashboard-group__title</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <!-- LIVE METRICS -->
+    <section>
+      <h2>Metriche</h2>
+      <div class="vv-metric-grid">
+        <div class="vv-metric">
+          <div class="vv-metric__icon">🌡️</div>
+          <div class="vv-metric__label">Temperatura aria</div>
+          <div class="vv-metric__value">22.4 <span class="vv-metric__unit">°C</span></div>
+        </div>
+        <div class="vv-metric vv-metric--highlight">
+          <div class="vv-metric__icon">💨</div>
+          <div class="vv-metric__label">TVOC</div>
+          <div class="vv-metric__value">120 <span class="vv-metric__unit">ppb</span></div>
+        </div>
+      </div>
+      <code class="vv-code">.vv-metric-grid · .vv-metric · .vv-metric--highlight · .vv-metric__icon · .vv-metric__label · .vv-metric__value · .vv-metric__unit</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <!-- PANEL -->
+    <section>
+      <h2>Panel</h2>
+      <div class="vv-panel">
+        <p>Contenitore superficie per avvisi, note o riepiloghi testuali nella dashboard.</p>
+      </div>
+      <code class="vv-code">.vv-panel</code>
+    </section>
+
+    <p class="vv-back-link">
+      <a href="index.html">← Dashboard mock</a>
+    </p>
+
+  </main>
+
+  <footer>
+    VasoVivo UI Toolkit
+    &nbsp;·&nbsp;
+    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+</body>
+</html>

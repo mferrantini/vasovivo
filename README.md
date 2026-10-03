@@ -45,6 +45,28 @@ Vedi [`prints/README.md`](prints/README.md) per l'indice completo. I file STL ve
 
 ---
 
+## UI Toolkit
+
+Il progetto include un piccolo **UI toolkit CSS** per costruire interfacce di monitoraggio in tempo reale. I componenti usano il prefisso `vv-` e sono organizzati in [`css/vv-ui/`](css/vv-ui/); il file [`css/style.css`](css/style.css) ne è l'entry point.
+
+| Pagina | Descrizione |
+|---|---|
+| [UI/index.html](UI/index.html) | Dashboard di prova con dati mockati (1 barattolo) |
+| [UI/elements.html](UI/elements.html) | Glossario dei componenti disponibili |
+
+### Componenti principali
+
+- **Layout** — `.vv-header--compact`, `.vv-main--dashboard`, `.vv-divider`
+- **Intestazione dashboard** — `.vv-dashboard-header`, `.vv-ts` (timestamp)
+- **Stato** — `.vv-status--ok`, `.vv-status--warn`
+- **Metriche** — `.vv-metric-grid`, `.vv-metric`, `.vv-metric--highlight`
+- **Gruppi** — `.vv-dashboard-group` per raggruppare letture (aria, substrato, ambiente)
+- **Panel** — `.vv-panel` per avvisi e note
+
+Per iniziare una nuova dashboard: includi il font Lexend e `css/style.css`, poi consulta [`UI/elements.html`](UI/elements.html) per esempi e nomi delle classi.
+
+---
+
 ## Struttura della repository
 
 ```
@@ -53,6 +75,11 @@ VASOVIVO/
 ├── hardware.html       # Elenco componenti e link acquisto
 ├── prints.html         # Elenco file stampa 3D
 ├── css/
+│   ├── style.css       # Entry point CSS del toolkit
+│   └── vv-ui/          # Moduli UI toolkit (tokens, layout, componenti, dashboard)
+├── UI/
+│   ├── index.html      # Dashboard mock
+│   └── elements.html   # Glossario componenti UI
 ├── img/
 ├── docs/
 │   └── mf_intro.md     # Testo introduttivo per la Maker Faire
@@ -82,6 +109,8 @@ VASOVIVO/
 
 - [Introduzione al progetto](docs/mf_intro.md) — testo per la Maker Faire
 - [Sensori](sensors/README.md) — indice e requisiti comuni
+- [Dashboard mock](UI/index.html) — interfaccia di prova con dati mockati
+- [Glossario UI](UI/elements.html) — componenti per costruire dashboard
 - [Sito del progetto](https://mferrantini.github.io/vasovivo/)
 
 ---

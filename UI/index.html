@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — VasoVivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="vv-header--compact">
+    <a href="../index.html" class="vv-header-link">
+      <img src="../img/logo.png" alt="VasoVivo logo" />
+      <h1>VasoVivo</h1>
+    </a>
+    <p class="vv-tagline">Monitoraggio in tempo reale</p>
+  </header>
+
+  <main class="vv-main--dashboard">
+
+    <div class="vv-dashboard-header">
+      <div class="vv-dashboard-header__info">
+        <h2>EKLATANT #1</h2>
+        <p class="vv-dashboard-header__meta">IKEA EKLATANT · 4.2 l · Pioppino</p>
+      </div>
+      <div class="vv-dashboard-header__badges">
+        <span class="vv-status vv-status--ok">&#9679; Connesso</span>
+        <span class="vv-ts">Ultimo aggiornamento: 14:32:05</span>
+      </div>
+    </div>
+
+    <div class="vv-dashboard-group">
+      <h3 class="vv-dashboard-group__title">Aria</h3>
+      <div class="vv-metric-grid">
+
+        <div class="vv-metric">
+          <div class="vv-metric__icon" aria-hidden="true">🌡️</div>
+          <div class="vv-metric__label">Temperatura aria</div>
+          <div class="vv-metric__value">22.4 <span class="vv-metric__unit">°C</span></div>
+        </div>
+
+        <div class="vv-metric">
+          <div class="vv-metric__icon" aria-hidden="true">💧</div>
+          <div class="vv-metric__label">Umidità aria</div>
+          <div class="vv-metric__value">78 <span class="vv-metric__unit">% RH</span></div>
+        </div>
+
+        <div class="vv-metric">
+          <div class="vv-metric__icon" aria-hidden="true">🌿</div>
+          <div class="vv-metric__label">CO₂ equivalente</div>
+          <div class="vv-metric__value">840 <span class="vv-metric__unit">ppm</span></div>
+        </div>
+
+        <div class="vv-metric vv-metric--highlight">
+          <div class="vv-metric__icon" aria-hidden="true">💨</div>
+          <div class="vv-metric__label">TVOC</div>
+          <div class="vv-metric__value">120 <span class="vv-metric__unit">ppb</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="vv-dashboard-group">
+      <h3 class="vv-dashboard-group__title">Substrato</h3>
+      <div class="vv-metric-grid">
+
+        <div class="vv-metric">
+          <div class="vv-metric__icon" aria-hidden="true">🌱</div>
+          <div class="vv-metric__label">Temperatura substrato</div>
+          <div class="vv-metric__value">21.8 <span class="vv-metric__unit">°C</span></div>
+        </div>
+
+        <div class="vv-metric">
+          <div class="vv-metric__icon" aria-hidden="true">💧</div>
+          <div class="vv-metric__label">Umidità substrato</div>
+          <div class="vv-metric__value">62 <span class="vv-metric__unit">%</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="vv-dashboard-group">
+      <h3 class="vv-dashboard-group__title">Ambiente</h3>
+      <div class="vv-metric-grid">
+
+        <div class="vv-metric">
+          <div class="vv-metric__icon" aria-hidden="true">☀️</div>
+          <div class="vv-metric__label">Luminosità</div>
+          <div class="vv-metric__value">45 <span class="vv-metric__unit">%</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="vv-back-link">
+      <a href="elements.html">Componenti UI →</a>
+      &nbsp;·&nbsp;
+      <a href="../index.html">← Torna al sito</a>
+    </p>
+
+  </main>
+
+  <footer>
+    Dati mockati &mdash; interfaccia di prova
+    &nbsp;·&nbsp;
+    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+</body>
+</html>
