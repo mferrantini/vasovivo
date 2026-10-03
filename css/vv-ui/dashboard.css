@@ -1,0 +1,102 @@
+/* ── Dashboard layout ── */
+.vv-dashboard-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.vv-dashboard-header__info h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.vv-dashboard-header__meta {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.vv-dashboard-header__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.vv-ts {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* ── Live metric grid ── */
+.vv-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.vv-metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.vv-metric--highlight {
+  border-color: var(--warn);
+  background: var(--warn-light);
+}
+
+.vv-metric__icon {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.vv-metric__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.vv-metric__value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.vv-metric__unit {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.vv-metric--highlight .vv-metric__value {
+  color: var(--warn);
+}
+
+/* ── Dashboard section grouping ── */
+.vv-dashboard-group {
+  margin-bottom: 32px;
+}
+
+.vv-dashboard-group__title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}

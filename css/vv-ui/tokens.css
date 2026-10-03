@@ -1,0 +1,14 @@
+:root {
+  --bg: #f9f8f6;
+  --surface: #ffffff;
+  --border: #e5e3de;
+  --text: #1a1a18;
+  --muted: #6b6860;
+  --accent: #3d7a4f;
+  --accent-light: #edf5f0;
+  --warn: #b45309;
+  --warn-light: #fef3e2;
+  --radius: 12px;
+  --max-w: 760px;
+  --max-w-dashboard: 900px;
+}

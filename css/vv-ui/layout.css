@@ -1,0 +1,103 @@
+/* Header */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 24px 40px;
+  text-align: center;
+}
+
+header img {
+  height: 80px;
+  width: auto;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.vv-tagline,
+header p.tagline {
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.vv-header--compact {
+  padding: 24px 24px 20px;
+}
+
+.vv-header--compact img {
+  height: 48px;
+  margin-bottom: 12px;
+}
+
+.vv-header--compact h1 {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+/* Main */
+main {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+.vv-main--dashboard {
+  max-width: var(--max-w-dashboard);
+}
+
+/* Sections */
+section {
+  margin-bottom: 56px;
+}
+
+section h2,
+.vv-section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+section p {
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+section p:last-child {
+  margin-bottom: 0;
+}
+
+/* Divider */
+hr,
+.vv-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 56px;
+}
+
+/* Footer */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+footer a {
+  font-weight: 500;
+}

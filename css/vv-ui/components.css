@@ -1,0 +1,343 @@
+/* ── Badge ── */
+.vv-badge,
+.mf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-top: 20px;
+  letter-spacing: 0.03em;
+}
+
+.vv-badge--solid,
+.badge-ideal {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.vv-badge--no-margin {
+  margin-top: 0;
+}
+
+/* ── Status badge (dashboard) ── */
+.vv-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 99px;
+  letter-spacing: 0.03em;
+}
+
+.vv-status--ok {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.vv-status--warn {
+  background: var(--warn-light);
+  color: var(--warn);
+}
+
+/* ── Header link ── */
+.vv-header-link,
+.header-link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.vv-header-link:hover,
+.header-link:hover {
+  text-decoration: none;
+}
+
+.vv-header-link h1,
+.header-link h1 {
+  color: var(--text);
+}
+
+/* ── Page intro ── */
+.vv-intro,
+.page-intro {
+  margin-bottom: 32px;
+  color: var(--muted);
+}
+
+/* ── Param / summary cards ── */
+.vv-param-grid,
+.params {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.vv-param-card,
+.param-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+
+.vv-param-card .vv-icon,
+.vv-param-card .icon,
+.param-card .icon {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.vv-param-card .vv-label,
+.vv-param-card .label,
+.param-card .label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vv-param-card .vv-value,
+.vv-param-card .value,
+.param-card .value {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+/* ── Content cards ── */
+.vv-grid-2,
+.species-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .vv-grid-2,
+  .species-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vv-card,
+.species-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.vv-card--featured,
+.species-card.featured {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.vv-card__title,
+.species-card .name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.vv-card__subtitle,
+.species-card .sci {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.vv-card p,
+.species-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ── Panel / CTA / Stand ── */
+.vv-panel,
+.cta-box,
+.stand-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+
+.stand-box {
+  padding: 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.vv-panel__icon,
+.stand-box .stand-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.vv-panel p,
+.cta-box p,
+.stand-box p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.cta-box p {
+  margin-bottom: 14px;
+}
+
+.stand-box p + p {
+  margin-top: 10px;
+}
+
+.vv-link,
+.cta-link {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* ── Item list (hardware, prints) ── */
+.vv-item-list,
+.item-list,
+.hardware-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vv-item-card,
+.item-card,
+.hardware-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+.vv-item-card__header,
+.item-card-header,
+.hardware-item-header {
+  margin-bottom: 6px;
+}
+
+.vv-item-card h3,
+.item-card h3,
+.hardware-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vv-item-card__icon,
+.item-icon,
+.hardware-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.vv-item-card__meta,
+.item-params,
+.hardware-params {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.vv-item-card p,
+.item-card p,
+.hardware-item p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.vv-item-links,
+.item-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.vv-item-links a,
+.item-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.vv-item-links .vv-link-muted,
+.item-links .amazon-link {
+  color: var(--muted);
+}
+
+.vv-back-link,
+.back-link {
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* ── Elements page helpers ── */
+.vv-swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.vv-swatch {
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.vv-swatch--accent {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.vv-swatch--accent-light {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.vv-swatch--muted {
+  background: var(--muted);
+  color: #fff;
+  border-color: var(--muted);
+}
+
+.vv-code {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-family: ui-monospace, monospace;
+}
