@@ -37,15 +37,21 @@
 /* ── Live metric grid ── */
 .vv-metric-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
 }
 
+/* Righe fisse (icona, titolo su 2 righe, valore, nota, barra in fondo):
+   i valori restano allineati tra schede vicine anche con titoli lunghi. */
 .vv-metric {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px 16px;
+  padding: 20px 16px 16px;
   text-align: center;
 }
 
@@ -55,14 +61,21 @@
 }
 
 .vv-metric__icon {
+  height: 1.5rem;
   font-size: 1.5rem;
   margin-bottom: 8px;
   line-height: 1;
 }
 
 .vv-metric__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.7em;
+  text-wrap: balance;
   font-size: 0.75rem;
   font-weight: 500;
+  line-height: 1.35;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -75,6 +88,7 @@
   color: var(--text);
   letter-spacing: -0.02em;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .vv-metric__unit {
@@ -85,6 +99,83 @@
 
 .vv-metric--highlight .vv-metric__value {
   color: var(--warn);
+}
+
+.vv-metric__hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.35;
+  text-wrap: balance;
+  margin: 6px 0 12px;
+  min-height: 2.7em;
+}
+
+.vv-metric--highlight .vv-metric__hint {
+  color: var(--warn);
+}
+
+.vv-metric__bar {
+  align-self: stretch;
+  height: 6px;
+  margin-top: auto;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.vv-metric__bar-fill {
+  width: var(--fill, 0%);
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+}
+
+.vv-metric--highlight .vv-metric__bar-fill {
+  background: var(--warn);
+}
+
+.vv-metric--na .vv-metric__value {
+  color: var(--muted);
+}
+
+/* ── Stato con indicatore ── */
+.vv-status__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ── Dati non aggiornati ── */
+.vv-dashboard--stale .vv-metric {
+  opacity: 0.55;
+}
+
+/* ── Elenco sensori e informazioni scheda ── */
+.vv-sensor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.vv-info-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px 24px;
+}
+
+.vv-info-list dt {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vv-info-list dd {
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 /* ── Dashboard section grouping ── */

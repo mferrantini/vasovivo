@@ -31,7 +31,7 @@ VasoVivo supporta diversi sensori per monitorare aria, substrato e luminosità. 
 | **ENS160 + AHT21** | CO₂eq, TVOC, temperatura, umidità aria | Modulo combinato per qualità dell'aria e condizioni ambientali nel barattolo |
 | **DHT22** | Temperatura, umidità aria | Alternativa consigliata per dati ambientali più affidabili |
 | **DHT11** | Temperatura, umidità aria | Alternativa economica, adatta a un primo approccio |
-| **Sensore a forchetta** | Umidità substrato | Verifica se la zolletta è troppo secca o troppo bagnata |
+| **Sensore capacitivo** | Umidità substrato | Verifica se la zolletta è troppo secca o troppo bagnata |
 | **DS18B20** | Temperatura substrato | Sonda impermeabile per la temperatura interna al substrato |
 | **Fotoresistenza (LDR)** | Luminosità | Rileva l'esposizione alla luce e la correlazione con la crescita |
 

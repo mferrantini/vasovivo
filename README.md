@@ -26,13 +26,26 @@ Il contenitore di riferimento è il barattolo [**IKEA EKLATANT**](https://www.ik
 | [ENS160 + AHT21](sensors/ens160-aht21/) | CO₂eq, TVOC, temperatura, umidità aria | README + sketch |
 | [DHT22](sensors/dht22/) | Temperatura, umidità aria | README + sketch |
 | [DHT11](sensors/dht11/) | Temperatura, umidità aria | README + sketch |
-| [Sensore a forchetta](sensors/fork-sensor/) | Umidità substrato | README + sketch |
+| [Sensore capacitivo](sensors/capacitive-moisture/) | Umidità substrato | README + sketch |
 | [DS18B20](sensors/ds18b20/) | Temperatura substrato | README + sketch |
 | [Fotoresistenza (LDR)](sensors/ldr/) | Luminosità | README + sketch |
+| [GY-302 BH1750FVI](sensors/bh1750/) | Intensità luminosa (lux) | README + sketch |
 
 Ogni sensore ha una cartella in [`sensors/`](sensors/) con pinout, librerie Arduino e uno sketch di esempio per ESP32. Vedi anche [`sensors/README.md`](sensors/README.md) per i requisiti comuni.
 
 L'elenco completo con link per l'acquisto è disponibile sul sito: [hardware.html](hardware.html).
+
+## Esempi completi
+
+Sketch pronti da caricare, costruiti con gli stessi blocchi di lettura degli esempi dei singoli sensori. Indice e requisiti in [`examples/README.md`](examples/README.md).
+
+| Esempio | Connessione | Sensori |
+|---|---|---|
+| [Wi-Fi e pagina HTML](examples/wifi-page/) | Rete Wi-Fi propria, pagina senza stile su http://192.168.4.1 | ENS160 + AHT21, BH1750, umidità substrato |
+| [Wi-Fi e dashboard](examples/wifi-dashboard/) | Rete Wi-Fi propria, dashboard UI v1 (schede) su http://192.168.4.1 | ENS160 + AHT21, BH1750, umidità substrato |
+| [Wi-Fi e dashboard illustrata](examples/wifi-illustrated/) | Rete Wi-Fi propria, dashboard UI v2 (tavola) su http://192.168.4.1 | ENS160 + AHT21, BH1750, umidità substrato |
+
+Gli esempi Bluetooth e bot Telegram sono in preparazione.
 
 ## Stampa 3D
 
@@ -47,23 +60,31 @@ Vedi [`prints/README.md`](prints/README.md) per l'indice completo. I file STL ve
 
 ## UI Toolkit
 
-Il progetto include un piccolo **UI toolkit CSS** per costruire interfacce di monitoraggio in tempo reale. I componenti usano il prefisso `vv-` e sono organizzati in [`css/vv-ui/`](css/vv-ui/); il file [`css/style.css`](css/style.css) ne è l'entry point.
+Ci sono due toolkit, indipendenti: la **v1** a schede e la **v2** illustrata. Entrambi leggono i dati tramite [`js/vv-data.js`](js/vv-data.js) (`data-source` sul `<body>`: `demo` oppure `/api/readings`).
+
+### UI v1 — schede
+
+Prefisso `vv-`, entry point [`css/style.css`](css/style.css), moduli in [`css/vv-ui/`](css/vv-ui/).
 
 | Pagina | Descrizione |
 |---|---|
-| [UI/index.html](UI/index.html) | Dashboard di prova con dati mockati (1 barattolo) |
-| [UI/elements.html](UI/elements.html) | Glossario dei componenti disponibili |
+| [UI/index.html](UI/index.html) | Dashboard a schede (dati dimostrativi; letture vere in [`wifi-dashboard`](examples/wifi-dashboard/)) |
+| [UI/elements.html](UI/elements.html) | Glossario dei componenti v1 |
 
-### Componenti principali
+Componenti principali: `.vv-metric-grid`, `.vv-metric`, `.vv-dashboard-group`, `.vv-status`, `.vv-panel`, animazioni in `motion.css`.
 
-- **Layout** — `.vv-header--compact`, `.vv-main--dashboard`, `.vv-divider`
-- **Intestazione dashboard** — `.vv-dashboard-header`, `.vv-ts` (timestamp)
-- **Stato** — `.vv-status--ok`, `.vv-status--warn`
-- **Metriche** — `.vv-metric-grid`, `.vv-metric`, `.vv-metric--highlight`
-- **Gruppi** — `.vv-dashboard-group` per raggruppare letture (aria, substrato, ambiente)
-- **Panel** — `.vv-panel` per avvisi e note
+### UI v2 — tavola illustrata
 
-Per iniziare una nuova dashboard: includi il font Lexend e `css/style.css`, poi consulta [`UI/elements.html`](UI/elements.html) per esempi e nomi delle classi.
+Prefisso `vv2-`, entry point [`css/style-v2.css`](css/style-v2.css), moduli in [`css/vv-ui-v2/`](css/vv-ui-v2/).
+
+| Pagina | Descrizione |
+|---|---|
+| [UI/v2/index.html](UI/v2/index.html) | Dashboard illustrata del barattolo EKLATANT (letture vere in [`wifi-illustrated`](examples/wifi-illustrated/)) |
+| [UI/v2/elements.html](UI/v2/elements.html) | Glossario e guida d'uso dei componenti v2 |
+
+Componenti principali: `.vv2-art` (illustrazione), `.vv2-reading` e `.vv2-scale` (fascia ideale), `.vv2-verdict`, `.vv2-label`, `.vv2-chapter`. Su desktop e tablet in orizzontale la pagina sta in un solo schermo.
+
+Per spazi, colori e allineamenti ci sono classi utility (`.vv2-m-*`, `.vv2-p-*`, `.vv2-gap-*`, `.vv2-text-*`, `.vv2-bg-*`) basate su una scala di spazi a passo 4&nbsp;px, definite in `css/vv-ui-v2/utilities.css` e documentate nel glossario.
 
 ---
 
@@ -75,21 +96,36 @@ VASOVIVO/
 ├── hardware.html       # Elenco componenti e link acquisto
 ├── prints.html         # Elenco file stampa 3D
 ├── css/
-│   ├── style.css       # Entry point CSS del toolkit
-│   └── vv-ui/          # Moduli UI toolkit (tokens, layout, componenti, dashboard)
+│   ├── style.css       # Entry point UI v1
+│   ├── style-v2.css    # Entry point UI v2
+│   ├── vv-ui/          # Moduli UI v1
+│   └── vv-ui-v2/       # Moduli UI v2
+├── js/
+│   ├── vv-data.js      # Letture (demo o ESP32), condiviso
+│   ├── vv-dashboard.js # UI v1
+│   └── v2/
+│       └── vv2-jar.js  # UI v2
 ├── UI/
-│   ├── index.html      # Dashboard mock
-│   └── elements.html   # Glossario componenti UI
+│   ├── index.html      # Dashboard v1 (template di wifi-dashboard)
+│   ├── elements.html   # Glossario UI v1
+│   └── v2/
+│       ├── index.html  # Dashboard v2 (template di wifi-illustrated)
+│       └── elements.html
 ├── img/
 ├── docs/
 │   └── mf_intro.md     # Testo introduttivo per la Maker Faire
-├── sensors/            # Documentazione e sketch per ogni sensore
+├── examples/           # Esempi completi (più sensori + connessione)
+│   ├── wifi-page/
+│   ├── wifi-dashboard/
+│   └── wifi-illustrated/
+├── sensors/            # Documentazione, blocco di lettura e sketch per ogni sensore
 │   ├── ens160-aht21/
 │   ├── dht22/
 │   ├── dht11/
-│   ├── fork-sensor/
+│   ├── capacitive-moisture/
 │   ├── ds18b20/
-│   └── ldr/
+│   ├── ldr/
+│   └── bh1750/
 └── prints/             # Modelli STL e documentazione per ogni barattolo
     ├── generic-lid/
     └── eklatant/
@@ -108,9 +144,11 @@ VASOVIVO/
 ## Documentazione
 
 - [Introduzione al progetto](docs/mf_intro.md) — testo per la Maker Faire
-- [Sensori](sensors/README.md) — indice e requisiti comuni
-- [Dashboard mock](UI/index.html) — interfaccia di prova con dati mockati
-- [Glossario UI](UI/elements.html) — componenti per costruire dashboard
+- [Sensori](sensors/README.md) — indice, blocchi di lettura e mappa pin
+- [Esempi completi](examples/README.md) — sketch pronti con più sensori
+- [Dashboard UI v1](UI/index.html) — schede, con dati dimostrativi
+- [Dashboard UI v2](UI/v2/index.html) — tavola illustrata del barattolo EKLATANT
+- [Glossario UI v1](UI/elements.html) · [Glossario UI v2](UI/v2/elements.html)
 - [Sito del progetto](https://mferrantini.github.io/vasovivo/)
 
 ---

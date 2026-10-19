@@ -4,110 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard — VasoVivo</title>
+  <!-- vv:online -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- /vv:online -->
   <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body>
+<!--
+  Template della dashboard dal vivo: sul sito mostra dati simulati.
+  examples/wifi-dashboard/build-data.sh ne fa la copia per l'ESP32, collegata alle letture vere.
+-->
+<body data-source="demo">
 
   <header class="vv-header--compact">
     <a href="../index.html" class="vv-header-link">
-      <img src="../img/logo.png" alt="VasoVivo logo" />
+      <img src="../img/logo-small.png" alt="VasoVivo logo" />
       <h1>VasoVivo</h1>
     </a>
-    <p class="vv-tagline">Monitoraggio in tempo reale</p>
+    <p class="vv-tagline">Monitoraggio in tempo reale · UI v1</p>
   </header>
 
-  <main class="vv-main--dashboard">
+  <main class="vv-main--dashboard" id="dashboard">
 
-    <div class="vv-dashboard-header">
+    <div class="vv-dashboard-header vv-reveal">
       <div class="vv-dashboard-header__info">
-        <h2>EKLATANT #1</h2>
+        <h2>Barattolo #1</h2>
         <p class="vv-dashboard-header__meta">IKEA EKLATANT · 4.2 l · Pioppino</p>
       </div>
       <div class="vv-dashboard-header__badges">
-        <span class="vv-status vv-status--ok">&#9679; Connesso</span>
-        <span class="vv-ts">Ultimo aggiornamento: 14:32:05</span>
+        <span class="vv-status vv-status--ok" id="status">
+          <span class="vv-status__dot"></span>
+          <span id="status-text">Connessione…</span>
+        </span>
+        <span class="vv-ts" id="updated">In attesa dei dati</span>
       </div>
     </div>
 
     <div class="vv-dashboard-group">
-      <h3 class="vv-dashboard-group__title">Aria</h3>
+      <h3 class="vv-dashboard-group__title vv-reveal" style="--i: 1">Aria nel barattolo</h3>
       <div class="vv-metric-grid">
 
-        <div class="vv-metric">
+        <div class="vv-metric vv-metric--loading vv-reveal" id="m-temp" style="--i: 2">
           <div class="vv-metric__icon" aria-hidden="true">🌡️</div>
-          <div class="vv-metric__label">Temperatura aria</div>
-          <div class="vv-metric__value">22.4 <span class="vv-metric__unit">°C</span></div>
+          <div class="vv-metric__label">Temperatura</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">00,0</span> <span class="vv-metric__unit">°C</span></div>
+          <div class="vv-metric__hint">AHT21</div>
         </div>
 
-        <div class="vv-metric">
+        <div class="vv-metric vv-metric--loading vv-reveal" id="m-hum" style="--i: 3">
           <div class="vv-metric__icon" aria-hidden="true">💧</div>
           <div class="vv-metric__label">Umidità aria</div>
-          <div class="vv-metric__value">78 <span class="vv-metric__unit">% RH</span></div>
+          <div class="vv-metric__value"><span class="vv-metric__number">00,0</span> <span class="vv-metric__unit">%</span></div>
+          <div class="vv-metric__hint">AHT21</div>
+          <div class="vv-metric__bar"><div class="vv-metric__bar-fill"></div></div>
         </div>
 
-        <div class="vv-metric">
+        <div class="vv-metric vv-metric--loading vv-reveal" id="m-eco2" style="--i: 4">
           <div class="vv-metric__icon" aria-hidden="true">🌿</div>
           <div class="vv-metric__label">CO₂ equivalente</div>
-          <div class="vv-metric__value">840 <span class="vv-metric__unit">ppm</span></div>
+          <div class="vv-metric__value"><span class="vv-metric__number">000</span> <span class="vv-metric__unit">ppm</span></div>
+          <div class="vv-metric__hint">ENS160</div>
         </div>
 
-        <div class="vv-metric vv-metric--highlight">
+        <div class="vv-metric vv-metric--loading vv-reveal" id="m-tvoc" style="--i: 5">
           <div class="vv-metric__icon" aria-hidden="true">💨</div>
-          <div class="vv-metric__label">TVOC</div>
-          <div class="vv-metric__value">120 <span class="vv-metric__unit">ppb</span></div>
+          <div class="vv-metric__label">Composti volatili</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">000</span> <span class="vv-metric__unit">ppb</span></div>
+          <div class="vv-metric__hint">ENS160</div>
+        </div>
+
+        <div class="vv-metric vv-metric--loading vv-reveal" id="m-aqi" style="--i: 6">
+          <div class="vv-metric__icon" aria-hidden="true">🫧</div>
+          <div class="vv-metric__label">Qualità dell'aria</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">0</span> <span class="vv-metric__unit">/ 5</span></div>
+          <div class="vv-metric__hint">ENS160</div>
+          <div class="vv-metric__bar"><div class="vv-metric__bar-fill"></div></div>
         </div>
 
       </div>
     </div>
 
     <div class="vv-dashboard-group">
-      <h3 class="vv-dashboard-group__title">Substrato</h3>
+      <h3 class="vv-dashboard-group__title vv-reveal" style="--i: 7">Luce</h3>
       <div class="vv-metric-grid">
 
-        <div class="vv-metric">
-          <div class="vv-metric__icon" aria-hidden="true">🌱</div>
-          <div class="vv-metric__label">Temperatura substrato</div>
-          <div class="vv-metric__value">21.8 <span class="vv-metric__unit">°C</span></div>
-        </div>
-
-        <div class="vv-metric">
-          <div class="vv-metric__icon" aria-hidden="true">💧</div>
-          <div class="vv-metric__label">Umidità substrato</div>
-          <div class="vv-metric__value">62 <span class="vv-metric__unit">%</span></div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="vv-dashboard-group">
-      <h3 class="vv-dashboard-group__title">Ambiente</h3>
-      <div class="vv-metric-grid">
-
-        <div class="vv-metric">
+        <div class="vv-metric vv-metric--loading vv-reveal" id="m-lux" style="--i: 8">
           <div class="vv-metric__icon" aria-hidden="true">☀️</div>
-          <div class="vv-metric__label">Luminosità</div>
-          <div class="vv-metric__value">45 <span class="vv-metric__unit">%</span></div>
+          <div class="vv-metric__label">Intensità luminosa</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">000</span> <span class="vv-metric__unit">lux</span></div>
+          <div class="vv-metric__hint">BH1750</div>
+          <div class="vv-metric__bar"><div class="vv-metric__bar-fill"></div></div>
         </div>
 
       </div>
     </div>
 
+    <div class="vv-dashboard-group">
+      <h3 class="vv-dashboard-group__title vv-reveal" style="--i: 9">Substrato</h3>
+      <div class="vv-metric-grid">
+
+        <div class="vv-metric vv-metric--loading vv-reveal" id="m-moisture" style="--i: 10">
+          <div class="vv-metric__icon" aria-hidden="true">🌱</div>
+          <div class="vv-metric__label">Umidità substrato</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">00</span> <span class="vv-metric__unit">%</span></div>
+          <div class="vv-metric__hint">sensore analogico</div>
+          <div class="vv-metric__bar"><div class="vv-metric__bar-fill"></div></div>
+        </div>
+
+        <div class="vv-metric vv-metric--loading vv-reveal" id="m-adc" style="--i: 11">
+          <div class="vv-metric__icon" aria-hidden="true">📟</div>
+          <div class="vv-metric__label">Valore ADC grezzo</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">0000</span> <span class="vv-metric__unit">/ 4095</span></div>
+          <div class="vv-metric__hint">calibrazione</div>
+          <div class="vv-metric__bar"><div class="vv-metric__bar-fill"></div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="vv-dashboard-group vv-reveal" style="--i: 12">
+      <h3 class="vv-dashboard-group__title">Sensori e scheda</h3>
+      <div class="vv-panel">
+        <div class="vv-sensor-list" id="sensor-list"></div>
+        <dl class="vv-info-list">
+          <div><dt>Rete Wi-Fi</dt><dd id="info-network">—</dd></div>
+          <div><dt>Indirizzo</dt><dd id="info-ip">—</dd></div>
+          <div><dt>Dispositivi collegati</dt><dd id="info-clients">—</dd></div>
+          <div><dt>Accesa da</dt><dd id="info-uptime">—</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- vv:site -->
     <p class="vv-back-link">
       <a href="elements.html">Componenti UI →</a>
       &nbsp;·&nbsp;
       <a href="../index.html">← Torna al sito</a>
     </p>
+    <!-- /vv:site -->
 
   </main>
 
   <footer>
-    Dati mockati &mdash; interfaccia di prova
+    <span id="footer-source">VasoVivo</span>
     &nbsp;·&nbsp;
     <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">GitHub</a>
   </footer>
 
+  <script src="../js/vv-data.js"></script>
+  <script src="../js/vv-dashboard.js"></script>
 </body>
 </html>

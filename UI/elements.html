@@ -13,7 +13,7 @@
 
   <header class="vv-header--compact">
     <a href="index.html" class="vv-header-link">
-      <img src="../img/logo.png" alt="VasoVivo logo" />
+      <img src="../img/logo-small.png" alt="VasoVivo logo" />
       <h1>VasoVivo</h1>
     </a>
     <p class="vv-tagline">Glossario componenti UI</p>
@@ -76,6 +76,16 @@
       <br /><br />
       <span class="vv-badge vv-badge--no-margin">&#9679; .vv-badge</span>
       <code class="vv-code">.vv-status · .vv-status--ok · .vv-status--warn · .vv-badge · .vv-badge--no-margin</code>
+      <br />
+      <span class="vv-status vv-status--ok"><span class="vv-status__dot"></span> Connesso</span>
+      <span class="vv-status vv-status--warn" style="margin-left: 8px;"><span class="vv-status__dot"></span> Non raggiungibile</span>
+      <code class="vv-code">.vv-status__dot — indicatore; pulsa dentro .vv-status--ok</code>
+      <br />
+      <div class="vv-sensor-list">
+        <span class="vv-status vv-status--ok">✓ AHT21</span>
+        <span class="vv-status vv-status--warn">✕ ENS160</span>
+      </div>
+      <code class="vv-code">.vv-sensor-list — elenco di badge di stato</code>
     </section>
 
     <hr class="vv-divider" />
@@ -123,6 +133,69 @@
 
     <hr class="vv-divider" />
 
+    <!-- LIVE METRICS -->
+    <section>
+      <h2>Metriche dal vivo</h2>
+      <div class="vv-metric-grid">
+        <div class="vv-metric">
+          <div class="vv-metric__icon">💧</div>
+          <div class="vv-metric__label">Con barra e nota</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">86,0</span> <span class="vv-metric__unit">%</span></div>
+          <div class="vv-metric__hint">AHT21</div>
+          <div class="vv-metric__bar"><div class="vv-metric__bar-fill" style="--fill: 86%"></div></div>
+        </div>
+        <div class="vv-metric vv-metric--highlight">
+          <div class="vv-metric__icon">🌱</div>
+          <div class="vv-metric__label">Fuori soglia</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">22</span> <span class="vv-metric__unit">%</span></div>
+          <div class="vv-metric__hint">troppo secco</div>
+          <div class="vv-metric__bar"><div class="vv-metric__bar-fill" style="--fill: 22%"></div></div>
+        </div>
+        <div class="vv-metric vv-metric--loading">
+          <div class="vv-metric__icon">🌿</div>
+          <div class="vv-metric__label">In attesa</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">000</span> <span class="vv-metric__unit">ppm</span></div>
+          <div class="vv-metric__hint">primo dato</div>
+        </div>
+        <div class="vv-metric vv-metric--na">
+          <div class="vv-metric__icon">☀️</div>
+          <div class="vv-metric__label">Non disponibile</div>
+          <div class="vv-metric__value"><span class="vv-metric__number">—</span> <span class="vv-metric__unit">lux</span></div>
+          <div class="vv-metric__hint">sensore non trovato</div>
+        </div>
+      </div>
+      <code class="vv-code">.vv-metric__number · .vv-metric__hint · .vv-metric__bar · .vv-metric__bar-fill (--fill: 0–100%) · .vv-metric--loading · .vv-metric--na · .vv-dashboard--stale</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <!-- MOTION -->
+    <section>
+      <h2>Animazioni</h2>
+      <p>
+        Definite in <code>css/vv-ui/motion.css</code> e disattivate se il sistema chiede di ridurre il movimento.
+        Le metriche si sollevano al passaggio del mouse; <code>.vv-metric--updated</code> segnala un valore appena cambiato.
+      </p>
+      <code class="vv-code">.vv-reveal (ingresso, ritardo con --i) · .vv-metric--updated · .vv-metric--loading · .vv-status--ok .vv-status__dot</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <!-- INFO LIST -->
+    <section>
+      <h2>Informazioni scheda</h2>
+      <div class="vv-panel">
+        <dl class="vv-info-list">
+          <div><dt>Rete Wi-Fi</dt><dd>VasoVivo</dd></div>
+          <div><dt>Indirizzo</dt><dd>192.168.4.1</dd></div>
+          <div><dt>Accesa da</dt><dd>00:12:34</dd></div>
+        </dl>
+      </div>
+      <code class="vv-code">.vv-info-list — coppie dt/dd in griglia</code>
+    </section>
+
+    <hr class="vv-divider" />
+
     <!-- PANEL -->
     <section>
       <h2>Panel</h2>
@@ -133,7 +206,7 @@
     </section>
 
     <p class="vv-back-link">
-      <a href="index.html">← Dashboard mock</a>
+      <a href="index.html">← Dashboard dal vivo</a>
     </p>
 
   </main>
