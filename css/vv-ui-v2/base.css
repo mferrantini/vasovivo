@@ -1,0 +1,45 @@
+/* VasoVivo UI v2 — base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.vv2-page {
+  font-family: var(--vv2-sans);
+  background: var(--vv2-paper);
+  color: var(--vv2-ink);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  min-height: 100dvh;
+}
+
+/* Grana della carta: fissa, non segue lo scorrimento */
+.vv2-page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.32;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .18 0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.vv2-page a {
+  color: var(--vv2-accent);
+  text-decoration: none;
+}
+
+.vv2-page a:hover {
+  text-decoration: underline;
+}
+
+.vv2-page code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--vv2-paper-deep);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}

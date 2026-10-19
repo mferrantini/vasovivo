@@ -1,0 +1,316 @@
+/* VasoVivo UI v2 — illustrazione del barattolo EKLATANT
+   Variabili su .vv2-art: --humidity, --light, --air (0–1), --soil, --glow */
+
+.vv2-glow-stop {
+  stop-color: var(--glow);
+  transition: stop-color 1.6s ease;
+}
+
+.vv2-shadow { fill: rgba(31, 38, 32, 0.14); }
+
+.vv2-rays {
+  opacity: calc(0.12 + var(--light) * 0.88);
+  transition: opacity 1.6s ease;
+}
+
+.vv2-rays__flicker {
+  animation: vv2-flicker 7s ease-in-out infinite;
+}
+
+.vv2-glass-back { fill: rgba(255, 255, 255, 0.28); }
+
+.vv2-mist {
+  opacity: calc(var(--humidity) * 0.8);
+  transition: opacity 1.6s ease;
+}
+
+.vv2-mist__cloud {
+  fill: #fff;
+  animation: vv2-drift 16s ease-in-out infinite alternate;
+}
+
+.vv2-mist__cloud--slow {
+  animation-duration: 23s;
+  animation-direction: alternate-reverse;
+}
+
+.vv2-soil {
+  fill: var(--soil);
+  transition: fill 1.6s ease;
+}
+
+.vv2-chip { fill: rgba(255, 236, 205, 0.34); }
+.vv2-chip--dark { fill: rgba(35, 20, 10, 0.26); }
+
+.vv2-wash {
+  opacity: calc(var(--light) * 0.28);
+  transition: opacity 1.6s ease;
+}
+
+.vv2-outline {
+  stroke: rgba(31, 38, 32, 0.5);
+  stroke-width: 1.5;
+}
+
+.vv2-shine {
+  fill: none;
+  stroke: #fff;
+  stroke-opacity: 0.72;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.vv2-shine--thin {
+  stroke-opacity: 0.45;
+  stroke-width: 2.2;
+}
+
+/* Coperchio stampato 3D bianco */
+.vv2-lid {
+  fill: url(#vv2-lid);
+}
+
+.vv2-lid-layers {
+  fill: none;
+  stroke: rgba(31, 38, 32, 0.1);
+  stroke-width: 0.7;
+  stroke-linecap: round;
+}
+
+.vv2-gasket {
+  fill: #c8c4be;
+  stroke: rgba(31, 38, 32, 0.25);
+  stroke-width: 0.8;
+}
+
+.vv2-glass-rim {
+  fill: rgba(255, 255, 255, 0.35);
+  stroke: rgba(31, 38, 32, 0.35);
+  stroke-width: 1;
+}
+
+/* Schede sensore sotto il coperchio */
+.vv2-board {
+  fill: #2f6b42;
+  stroke: rgba(31, 38, 32, 0.5);
+  stroke-width: 0.9;
+}
+
+.vv2-board__edge {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 0.6;
+}
+
+.vv2-board--dark {
+  fill: #243028;
+  stroke: rgba(31, 38, 32, 0.55);
+}
+
+.vv2-chip-ic {
+  fill: #141412;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 0.4;
+}
+
+.vv2-chip-ic--sm {
+  fill: #1c1c1a;
+}
+
+.vv2-pins rect {
+  fill: #d4a84b;
+  stroke: rgba(80, 50, 10, 0.35);
+  stroke-width: 0.3;
+}
+
+.vv2-pad {
+  fill: #c9a24a;
+}
+
+.vv2-sense-window {
+  fill: #1a221c;
+  stroke: rgba(200, 210, 190, 0.35);
+  stroke-width: 0.8;
+}
+
+.vv2-sense-lens {
+  fill: #6a8f78;
+  fill-opacity: 0.55;
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 0.6;
+}
+
+.vv2-led {
+  fill: #7dca90;
+  animation: vv2-breathe 3s ease-in-out infinite;
+}
+
+.vv2-art.is-reading .vv2-led {
+  animation: vv2-blink 0.9s ease-out;
+}
+
+/* Sensore capacitivo umidità substrato (lama PCB) */
+.vv2-cap-probe {
+  fill: #1a1c1a;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 0.7;
+}
+
+.vv2-cap-probe__head {
+  fill: #222522;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 0.7;
+}
+
+.vv2-cap-probe__conn {
+  fill: #f0eeea;
+  stroke: rgba(31, 38, 32, 0.35);
+  stroke-width: 0.5;
+}
+
+.vv2-cap-probe__line {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 0.7;
+  stroke-linecap: round;
+}
+
+.vv2-wire {
+  fill: none;
+  stroke: #c5d0bc;
+  stroke-opacity: 0.95;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  animation: vv2-draw 1.6s 0.4s ease-out both;
+}
+
+.vv2-shroom,
+.vv2-sway {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.vv2-shroom {
+  animation: vv2-grow 1.5s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  animation-delay: calc(0.5s + var(--i, 0) * 0.12s);
+}
+
+.vv2-sway {
+  animation: vv2-sway var(--d, 6s) ease-in-out infinite alternate;
+  animation-delay: var(--dd, 0s);
+}
+
+.vv2-stem {
+  fill: url(#vv2-stem);
+  stroke: rgba(90, 70, 40, 0.28);
+  stroke-width: 0.6;
+}
+
+.vv2-cap {
+  fill: url(#vv2-cap);
+  stroke: rgba(50, 30, 15, 0.35);
+  stroke-width: 0.6;
+}
+
+.vv2-gills {
+  fill: none;
+  stroke: rgba(60, 40, 20, 0.45);
+  stroke-width: 1;
+}
+
+.vv2-cap-shine {
+  fill: #fff;
+  opacity: 0.22;
+}
+
+.vv2-hypha {
+  fill: none;
+  stroke: #fbf7ef;
+  stroke-opacity: 0.8;
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  animation: vv2-draw 2.6s ease-out both;
+  animation-delay: calc(0.2s + var(--i, 0) * 0.08s);
+}
+
+.vv2-foot {
+  fill: #f7f1e6;
+  opacity: 0.9;
+  animation: vv2-fade 1s both;
+  animation-delay: calc(0.9s + var(--i, 0) * 0.12s);
+}
+
+.vv2-drop {
+  opacity: clamp(0, calc((var(--humidity) - var(--t, 0)) * 6), 0.9);
+  transition: opacity 1.4s ease;
+}
+
+.vv2-drop__bead {
+  fill: rgba(255, 255, 255, 0.72);
+  stroke: rgba(31, 38, 32, 0.22);
+  stroke-width: 0.6;
+}
+
+.vv2-drop__trail {
+  fill: none;
+  stroke: #fff;
+  stroke-opacity: 0.55;
+  stroke-linecap: round;
+}
+
+.vv2-drop__light { fill: #fff; }
+
+.vv2-mote {
+  opacity: clamp(0, calc((var(--air) - var(--t, 0)) * 5), 1);
+  transition: opacity 1.4s ease;
+}
+
+.vv2-mote__dot {
+  fill: rgba(31, 38, 32, 0.42);
+  animation: vv2-float var(--d, 9s) linear infinite;
+  animation-delay: var(--dd, 0s);
+}
+
+.vv2-marker {
+  animation: vv2-fade 0.8s both;
+  animation-delay: calc(1.3s + var(--i, 0) * 0.15s);
+}
+
+.vv2-marker path {
+  fill: none;
+  stroke: var(--vv2-ink);
+  stroke-opacity: 0.55;
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.vv2-marker__anchor { fill: var(--vv2-ink); }
+
+.vv2-marker__ring {
+  fill: var(--vv2-paper-light);
+  stroke: var(--vv2-ink);
+  stroke-width: 1;
+  transition: fill 0.3s ease;
+}
+
+.vv2-marker text {
+  font-family: var(--vv2-sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-anchor: middle;
+  fill: var(--vv2-ink);
+  transition: fill 0.3s ease;
+}
+
+.vv2-marker .vv2-marker__label {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--vv2-ink-soft);
+}
+
+.vv2-marker.is-active .vv2-marker__ring { fill: var(--vv2-accent); }
+.vv2-marker.is-active text:not(.vv2-marker__label) { fill: var(--vv2-paper-light); }
+.vv2-marker.is-active .vv2-marker__label { fill: var(--vv2-accent); }

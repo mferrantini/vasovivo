@@ -1,0 +1,101 @@
+/* VasoVivo UI v2 — animazioni */
+
+@keyframes vv2-arrive {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes vv2-grow {
+  from { opacity: 0; transform: scale(0.3, 0); }
+  30%  { opacity: 1; }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes vv2-sway {
+  from { transform: rotate(-1.6deg); }
+  to   { transform: rotate(1.6deg); }
+}
+
+@keyframes vv2-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes vv2-fade {
+  from { opacity: 0; }
+}
+
+@keyframes vv2-drift {
+  from { transform: translateX(-18px); }
+  to   { transform: translateX(18px); }
+}
+
+@keyframes vv2-flicker {
+  0%, 100% { opacity: 1; }
+  45%      { opacity: 0.78; }
+  60%      { opacity: 0.92; }
+}
+
+@keyframes vv2-float {
+  0%   { opacity: 0; transform: translate(0, 0); }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--x, 0px), -70px); }
+}
+
+@keyframes vv2-breathe {
+  0%, 100% { opacity: 0.45; }
+  50%      { opacity: 1; }
+}
+
+@keyframes vv2-blink {
+  from { opacity: 1; fill: #eaffee; }
+  to   { opacity: 0.5; }
+}
+
+@keyframes vv2-unroll {
+  from { transform: scaleX(0); }
+}
+
+@keyframes vv2-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(61, 122, 79, 0.5); }
+  70%  { box-shadow: 0 0 0 7px rgba(61, 122, 79, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(61, 122, 79, 0); }
+}
+
+@keyframes vv2-shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+@keyframes vv2-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.vv2-reveal {
+  animation: vv2-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vv2-mist__cloud,
+  .vv2-sway,
+  .vv2-rays__flicker,
+  .vv2-led,
+  .vv2-mote__dot,
+  .vv2-status--ok .vv2-status__dot {
+    animation: none !important;
+  }
+
+  .vv2-reveal,
+  .vv2-plate,
+  .vv2-scale__ideal,
+  .vv2-hypha,
+  .vv2-wire,
+  .vv2-shroom,
+  .vv2-marker {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+  }
+}

@@ -1,0 +1,44 @@
+/* VasoVivo UI v2 — token
+   Valori di base del toolkit. Le classi utility in utilities.css
+   usano questa stessa scala, così gli spazi restano coerenti ovunque. */
+:root {
+  /* Colori */
+  --vv2-paper: #f2ece1;
+  --vv2-paper-deep: #e6dcca;
+  --vv2-paper-light: #f9f5ee;
+  --vv2-ink: #1f2620;
+  --vv2-ink-soft: #5c6157;
+  --vv2-hair: rgba(31, 38, 32, 0.14);
+  --vv2-tick: rgba(31, 38, 32, 0.3);
+  --vv2-border: #dcd2bf;
+  --vv2-accent: #3d7a4f;
+  --vv2-accent-light: #edf5f0;
+  --vv2-warn: #b45309;
+  --vv2-warn-light: #fef3e2;
+
+  /* Font */
+  --vv2-serif: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --vv2-sans: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Movimento e larghezza massima */
+  --vv2-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --vv2-max: 1280px;
+
+  /* Scala degli spazi (passo 4px): usata da margini, padding e gap.
+     Un solo set di valori per avere distanze coerenti in tutta la UI. */
+  --vv2-space-0: 0;
+  --vv2-space-1: 4px;
+  --vv2-space-2: 8px;
+  --vv2-space-3: 12px;
+  --vv2-space-4: 16px;
+  --vv2-space-5: 24px;
+  --vv2-space-6: 32px;
+  --vv2-space-7: 48px;
+  --vv2-space-8: 64px;
+
+  /* Raggi di arrotondamento */
+  --vv2-radius-sm: 4px;
+  --vv2-radius: 8px;
+  --vv2-radius-lg: 12px;
+  --vv2-radius-pill: 99px;
+}
