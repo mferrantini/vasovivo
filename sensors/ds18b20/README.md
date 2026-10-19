@@ -22,9 +22,11 @@ Il DS18B20 (versione impermeabile a cavo) ha 3 fili:
 |---|---|---|---|
 | Rosso | VCC | 3.3V | |
 | Nero | GND | GND | |
-| Giallo / Bianco | DATA | GPIO 4 | Resistenza pull-up **4.7kΩ** verso VCC (obbligatoria) |
+| Giallo / Bianco | DATA | GPIO 18 | Resistenza pull-up **4.7kΩ** verso VCC (obbligatoria) |
 
 > La resistenza pull-up da 4.7 kΩ tra DATA e VCC è **obbligatoria** per il corretto funzionamento del protocollo 1-Wire.
+>
+> GPIO 18 lascia libero il GPIO 4 per il DHT22 o il DHT11: i due sensori possono stare sulla stessa scheda.
 
 ---
 
@@ -40,3 +42,4 @@ Il DS18B20 (versione impermeabile a cavo) ha 3 fili:
 - La risoluzione è configurabile: 9, 10, 11 o 12 bit. A 12 bit (default) la conversione richiede ~750 ms.
 - Con più sensori DS18B20 sullo stesso bus, ogni sensore ha un indirizzo univoco: lo sketch di esempio gestisce il caso con un singolo sensore. Per più sensori, consultare la libreria DallasTemperature.
 - La versione impermeabile è incapsulata in acciaio inox: perfetta per il contatto diretto con il substrato umido.
+- La lettura è in [`example/substrate_temperature.h`](example/substrate_temperature.h): `substrateTempBegin()` e `substrateTempRead()`.

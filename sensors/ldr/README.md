@@ -19,7 +19,7 @@ Nel contesto di **VasoVivo**, misura la quantità di luce ambientale a cui è es
 ## Schema di collegamento (partitore di tensione)
 
 ```
-3.3V ──┬── LDR ──┬── GPIO34
+3.3V ──┬── LDR ──┬── GPIO35
        │         │
       GND       10kΩ
                  │
@@ -31,9 +31,11 @@ Oppure:
 | Componente | Collegamento |
 |---|---|
 | LDR — pin 1 | 3.3V |
-| LDR — pin 2 | GPIO 34 + resistenza 10kΩ verso GND |
+| LDR — pin 2 | GPIO 35 + resistenza 10kΩ verso GND |
 
 > La resistenza da 10kΩ forma il partitore: più luce = minore resistenza LDR = tensione più alta sul pin ADC.
+>
+> GPIO 35 lascia libero il GPIO 34 per il sensore di umidità del substrato.
 
 ---
 
@@ -46,5 +48,6 @@ Nessuna libreria esterna richiesta — lettura tramite `analogRead()` nativo di 
 ## Note
 
 - Il valore ADC è **inversamente proporzionale alla resistenza** dell'LDR: più luce → valore più alto.
-- La risposta non è lineare e varia tra esemplari diversi: adatta le soglie nello sketch in base all'ambiente di utilizzo.
-- Per evitare interferenze, evitare di leggere l'ADC mentre il Wi-Fi trasmette (usa ADC1, GPIO32–GPIO39).
+- La risposta non è lineare e varia tra esemplari diversi: adatta `LDR_DARK` e `LDR_BRIGHT` all'ambiente di utilizzo.
+- Con il Wi-Fi attivo usa solo pin ADC1 (GPIO 32–39).
+- La lettura è in [`example/light_ldr.h`](example/light_ldr.h): `ldrBegin()` e `ldrRead()`.

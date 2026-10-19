@@ -33,7 +33,7 @@ Sensore digitale per la misura di **temperatura** e **umidità relativa** dell'a
 | 3 – N.C. | — | Non connesso |
 | 4 – GND | GND | |
 
-> Il pin DATA è configurabile: modifica la costante `DHTPIN` nello sketch.
+> Il pin DATA è configurabile: modifica `DHT11_PIN` in [`example/air_dht11.h`](example/air_dht11.h).
 
 ---
 
@@ -48,5 +48,6 @@ Sensore digitale per la misura di **temperatura** e **umidità relativa** dell'a
 
 - Il DHT11 misura solo valori interi (non decimali) di temperatura e umidità.
 - Range di temperatura limitato a 0–50 °C: non adatto ad ambienti freddi.
-- Frequenza di campionamento massima: **1 lettura ogni secondo** (in pratica consigliare 2s come il DHT22).
+- Frequenza di campionamento massima: **1 lettura al secondo**. Lo sketch legge ogni 5 secondi.
 - Per applicazioni che richiedono maggiore precisione, preferire il **DHT22**.
+- La lettura è in [`example/air_dht11.h`](example/air_dht11.h): `dht11Begin()` e `dht11Read()`.

@@ -1,57 +1,26 @@
 /**
- * VasoVivo — DS18B20
+ * VasoVivo — DS18B20 (temperatura substrato)
  *
- * Legge la temperatura del substrato tramite sonda impermeabile
- * su protocollo 1-Wire.
- *
- * Librerie richieste:
- *   - OneWire         (by Paul Stoffregen)
- *   - DallasTemperature (by Miles Burton)
- *
- * Collegamento:
- *   Rosso  → 3.3V
- *   Nero   → GND
- *   Giallo → GPIO4  +  resistenza pull-up 4.7kΩ verso 3.3V (OBBLIGATORIA)
+ * Stampa su seriale, ogni 5 secondi, la lettura di substrate_temperature.h.
  */
 
-#include <OneWire.h>
-#include <DallasTemperature.h>
-
-#define ONE_WIRE_PIN 4
-
-OneWire oneWire(ONE_WIRE_PIN);
-DallasTemperature sensors(&oneWire);
+#include "substrate_temperature.h"
 
 void setup() {
   Serial.begin(115200);
-  sensors.begin();
-
-  int deviceCount = sensors.getDeviceCount();
-  Serial.print("[OK] DS18B20 inizializzato. Sensori trovati sul bus: ");
-  Serial.println(deviceCount);
-
-  if (deviceCount == 0) {
-    Serial.println("[ERRORE] Nessun sensore trovato. Verifica il collegamento e la resistenza pull-up.");
-    while (true);
-  }
+  substrateTempBegin();
 }
 
 void loop() {
-  // Richiede la conversione a tutti i sensori sul bus
-  sensors.requestTemperatures();
+  SubstrateTemp substrate = substrateTempRead();
 
-  // Legge il primo sensore (indice 0)
-  float tempC = sensors.getTempCByIndex(0);
-
-  if (tempC == DEVICE_DISCONNECTED_C) {
-    Serial.println("[ERRORE] Sensore disconnesso.");
+  Serial.println("--- DS18B20 ---");
+  if (substrate.ok) {
+    Serial.printf("Temperatura substrato : %.2f °C\n", substrate.tempC);
   } else {
-    Serial.println("--- Lettura DS18B20 ---");
-    Serial.print("Temperatura substrato : ");
-    Serial.print(tempC, 2);
-    Serial.println(" °C");
-    Serial.println();
+    Serial.println("Temperatura substrato : n/d");
   }
 
+  Serial.println();
   delay(5000);
 }

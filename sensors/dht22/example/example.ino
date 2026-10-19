@@ -1,48 +1,27 @@
 /**
  * VasoVivo — DHT22
  *
- * Legge temperatura e umidità relativa dell'aria.
- * Sensore consigliato per precisione ±0.5 °C / ±2 % RH.
- *
- * Librerie richieste:
- *   - DHT sensor library (by Adafruit)
- *   - Adafruit Unified Sensor (by Adafruit)
- *
- * Collegamento:
- *   VCC → 3.3V | GND → GND | DATA → GPIO4
+ * Stampa su seriale, ogni 5 secondi, la lettura di air_dht22.h.
  */
 
-#include <DHT.h>
-
-#define DHTPIN  4
-#define DHTTYPE DHT22
-
-DHT dht(DHTPIN, DHTTYPE);
+#include "air_dht22.h"
 
 void setup() {
   Serial.begin(115200);
-  dht.begin();
-  Serial.println("[OK] DHT22 inizializzato.");
+  dht22Begin();
 }
 
 void loop() {
-  // Il DHT22 richiede almeno 2s tra una lettura e l'altra
-  delay(2000);
+  DhtAir air = dht22Read();
 
-  float hum  = dht.readHumidity();
-  float temp = dht.readTemperature();
-
-  if (isnan(hum) || isnan(temp)) {
-    Serial.println("[ERRORE] Lettura fallita. Verifica il collegamento.");
-    return;
+  Serial.println("--- DHT22 ---");
+  if (air.ok) {
+    Serial.printf("Temperatura : %.1f °C\n", air.tempC);
+    Serial.printf("Umidità     : %.1f %%\n", air.humRh);
+  } else {
+    Serial.println("[ERRORE] Lettura fallita: controlla il collegamento");
   }
 
-  Serial.println("--- Lettura DHT22 ---");
-  Serial.print("Temperatura : ");
-  Serial.print(temp, 1);
-  Serial.println(" °C");
-  Serial.print("Umidità     : ");
-  Serial.print(hum, 1);
-  Serial.println(" % RH");
   Serial.println();
+  delay(5000);
 }

@@ -35,7 +35,7 @@ Il DHT22 si trova sia come sensore a 3 pin (modulo breakout) che a 4 pin (compon
 | 3 – N.C. | — | Non connesso |
 | 4 – GND | GND | |
 
-> Il pin DATA è configurabile: modifica la costante `DHTPIN` nello sketch.
+> Il pin DATA è configurabile: modifica `DHT22_PIN` in [`example/air_dht22.h`](example/air_dht22.h).
 
 ---
 
@@ -51,3 +51,4 @@ Il DHT22 si trova sia come sensore a 3 pin (modulo breakout) che a 4 pin (compon
 - Il DHT22 è lento: frequenza di campionamento massima **1 lettura ogni 2 secondi**.
 - Usare cavi di collegamento corti (< 20 cm) per evitare errori di comunicazione.
 - Preferire l'alimentazione a 3.3V su ESP32 per evitare problemi di livello logico.
+- La lettura è in [`example/air_dht22.h`](example/air_dht22.h): `dht22Begin()` e `dht22Read()`.

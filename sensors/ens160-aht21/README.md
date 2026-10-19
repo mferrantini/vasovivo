@@ -29,6 +29,8 @@ Nel contesto di **VasoVivo**, questo modulo monitora la qualità dell'aria all'i
 | SCL | GPIO 22 |
 
 > I pin SDA/SCL sono i default dell'I²C su ESP32. Possono essere riassegnati via `Wire.begin(sda, scl)`.
+>
+> Sui moduli che espongono anche **CS** e **ADD**: CS va a 3.3V per restare in I²C, ADD a 3.3V seleziona l'indirizzo `0x53`. Se ADD è a GND l'indirizzo è `0x52` e lo sketch lo prova comunque.
 
 ---
 
@@ -36,8 +38,8 @@ Nel contesto di **VasoVivo**, questo modulo monitora la qualità dell'aria all'i
 
 Installabili dal Library Manager di Arduino IDE:
 
-- **ScioSense ENS160** — `ScioSense_ENS160` by ScioSense
-- **AHT21 / AHTxx** — `Adafruit AHTX0` by Adafruit (oppure `AHT20` by dvarrel)
+- **ScioSense ENS16x** — `ScioSense_ENS16x` by ScioSense
+- **AHT21 / AHTxx** — `Adafruit AHTX0` by Adafruit
 
 ---
 
@@ -45,4 +47,5 @@ Installabili dal Library Manager di Arduino IDE:
 
 - Il sensore ENS160 richiede un periodo di riscaldamento di circa 1 minuto prima di fornire letture stabili.
 - I valori di temperatura e umidità dell'AHT21 vengono passati all'ENS160 per compensare la risposta del sensore MOX.
-- L'indirizzo I²C del modulo combinato è tipicamente `0x53` (ENS160) e `0x38` (AHT21).
+- L'indirizzo I²C dell'ENS160 è `0x53` con ADD a 3.3V, `0x52` con ADD a GND. L'AHT21 è `0x38`.
+- La lettura è in [`example/air_quality.h`](example/air_quality.h): `airQualityBegin()` e `airQualityRead()`. Lo stesso file restituisce anche lo stato di riscaldamento dell'ENS160.
