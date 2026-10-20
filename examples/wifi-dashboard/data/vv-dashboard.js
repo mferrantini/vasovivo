@@ -141,7 +141,7 @@
     const dashboard = document.getElementById('dashboard');
     status.classList.toggle('vv-status--ok', online);
     status.classList.toggle('vv-status--warn', !online);
-    dashboard.classList.toggle('vv-dashboard--stale', !online);
+    dashboard.classList.toggle('vv-dash--stale', !online);
 
     if (online) {
       setText('status-text', source === 'demo' ? 'Anteprima' : 'Connesso');

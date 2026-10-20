@@ -1,10 +1,10 @@
-# Wi-Fi e dashboard
+# Wi-Fi e dashboard a schede
 
-L'ESP32 crea una propria rete Wi-Fi e mostra le letture dei sensori sulla dashboard del [UI toolkit v1](../../UI/): metriche animate, barre di livello, stato dei sensori e aggiornamento ogni 5 secondi. Non serve internet né un router.
+L'ESP32 crea una propria rete Wi-Fi e mostra le letture dei sensori sulla [dashboard a schede](../../UI/schede.html): metriche animate, barre di livello, stato dei sensori e aggiornamento ogni 5 secondi. Non serve internet né un router.
 
 Sensori, collegamenti e librerie sono gli stessi di [`wifi-page/`](../wifi-page/). Cambia solo la pagina: invece di essere scritta nello sketch, sta nella memoria della scheda (LittleFS) e chiede i dati allo sketch in formato JSON.
 
-Per la tavola illustrata (UI v2) vedi [`wifi-illustrated/`](../wifi-illustrated/).
+Per la tavola illustrata vedi [`wifi-illustrated/`](../wifi-illustrated/).
 
 ---
 
@@ -52,7 +52,7 @@ LittleFS e WebServer sono già inclusi nel board package `esp32`.
 | File | Cosa contiene |
 |---|---|
 | `wifi-dashboard.ino` | Rete Wi-Fi, letture dei sensori, risposta JSON su `/api/readings` |
-| `data/index.html` | La dashboard a schede, generata da [`UI/index.html`](../../UI/index.html) |
+| `data/index.html` | La dashboard a schede, generata da [`UI/schede.html`](../../UI/schede.html) |
 | `data/vasovivo.css` | Il toolkit [`css/vv-ui/`](../../css/vv-ui/) in un unico file |
 | `data/vv-data.js` | Richiesta delle letture ([`js/vv-data.js`](../../js/vv-data.js)) |
 | `data/vv-dashboard.js` | Aggiornamento della pagina ([`js/vv-dashboard.js`](../../js/vv-dashboard.js)) |
@@ -138,9 +138,9 @@ I valori non disponibili valgono `null`.
 
 ## Modificare la dashboard
 
-La pagina nasce da [`UI/index.html`](../../UI/index.html), che si apre anche dal computer con dati dimostrativi.
+La pagina nasce da [`UI/schede.html`](../../UI/schede.html), che si apre anche dal computer con dati dimostrativi.
 
-1. Modifica `UI/index.html`, i CSS in `css/vv-ui/` o gli script in `js/`.
+1. Modifica `UI/schede.html`, i CSS in `css/vv-ui/` o gli script in `js/`.
 2. Esegui `./build-data.sh` da questa cartella: rigenera `data/`, toglie font esterni e link al sito (sulla rete dell'ESP32 non c'è internet) e collega la pagina a `/api/readings`.
 3. Ricarica la cartella `data/` sulla scheda.
 

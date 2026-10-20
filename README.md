@@ -42,8 +42,8 @@ Sketch pronti da caricare, costruiti con gli stessi blocchi di lettura degli ese
 | Esempio | Connessione | Sensori |
 |---|---|---|
 | [Wi-Fi e pagina HTML](examples/wifi-page/) | Rete Wi-Fi propria, pagina senza stile su http://192.168.4.1 | ENS160 + AHT21, BH1750, umidità substrato |
-| [Wi-Fi e dashboard](examples/wifi-dashboard/) | Rete Wi-Fi propria, dashboard UI v1 (schede) su http://192.168.4.1 | ENS160 + AHT21, BH1750, umidità substrato |
-| [Wi-Fi e dashboard illustrata](examples/wifi-illustrated/) | Rete Wi-Fi propria, dashboard UI v2 (tavola) su http://192.168.4.1 | ENS160 + AHT21, BH1750, umidità substrato |
+| [Wi-Fi e dashboard a schede](examples/wifi-dashboard/) | Rete Wi-Fi propria, dashboard a schede su http://192.168.4.1 | ENS160 + AHT21, BH1750, umidità substrato |
+| [Wi-Fi e tavola illustrata](examples/wifi-illustrated/) | Rete Wi-Fi propria, tavola illustrata su http://192.168.4.1 | ENS160 + AHT21, BH1750, umidità substrato |
 
 Gli esempi Bluetooth e bot Telegram sono in preparazione.
 
@@ -60,31 +60,22 @@ Vedi [`prints/README.md`](prints/README.md) per l'indice completo. I file STL ve
 
 ## UI Toolkit
 
-Ci sono due toolkit, indipendenti: la **v1** a schede e la **v2** illustrata. Entrambi leggono i dati tramite [`js/vv-data.js`](js/vv-data.js) (`data-source` sul `<body>`: `demo` oppure `/api/readings`).
-
-### UI v1 — schede
-
-Prefisso `vv-`, entry point [`css/style.css`](css/style.css), moduli in [`css/vv-ui/`](css/vv-ui/).
+Un solo kit, prefisso `vv-`: entry point [`css/style.css`](css/style.css), moduli in [`css/vv-ui/`](css/vv-ui/).
+Stile carta con grana, titoli in Fraunces, dati in Lexend. Le letture arrivano da [`js/vv-data.js`](js/vv-data.js)
+(`data-source` sul `<body>`: `demo` oppure `/api/readings`).
 
 | Pagina | Descrizione |
 |---|---|
-| [UI/index.html](UI/index.html) | Dashboard a schede (dati dimostrativi; letture vere in [`wifi-dashboard`](examples/wifi-dashboard/)) |
-| [UI/elements.html](UI/elements.html) | Glossario dei componenti v1 |
+| [UI/index.html](UI/index.html) | Tavola illustrata del barattolo EKLATANT (letture vere in [`wifi-illustrated`](examples/wifi-illustrated/)) |
+| [UI/schede.html](UI/schede.html) | Dashboard a schede (letture vere in [`wifi-dashboard`](examples/wifi-dashboard/)) |
+| [UI/elements.html](UI/elements.html) | Glossario componenti, token e utility |
 
-Componenti principali: `.vv-metric-grid`, `.vv-metric`, `.vv-dashboard-group`, `.vv-status`, `.vv-panel`, animazioni in `motion.css`.
+Componenti principali: `.vv-art` / `.vv-reading` / `.vv-scale` (tavola), `.vv-metric` (schede),
+`.vv-card`, `.vv-panel`, `.vv-item`, `.vv-section` (sito). Per spazi, colori e tipografia
+usa le classi utility (`.vv-m-*`, `.vv-p-*`, `.vv-gap-*`, `.vv-text-*`, `.vv-bg-*`, `.vv-serif`, …)
+su una scala a passo 4&nbsp;px, documentate nel glossario.
 
-### UI v2 — tavola illustrata
-
-Prefisso `vv2-`, entry point [`css/style-v2.css`](css/style-v2.css), moduli in [`css/vv-ui-v2/`](css/vv-ui-v2/).
-
-| Pagina | Descrizione |
-|---|---|
-| [UI/v2/index.html](UI/v2/index.html) | Dashboard illustrata del barattolo EKLATANT (letture vere in [`wifi-illustrated`](examples/wifi-illustrated/)) |
-| [UI/v2/elements.html](UI/v2/elements.html) | Glossario e guida d'uso dei componenti v2 |
-
-Componenti principali: `.vv2-art` (illustrazione), `.vv2-reading` e `.vv2-scale` (fascia ideale), `.vv2-verdict`, `.vv2-label`, `.vv2-chapter`. Su desktop e tablet in orizzontale la pagina sta in un solo schermo.
-
-Per spazi, colori e allineamenti ci sono classi utility (`.vv2-m-*`, `.vv2-p-*`, `.vv2-gap-*`, `.vv2-text-*`, `.vv2-bg-*`) basate su una scala di spazi a passo 4&nbsp;px, definite in `css/vv-ui-v2/utilities.css` e documentate nel glossario.
+Logo wordmark: [`img/logo.svg`](img/logo.svg) (varianti `logo-ink.svg`, `logo-light.svg`).
 
 ---
 
@@ -96,22 +87,20 @@ VASOVIVO/
 ├── hardware.html       # Elenco componenti e link acquisto
 ├── prints.html         # Elenco file stampa 3D
 ├── css/
-│   ├── style.css       # Entry point UI v1
-│   ├── style-v2.css    # Entry point UI v2
-│   ├── vv-ui/          # Moduli UI v1
-│   └── vv-ui-v2/       # Moduli UI v2
+│   ├── style.css       # Entry point UI Kit
+│   └── vv-ui/          # Moduli del kit
 ├── js/
-│   ├── vv-data.js      # Letture (demo o ESP32), condiviso
-│   ├── vv-dashboard.js # UI v1
-│   └── v2/
-│       └── vv2-jar.js  # UI v2
+│   ├── vv-data.js      # Letture (demo o ESP32)
+│   ├── vv-dashboard.js # Dashboard a schede
+│   └── vv-jar.js       # Tavola illustrata
 ├── UI/
-│   ├── index.html      # Dashboard v1 (template di wifi-dashboard)
-│   ├── elements.html   # Glossario UI v1
-│   └── v2/
-│       ├── index.html  # Dashboard v2 (template di wifi-illustrated)
-│       └── elements.html
+│   ├── index.html      # Tavola illustrata (template di wifi-illustrated)
+│   ├── schede.html     # Dashboard a schede (template di wifi-dashboard)
+│   └── elements.html   # Glossario UI Kit
 ├── img/
+│   ├── logo.svg        # Wordmark orizzontale
+│   ├── logo-ink.svg
+│   └── logo-light.svg
 ├── docs/
 │   └── mf_intro.md     # Testo introduttivo per la Maker Faire
 ├── examples/           # Esempi completi (più sensori + connessione)
@@ -146,9 +135,9 @@ VASOVIVO/
 - [Introduzione al progetto](docs/mf_intro.md) — testo per la Maker Faire
 - [Sensori](sensors/README.md) — indice, blocchi di lettura e mappa pin
 - [Esempi completi](examples/README.md) — sketch pronti con più sensori
-- [Dashboard UI v1](UI/index.html) — schede, con dati dimostrativi
-- [Dashboard UI v2](UI/v2/index.html) — tavola illustrata del barattolo EKLATANT
-- [Glossario UI v1](UI/elements.html) · [Glossario UI v2](UI/v2/elements.html)
+- [Tavola illustrata](UI/index.html) — dashboard del barattolo, con dati dimostrativi
+- [Dashboard a schede](UI/schede.html) — metriche a card
+- [Glossario UI Kit](UI/elements.html)
 - [Sito del progetto](https://mferrantini.github.io/vasovivo/)
 
 ---

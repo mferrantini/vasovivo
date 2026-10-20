@@ -1,8 +1,8 @@
 /**
- * VasoVivo — esempio completo: Wi-Fi e dashboard illustrata (UI v2)
+ * VasoVivo — esempio completo: Wi-Fi e tavola illustrata
  *
  * L'ESP32 crea la rete Wi-Fi "VasoVivo" e serve la tavola illustrata
- * costruita con il toolkit in UI/v2/. La pagina sta nella memoria della
+ * costruita con il UI Kit (`UI/index.html`, `css/vv-ui/`). La pagina sta nella memoria della
  * scheda (LittleFS, cartella data/) e chiede le letture a /api/readings.
  *
  * Le letture arrivano dai blocchi degli esempi singoli in sensors/:

@@ -3,52 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard — VasoVivo</title>
+  <title>Dashboard a schede — VasoVivo</title>
   <link rel="stylesheet" href="vasovivo.css" />
 </head>
 <!--
-  Template della dashboard dal vivo: sul sito mostra dati simulati.
-  examples/wifi-dashboard/build-data.sh ne fa la copia per l'ESP32, collegata alle letture vere.
+  Dashboard a schede: ogni misura in una card.
+  Sul sito mostra dati simulati; examples/wifi-dashboard/build-data.sh ne fa la copia per l'ESP32.
 -->
-<body data-source="/api/readings">
+<body class="vv-page" data-source="/api/readings">
 
-  <header class="vv-header--compact">
-    <a href="/" class="vv-header-link">
-      <img src="logo.png" alt="VasoVivo logo" />
-      <h1>VasoVivo</h1>
+  <header class="vv-top vv-reveal">
+    <a class="vv-brand" href="/">
+      <img src="logo.png" alt="" width="36" height="36" />
+      <span>VasoVivo</span>
     </a>
-    <p class="vv-tagline">Monitoraggio in tempo reale · UI v1</p>
+    <div class="vv-top__meta">
+      <span class="vv-status vv-status--ok" id="status">
+        <span class="vv-status__dot"></span>
+        <span id="status-text">Connessione…</span>
+      </span>
+      <span class="vv-ts" id="updated">In attesa dei dati</span>
+    </div>
   </header>
 
-  <main class="vv-main--dashboard" id="dashboard">
+  <main class="vv-dash-cards" id="dashboard">
 
-    <div class="vv-dashboard-header vv-reveal">
-      <div class="vv-dashboard-header__info">
-        <h2>Barattolo #1</h2>
-        <p class="vv-dashboard-header__meta">IKEA EKLATANT · 4.2 l · Pioppino</p>
+    <div class="vv-dash-header vv-reveal">
+      <div>
+        <h1 class="vv-dash-header__title">Barattolo #1</h1>
+        <p class="vv-dash-header__meta">IKEA EKLATANT · 4.2 l · Pioppino</p>
       </div>
-      <div class="vv-dashboard-header__badges">
-        <span class="vv-status vv-status--ok" id="status">
-          <span class="vv-status__dot"></span>
-          <span id="status-text">Connessione…</span>
-        </span>
-        <span class="vv-ts" id="updated">In attesa dei dati</span>
+      <div class="vv-dash-header__badges">
+        <span class="vv-eyebrow">Dashboard a schede</span>
       </div>
     </div>
 
-    <div class="vv-dashboard-group">
-      <h3 class="vv-dashboard-group__title vv-reveal" style="--i: 1">Aria nel barattolo</h3>
+    <div class="vv-dash-group">
+      <h2 class="vv-dash-group__title vv-reveal" style="--i: 1">Aria nel barattolo</h2>
       <div class="vv-metric-grid">
 
         <div class="vv-metric vv-metric--loading vv-reveal" id="m-temp" style="--i: 2">
-          <div class="vv-metric__icon" aria-hidden="true">🌡️</div>
+          <div class="vv-metric__icon" aria-hidden="true">°</div>
           <div class="vv-metric__label">Temperatura</div>
           <div class="vv-metric__value"><span class="vv-metric__number">00,0</span> <span class="vv-metric__unit">°C</span></div>
           <div class="vv-metric__hint">AHT21</div>
         </div>
 
         <div class="vv-metric vv-metric--loading vv-reveal" id="m-hum" style="--i: 3">
-          <div class="vv-metric__icon" aria-hidden="true">💧</div>
+          <div class="vv-metric__icon" aria-hidden="true">%</div>
           <div class="vv-metric__label">Umidità aria</div>
           <div class="vv-metric__value"><span class="vv-metric__number">00,0</span> <span class="vv-metric__unit">%</span></div>
           <div class="vv-metric__hint">AHT21</div>
@@ -56,21 +58,21 @@
         </div>
 
         <div class="vv-metric vv-metric--loading vv-reveal" id="m-eco2" style="--i: 4">
-          <div class="vv-metric__icon" aria-hidden="true">🌿</div>
+          <div class="vv-metric__icon" aria-hidden="true">CO₂</div>
           <div class="vv-metric__label">CO₂ equivalente</div>
           <div class="vv-metric__value"><span class="vv-metric__number">000</span> <span class="vv-metric__unit">ppm</span></div>
           <div class="vv-metric__hint">ENS160</div>
         </div>
 
         <div class="vv-metric vv-metric--loading vv-reveal" id="m-tvoc" style="--i: 5">
-          <div class="vv-metric__icon" aria-hidden="true">💨</div>
+          <div class="vv-metric__icon" aria-hidden="true">VOC</div>
           <div class="vv-metric__label">Composti volatili</div>
           <div class="vv-metric__value"><span class="vv-metric__number">000</span> <span class="vv-metric__unit">ppb</span></div>
           <div class="vv-metric__hint">ENS160</div>
         </div>
 
         <div class="vv-metric vv-metric--loading vv-reveal" id="m-aqi" style="--i: 6">
-          <div class="vv-metric__icon" aria-hidden="true">🫧</div>
+          <div class="vv-metric__icon" aria-hidden="true">AQI</div>
           <div class="vv-metric__label">Qualità dell'aria</div>
           <div class="vv-metric__value"><span class="vv-metric__number">0</span> <span class="vv-metric__unit">/ 5</span></div>
           <div class="vv-metric__hint">ENS160</div>
@@ -80,12 +82,12 @@
       </div>
     </div>
 
-    <div class="vv-dashboard-group">
-      <h3 class="vv-dashboard-group__title vv-reveal" style="--i: 7">Luce</h3>
+    <div class="vv-dash-group">
+      <h2 class="vv-dash-group__title vv-reveal" style="--i: 7">Luce</h2>
       <div class="vv-metric-grid">
 
         <div class="vv-metric vv-metric--loading vv-reveal" id="m-lux" style="--i: 8">
-          <div class="vv-metric__icon" aria-hidden="true">☀️</div>
+          <div class="vv-metric__icon" aria-hidden="true">lx</div>
           <div class="vv-metric__label">Intensità luminosa</div>
           <div class="vv-metric__value"><span class="vv-metric__number">000</span> <span class="vv-metric__unit">lux</span></div>
           <div class="vv-metric__hint">BH1750</div>
@@ -95,20 +97,20 @@
       </div>
     </div>
 
-    <div class="vv-dashboard-group">
-      <h3 class="vv-dashboard-group__title vv-reveal" style="--i: 9">Substrato</h3>
+    <div class="vv-dash-group">
+      <h2 class="vv-dash-group__title vv-reveal" style="--i: 9">Substrato</h2>
       <div class="vv-metric-grid">
 
         <div class="vv-metric vv-metric--loading vv-reveal" id="m-moisture" style="--i: 10">
-          <div class="vv-metric__icon" aria-hidden="true">🌱</div>
+          <div class="vv-metric__icon" aria-hidden="true">H₂O</div>
           <div class="vv-metric__label">Umidità substrato</div>
           <div class="vv-metric__value"><span class="vv-metric__number">00</span> <span class="vv-metric__unit">%</span></div>
-          <div class="vv-metric__hint">sensore analogico</div>
+          <div class="vv-metric__hint">sensore capacitivo</div>
           <div class="vv-metric__bar"><div class="vv-metric__bar-fill"></div></div>
         </div>
 
         <div class="vv-metric vv-metric--loading vv-reveal" id="m-adc" style="--i: 11">
-          <div class="vv-metric__icon" aria-hidden="true">📟</div>
+          <div class="vv-metric__icon" aria-hidden="true">ADC</div>
           <div class="vv-metric__label">Valore ADC grezzo</div>
           <div class="vv-metric__value"><span class="vv-metric__number">0000</span> <span class="vv-metric__unit">/ 4095</span></div>
           <div class="vv-metric__hint">calibrazione</div>
@@ -118,8 +120,8 @@
       </div>
     </div>
 
-    <div class="vv-dashboard-group vv-reveal" style="--i: 12">
-      <h3 class="vv-dashboard-group__title">Sensori e scheda</h3>
+    <div class="vv-dash-group vv-reveal" style="--i: 12">
+      <h2 class="vv-dash-group__title">Sensori e scheda</h2>
       <div class="vv-panel">
         <div class="vv-sensor-list" id="sensor-list"></div>
         <dl class="vv-info-list">
@@ -134,10 +136,13 @@
 
   </main>
 
-  <footer>
-    <span id="footer-source">VasoVivo</span>
-    &nbsp;·&nbsp;
-    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">GitHub</a>
+  <footer class="vv-foot">
+    <img class="vv-foot__logo" src="logo.svg" alt="" />
+    <span id="footer-source">Progetto open source</span>
+    <span class="vv-foot__sep">·</span>
+    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">Vedi su GitHub</a>
+    <span class="vv-foot__sep">·</span>
+    Maker Faire Roma 2026 - Stand V13
   </footer>
 
   <script src="vv-data.js"></script>

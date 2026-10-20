@@ -1,8 +1,8 @@
-# Wi-Fi e dashboard illustrata (UI v2)
+# Wi-Fi e tavola illustrata
 
-L'ESP32 crea una propria rete Wi-Fi e mostra le letture sulla [dashboard illustrata](../../UI/v2/): una tavola con il disegno del barattolo EKLATANT che reagisce ai dati, le scale con le fasce ideali per il pioppino e un titolo che riassume lo stato in una frase. Non serve internet né un router.
+L'ESP32 crea una propria rete Wi-Fi e mostra le letture sulla [tavola illustrata](../../UI/index.html): una tavola con il disegno del barattolo EKLATANT che reagisce ai dati, le scale con le fasce ideali per il pioppino e un titolo che riassume lo stato in una frase. Non serve internet né un router.
 
-Sensori, collegamenti e librerie sono gli stessi di [`wifi-page/`](../wifi-page/) e [`wifi-dashboard/`](../wifi-dashboard/). Cambia solo la pagina: usa il toolkit **UI v2** (`UI/v2/`, `css/vv-ui-v2/`).
+Sensori, collegamenti e librerie sono gli stessi di [`wifi-page/`](../wifi-page/) e [`wifi-dashboard/`](../wifi-dashboard/). Cambia solo la pagina: usa il [UI Kit](../../UI/elements.html) condiviso (`css/vv-ui/`), interfaccia a tavola.
 
 ---
 
@@ -50,14 +50,14 @@ LittleFS e WebServer sono già inclusi nel board package `esp32`.
 | File | Cosa contiene |
 |---|---|
 | `wifi-illustrated.ino` | Rete Wi-Fi, letture dei sensori, risposta JSON su `/api/readings` |
-| `data/index.html` | La tavola illustrata, da [`UI/v2/index.html`](../../UI/v2/index.html) |
-| `data/vasovivo.css` | Il toolkit [`css/vv-ui-v2/`](../../css/vv-ui-v2/) in un unico file |
+| `data/index.html` | La tavola illustrata, da [`UI/index.html`](../../UI/index.html) |
+| `data/vasovivo.css` | Il toolkit [`css/vv-ui/`](../../css/vv-ui/) in un unico file |
 | `data/vv-data.js` | Richiesta delle letture ([`js/vv-data.js`](../../js/vv-data.js)) |
-| `data/vv2-jar.js` | Disegno e aggiornamento della pagina ([`js/v2/vv2-jar.js`](../../js/v2/vv2-jar.js)) |
+| `data/vv-jar.js` | Disegno e aggiornamento della pagina ([`js/vv-jar.js`](../../js/vv-jar.js)) |
 | `data/logo.png` | Logo ridotto |
 | `build-data.sh` | Rigenera `data/` dopo aver modificato la UI |
 
-La cartella `data/` è già pronta: `build-data.sh` serve solo se cambi la UI. Il glossario dei componenti è in [`UI/v2/elements.html`](../../UI/v2/elements.html).
+La cartella `data/` è già pronta: `build-data.sh` serve solo se cambi la UI. Il glossario dei componenti è in [`UI/elements.html`](../../UI/elements.html).
 
 ---
 
@@ -125,9 +125,9 @@ Lo stato in alto indica **Connesso** quando le letture arrivano e **Non raggiung
 
 ## Modificare la dashboard
 
-La pagina nasce da [`UI/v2/index.html`](../../UI/v2/index.html), che si apre anche dal computer con dati dimostrativi. Il kit dei componenti è in [`UI/v2/elements.html`](../../UI/v2/elements.html).
+La pagina nasce da [`UI/index.html`](../../UI/index.html), che si apre anche dal computer con dati dimostrativi. Il kit dei componenti è in [`UI/elements.html`](../../UI/elements.html).
 
-1. Modifica `UI/v2/`, i CSS in `css/vv-ui-v2/` o `js/v2/vv2-jar.js`.
+1. Modifica `UI/index.html`, i CSS in `css/vv-ui/` o `js/vv-jar.js`.
 2. Esegui `./build-data.sh` da questa cartella: rigenera `data/`, toglie font esterni e link al sito e collega la pagina a `/api/readings`.
 3. Ricarica la cartella `data/` sulla scheda.
 
@@ -137,4 +137,4 @@ La pagina nasce da [`UI/v2/index.html`](../../UI/v2/index.html), che si apre anc
 
 - Nome e password della rete: `WIFI_NAME` e `WIFI_PASSWORD` in `wifi-illustrated.ino`.
 - Calibrazione dell'umidità: `MOISTURE_DRY` e `MOISTURE_WET` in [`substrate_moisture.h`](../../sensors/capacitive-moisture/example/substrate_moisture.h).
-- Fasce ideali delle letture: attributi `data-low` e `data-high` sugli elementi `.vv2-reading` in `UI/v2/index.html`.
+- Fasce ideali delle letture: attributi `data-low` e `data-high` sugli elementi `.vv-reading` in `UI/index.html`.
