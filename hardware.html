@@ -6,135 +6,154 @@
   <title>Hardware — VasoVivo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body class="vv-page">
 
-  <header>
-    <a href="index.html" class="header-link">
-      <img src="img/logo.png" alt="VasoVivo logo" />
-      <h1>VasoVivo</h1>
+  <header class="vv-top">
+    <a class="vv-brand vv-brand--logo" href="index.html">
+      <img src="img/logo.svg" alt="VasoVivo" />
     </a>
-    <p class="tagline">Componenti hardware del progetto</p>
+    <div class="vv-top__meta">
+      <a href="index.html">Home</a>
+    </div>
   </header>
 
-  <main>
+  <main class="vv-container">
 
-    <p class="page-intro">
-      Elenco della scheda e dei sensori utilizzabili in VasoVivo. Per ogni sensore trovi nella repository
-      documentazione, schema di collegamento e uno sketch di esempio per ESP32.
-    </p>
+    <header class="vv-page-head">
+      <span class="vv-eyebrow">Guida</span>
+      <h1 class="vv-page-head__title">Hardware</h1>
+      <p class="vv-page-head__lede">
+        Elenco della scheda e dei sensori utilizzabili in VasoVivo. Per ogni sensore trovi nella repository
+        documentazione, schema di collegamento e uno sketch di esempio per ESP32.
+      </p>
+    </header>
 
-    <ul class="hardware-list">
+    <ul class="vv-item-list">
 
-      <li class="hardware-item">
-        <div class="hardware-item-header">
-          <h3><span class="hardware-icon" aria-hidden="true">🔌</span> ESP32-WROOM-32</h3>
-          <span class="hardware-params">Microcontrollore · Wi-Fi · Bluetooth</span>
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">🧩</span> Breadboard 400 punti</h3>
+          <span class="vv-item__meta">Prototipazione · collegamenti</span>
+        </div>
+        <p>Base per montare e collegare scheda e sensori in fase di prototipo, senza saldature.</p>
+        <div class="vv-item__links">
+          <a href="https://amzn.eu/d/0fgUUkNM" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
+        </div>
+      </li>
+
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">🔌</span> ESP32-WROOM-32</h3>
+          <span class="vv-item__meta">Microcontrollore · Wi-Fi · Bluetooth</span>
         </div>
         <p>Scheda principale del progetto: collega i sensori e gestisce lettura e invio dei dati.</p>
-        <div class="item-links">
-          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+        <div class="vv-item__links">
+          <a href="https://amzn.eu/d/00sh8ijS" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
         </div>
       </li>
 
-      <li class="hardware-item">
-        <div class="hardware-item-header">
-          <h3><span class="hardware-icon" aria-hidden="true">🌿</span> ENS160 + AHT21</h3>
-          <span class="hardware-params">CO₂eq · TVOC · temperatura · umidità aria</span>
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">🌿</span> ENS160 + AHT21</h3>
+          <span class="vv-item__meta">CO₂eq · TVOC · temperatura · umidità aria</span>
         </div>
         <p>Modulo combinato per monitorare qualità dell'aria e condizioni ambientali nel barattolo.</p>
-        <div class="item-links">
+        <div class="vv-item__links">
           <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/ens160-aht21" target="_blank" rel="noopener">Documentazione su GitHub →</a>
-          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+          <a href="https://amzn.eu/d/09YsVM7w" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
         </div>
       </li>
 
-      <li class="hardware-item">
-        <div class="hardware-item-header">
-          <h3><span class="hardware-icon" aria-hidden="true">🌡️</span> DHT22</h3>
-          <span class="hardware-params">Temperatura · umidità aria</span>
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">🌡️</span> DHT22</h3>
+          <span class="vv-item__meta">Temperatura · umidità aria</span>
         </div>
         <p>Alternativa consigliata per misurare temperatura e umidità dell'aria con maggiore precisione.</p>
-        <div class="item-links">
+        <div class="vv-item__links">
           <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/dht22" target="_blank" rel="noopener">Documentazione su GitHub →</a>
-          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+          <a href="https://amzn.eu/d/05ty8ZEh" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
         </div>
       </li>
 
-      <li class="hardware-item">
-        <div class="hardware-item-header">
-          <h3><span class="hardware-icon" aria-hidden="true">🌡️</span> DHT11</h3>
-          <span class="hardware-params">Temperatura · umidità aria</span>
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">🌡️</span> DHT11</h3>
+          <span class="vv-item__meta">Temperatura · umidità aria</span>
         </div>
         <p>Alternativa economica per temperatura e umidità dell'aria, adatta a un primo approccio al progetto.</p>
-        <div class="item-links">
+        <div class="vv-item__links">
           <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/dht11" target="_blank" rel="noopener">Documentazione su GitHub →</a>
-          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+          <a href="https://amzn.eu/d/0f7JwCVp" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
         </div>
       </li>
 
-      <li class="hardware-item">
-        <div class="hardware-item-header">
-          <h3><span class="hardware-icon" aria-hidden="true">💧</span> Sensore capacitivo</h3>
-          <span class="hardware-params">Umidità substrato</span>
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">💧</span> Sensore capacitivo</h3>
+          <span class="vv-item__meta">Umidità substrato</span>
         </div>
         <p>Lama PCB capacitiva resistente alla corrosione: misura l'umidità della zolletta senza elettrodi esposti.</p>
-        <div class="item-links">
+        <div class="vv-item__links">
           <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/capacitive-moisture" target="_blank" rel="noopener">Documentazione su GitHub →</a>
-          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+          <a href="https://amzn.eu/d/0f9MrNnY" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
         </div>
       </li>
 
-      <li class="hardware-item">
-        <div class="hardware-item-header">
-          <h3><span class="hardware-icon" aria-hidden="true">🌱</span> DS18B20</h3>
-          <span class="hardware-params">Temperatura substrato</span>
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">🌱</span> DS18B20</h3>
+          <span class="vv-item__meta">Temperatura substrato</span>
         </div>
         <p>Sonda impermeabile per la temperatura interna al substrato, complementare alla temperatura dell'aria.</p>
-        <div class="item-links">
+        <div class="vv-item__links">
           <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/ds18b20" target="_blank" rel="noopener">Documentazione su GitHub →</a>
-          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+          <a href="https://amzn.eu/d/01pL8143" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
         </div>
       </li>
 
-      <li class="hardware-item">
-        <div class="hardware-item-header">
-          <h3><span class="hardware-icon" aria-hidden="true">☀️</span> Fotoresistenza (LDR)</h3>
-          <span class="hardware-params">Luminosità</span>
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">☀️</span> Fotoresistenza (LDR)</h3>
+          <span class="vv-item__meta">Luminosità</span>
         </div>
         <p>Rileva la luce ambientale per verificare l'esposizione e correlarla con l'andamento della coltivazione.</p>
-        <div class="item-links">
+        <div class="vv-item__links">
           <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/ldr" target="_blank" rel="noopener">Documentazione su GitHub →</a>
-          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+          <a href="https://amzn.eu/d/06DKjILB" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
         </div>
       </li>
 
-      <li class="hardware-item">
-        <div class="hardware-item-header">
-          <h3><span class="hardware-icon" aria-hidden="true">💡</span> GY-302 BH1750FVI</h3>
-          <span class="hardware-params">Intensità luminosa · lux</span>
+      <li class="vv-item">
+        <div class="vv-item__header">
+          <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">💡</span> GY-302 BH1750FVI</h3>
+          <span class="vv-item__meta">Intensità luminosa · lux</span>
         </div>
         <p>Modulo I²C per la luce ambientale, in lux. Misura diretta dell'intensità, a differenza della fotoresistenza.</p>
-        <div class="item-links">
+        <div class="vv-item__links">
           <a href="https://github.com/mferrantini/vasovivo/tree/main/sensors/bh1750" target="_blank" rel="noopener">Documentazione su GitHub →</a>
-          <a href="#" class="amazon-link">Acquista su Amazon →</a>
+          <a href="https://amzn.eu/d/02b8TlgW" class="vv-link--muted" target="_blank" rel="noopener">Acquista su Amazon →</a>
         </div>
       </li>
 
     </ul>
 
-    <p class="back-link">
+    <p class="vv-back">
       <a href="index.html">← Torna alla home</a>
     </p>
 
   </main>
 
-  <footer>
-    Progetto open source &mdash;
+  <footer class="vv-foot">
+    <img class="vv-foot__logo" src="img/logo.svg" alt="" />
+    Progetto open source
+    <span class="vv-foot__sep">·</span>
     <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">Vedi su GitHub</a>
-    &nbsp;·&nbsp; Candidato alla Maker Faire Roma 2026
+    <span class="vv-foot__sep">·</span>
+    Maker Faire Roma 2026 - Stand V13
   </footer>
 
 </body>

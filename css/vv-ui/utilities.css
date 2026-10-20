@@ -1,0 +1,237 @@
+/* VasoVivo UI — classi utility
+   Spazi, colori, tipografia e layout basati sui token.
+   Preferiscile a stili inline: la scala resta coerente.
+
+   Nomi:
+     margini   .vv-m-N  .vv-mt-N  .vv-mb-N  .vv-mx-N  .vv-my-N  .vv-ml-N  .vv-mr-N
+     padding   .vv-p-N  .vv-pt-N  .vv-pb-N  .vv-px-N  .vv-py-N  .vv-pl-N  .vv-pr-N
+     gap       .vv-gap-N
+   dove N va da 0 a 8 (0, 4, 8, 12, 16, 24, 32, 48, 64 px).
+*/
+
+/* ── Margini ── */
+.vv-m-0 { margin: var(--vv-space-0); }
+.vv-m-1 { margin: var(--vv-space-1); }
+.vv-m-2 { margin: var(--vv-space-2); }
+.vv-m-3 { margin: var(--vv-space-3); }
+.vv-m-4 { margin: var(--vv-space-4); }
+.vv-m-5 { margin: var(--vv-space-5); }
+.vv-m-6 { margin: var(--vv-space-6); }
+.vv-m-7 { margin: var(--vv-space-7); }
+.vv-m-8 { margin: var(--vv-space-8); }
+
+.vv-mt-0 { margin-top: var(--vv-space-0); }
+.vv-mt-1 { margin-top: var(--vv-space-1); }
+.vv-mt-2 { margin-top: var(--vv-space-2); }
+.vv-mt-3 { margin-top: var(--vv-space-3); }
+.vv-mt-4 { margin-top: var(--vv-space-4); }
+.vv-mt-5 { margin-top: var(--vv-space-5); }
+.vv-mt-6 { margin-top: var(--vv-space-6); }
+.vv-mt-7 { margin-top: var(--vv-space-7); }
+.vv-mt-8 { margin-top: var(--vv-space-8); }
+
+.vv-mb-0 { margin-bottom: var(--vv-space-0); }
+.vv-mb-1 { margin-bottom: var(--vv-space-1); }
+.vv-mb-2 { margin-bottom: var(--vv-space-2); }
+.vv-mb-3 { margin-bottom: var(--vv-space-3); }
+.vv-mb-4 { margin-bottom: var(--vv-space-4); }
+.vv-mb-5 { margin-bottom: var(--vv-space-5); }
+.vv-mb-6 { margin-bottom: var(--vv-space-6); }
+.vv-mb-7 { margin-bottom: var(--vv-space-7); }
+.vv-mb-8 { margin-bottom: var(--vv-space-8); }
+
+.vv-ml-0 { margin-left: var(--vv-space-0); }
+.vv-ml-2 { margin-left: var(--vv-space-2); }
+.vv-ml-3 { margin-left: var(--vv-space-3); }
+.vv-ml-4 { margin-left: var(--vv-space-4); }
+.vv-ml-auto { margin-left: auto; }
+
+.vv-mr-0 { margin-right: var(--vv-space-0); }
+.vv-mr-2 { margin-right: var(--vv-space-2); }
+.vv-mr-3 { margin-right: var(--vv-space-3); }
+.vv-mr-4 { margin-right: var(--vv-space-4); }
+.vv-mr-auto { margin-right: auto; }
+
+.vv-mx-0 { margin-inline: var(--vv-space-0); }
+.vv-mx-1 { margin-inline: var(--vv-space-1); }
+.vv-mx-2 { margin-inline: var(--vv-space-2); }
+.vv-mx-3 { margin-inline: var(--vv-space-3); }
+.vv-mx-4 { margin-inline: var(--vv-space-4); }
+.vv-mx-5 { margin-inline: var(--vv-space-5); }
+.vv-mx-6 { margin-inline: var(--vv-space-6); }
+.vv-mx-auto { margin-inline: auto; }
+
+.vv-my-0 { margin-block: var(--vv-space-0); }
+.vv-my-1 { margin-block: var(--vv-space-1); }
+.vv-my-2 { margin-block: var(--vv-space-2); }
+.vv-my-3 { margin-block: var(--vv-space-3); }
+.vv-my-4 { margin-block: var(--vv-space-4); }
+.vv-my-5 { margin-block: var(--vv-space-5); }
+.vv-my-6 { margin-block: var(--vv-space-6); }
+.vv-my-7 { margin-block: var(--vv-space-7); }
+.vv-my-8 { margin-block: var(--vv-space-8); }
+
+/* ── Padding ── */
+.vv-p-0 { padding: var(--vv-space-0); }
+.vv-p-1 { padding: var(--vv-space-1); }
+.vv-p-2 { padding: var(--vv-space-2); }
+.vv-p-3 { padding: var(--vv-space-3); }
+.vv-p-4 { padding: var(--vv-space-4); }
+.vv-p-5 { padding: var(--vv-space-5); }
+.vv-p-6 { padding: var(--vv-space-6); }
+.vv-p-7 { padding: var(--vv-space-7); }
+
+.vv-pt-0 { padding-top: var(--vv-space-0); }
+.vv-pt-2 { padding-top: var(--vv-space-2); }
+.vv-pt-3 { padding-top: var(--vv-space-3); }
+.vv-pt-4 { padding-top: var(--vv-space-4); }
+.vv-pt-5 { padding-top: var(--vv-space-5); }
+.vv-pt-6 { padding-top: var(--vv-space-6); }
+.vv-pt-7 { padding-top: var(--vv-space-7); }
+
+.vv-pb-0 { padding-bottom: var(--vv-space-0); }
+.vv-pb-2 { padding-bottom: var(--vv-space-2); }
+.vv-pb-3 { padding-bottom: var(--vv-space-3); }
+.vv-pb-4 { padding-bottom: var(--vv-space-4); }
+.vv-pb-5 { padding-bottom: var(--vv-space-5); }
+.vv-pb-6 { padding-bottom: var(--vv-space-6); }
+.vv-pb-7 { padding-bottom: var(--vv-space-7); }
+
+.vv-pl-3 { padding-left: var(--vv-space-3); }
+.vv-pl-4 { padding-left: var(--vv-space-4); }
+.vv-pl-5 { padding-left: var(--vv-space-5); }
+.vv-pr-3 { padding-right: var(--vv-space-3); }
+.vv-pr-4 { padding-right: var(--vv-space-4); }
+.vv-pr-5 { padding-right: var(--vv-space-5); }
+
+.vv-px-3 { padding-inline: var(--vv-space-3); }
+.vv-px-4 { padding-inline: var(--vv-space-4); }
+.vv-px-5 { padding-inline: var(--vv-space-5); }
+.vv-px-6 { padding-inline: var(--vv-space-6); }
+
+.vv-py-2 { padding-block: var(--vv-space-2); }
+.vv-py-3 { padding-block: var(--vv-space-3); }
+.vv-py-4 { padding-block: var(--vv-space-4); }
+.vv-py-5 { padding-block: var(--vv-space-5); }
+.vv-py-6 { padding-block: var(--vv-space-6); }
+
+/* ── Display / flex / grid ── */
+.vv-block { display: block; }
+.vv-inline-flex { display: inline-flex; }
+.vv-flex { display: flex; }
+.vv-flex-col { display: flex; flex-direction: column; }
+.vv-flex-wrap { flex-wrap: wrap; }
+.vv-items-start { align-items: flex-start; }
+.vv-items-center { align-items: center; }
+.vv-items-baseline { align-items: baseline; }
+.vv-items-end { align-items: flex-end; }
+.vv-justify-start { justify-content: flex-start; }
+.vv-justify-center { justify-content: center; }
+.vv-justify-between { justify-content: space-between; }
+.vv-grow { flex: 1 1 auto; }
+.vv-shrink-0 { flex-shrink: 0; }
+
+.vv-gap-1 { gap: var(--vv-space-1); }
+.vv-gap-2 { gap: var(--vv-space-2); }
+.vv-gap-3 { gap: var(--vv-space-3); }
+.vv-gap-4 { gap: var(--vv-space-4); }
+.vv-gap-5 { gap: var(--vv-space-5); }
+.vv-gap-6 { gap: var(--vv-space-6); }
+
+.vv-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--vv-space-4);
+}
+
+.vv-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--vv-space-4);
+}
+
+.vv-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--vv-space-3);
+}
+
+@media (max-width: 560px) {
+  .vv-grid-2,
+  .vv-grid-3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ── Tipografia ── */
+.vv-text-xs { font-size: var(--vv-text-xs); }
+.vv-text-sm { font-size: var(--vv-text-sm); }
+.vv-text-md { font-size: var(--vv-text-md); }
+.vv-text-lg { font-size: var(--vv-text-lg); }
+.vv-text-xl { font-size: var(--vv-text-xl); }
+.vv-text-2xl { font-size: var(--vv-text-2xl); }
+.vv-text-3xl { font-size: var(--vv-text-3xl); }
+
+.vv-font-light { font-weight: 300; }
+.vv-font-normal { font-weight: 400; }
+.vv-font-medium { font-weight: 500; }
+.vv-font-semibold { font-weight: 600; }
+
+.vv-serif { font-family: var(--vv-serif); }
+.vv-sans { font-family: var(--vv-sans); }
+.vv-tabular { font-variant-numeric: tabular-nums; }
+.vv-uppercase { text-transform: uppercase; letter-spacing: 0.08em; }
+.vv-eyebrow {
+  font-size: var(--vv-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vv-accent);
+}
+.vv-italic { font-style: italic; }
+.vv-text-left { text-align: left; }
+.vv-text-center { text-align: center; }
+.vv-text-right { text-align: right; }
+.vv-leading-tight { line-height: 1.2; }
+.vv-leading-snug { line-height: 1.4; }
+.vv-balance { text-wrap: balance; }
+
+/* ── Colori ── */
+.vv-text-ink { color: var(--vv-ink); }
+.vv-text-soft { color: var(--vv-ink-soft); }
+.vv-text-accent { color: var(--vv-accent); }
+.vv-text-warn { color: var(--vv-warn); }
+
+.vv-bg-paper { background: var(--vv-paper); }
+.vv-bg-deep { background: var(--vv-paper-deep); }
+.vv-bg-light { background: var(--vv-paper-light); }
+.vv-bg-accent { background: var(--vv-accent); color: #fff; }
+.vv-bg-accent-light { background: var(--vv-accent-light); }
+.vv-bg-warn-light { background: var(--vv-warn-light); }
+
+.vv-border { border: 1px solid var(--vv-border); }
+.vv-border-hair { border: 1px solid var(--vv-hair); }
+.vv-border-accent { border: 1px solid var(--vv-accent); }
+.vv-border-t { border-top: 1px solid var(--vv-hair); }
+.vv-border-b { border-bottom: 1px solid var(--vv-hair); }
+
+.vv-rounded-sm { border-radius: var(--vv-radius-sm); }
+.vv-rounded { border-radius: var(--vv-radius); }
+.vv-rounded-lg { border-radius: var(--vv-radius-lg); }
+.vv-rounded-pill { border-radius: var(--vv-radius-pill); }
+
+/* ── Larghezze / accessibilità ── */
+.vv-w-full { width: 100%; }
+.vv-max-prose { max-width: 62ch; }
+.vv-max-site { max-width: var(--vv-max-site); }
+.vv-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

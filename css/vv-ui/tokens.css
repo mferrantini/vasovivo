@@ -1,14 +1,57 @@
+/* VasoVivo UI — token
+   Valori di base del toolkit. Le classi utility in utilities.css
+   usano questa stessa scala, così gli spazi restano coerenti ovunque. */
 :root {
-  --bg: #f9f8f6;
-  --surface: #ffffff;
-  --border: #e5e3de;
-  --text: #1a1a18;
-  --muted: #6b6860;
-  --accent: #3d7a4f;
-  --accent-light: #edf5f0;
-  --warn: #b45309;
-  --warn-light: #fef3e2;
-  --radius: 12px;
-  --max-w: 760px;
-  --max-w-dashboard: 900px;
+  /* Colori */
+  --vv-paper: #f2ece1;
+  --vv-paper-deep: #e6dcca;
+  --vv-paper-light: #f9f5ee;
+  --vv-ink: #1f2620;
+  --vv-ink-soft: #5c6157;
+  --vv-hair: rgba(31, 38, 32, 0.14);
+  --vv-tick: rgba(31, 38, 32, 0.3);
+  --vv-border: #dcd2bf;
+  --vv-accent: #3d7a4f;
+  --vv-accent-light: #edf5f0;
+  --vv-warn: #b45309;
+  --vv-warn-light: #fef3e2;
+
+  /* Font */
+  --vv-serif: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --vv-sans: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Tipografia (scala fissa, usata anche dalle utility) */
+  --vv-text-xs: 0.72rem;
+  --vv-text-sm: 0.82rem;
+  --vv-text-md: 0.95rem;
+  --vv-text-lg: 1.15rem;
+  --vv-text-xl: 1.5rem;
+  --vv-text-2xl: 2rem;
+  --vv-text-3xl: 2.75rem;
+
+  /* Movimento e larghezze */
+  --vv-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --vv-max: 1280px;
+  --vv-max-site: 760px;
+  --vv-max-dashboard: 900px;
+
+  /* Scala degli spazi (passo 4px) */
+  --vv-space-0: 0;
+  --vv-space-1: 4px;
+  --vv-space-2: 8px;
+  --vv-space-3: 12px;
+  --vv-space-4: 16px;
+  --vv-space-5: 24px;
+  --vv-space-6: 32px;
+  --vv-space-7: 48px;
+  --vv-space-8: 64px;
+
+  /* Raggi */
+  --vv-radius-sm: 4px;
+  --vv-radius: 8px;
+  --vv-radius-lg: 12px;
+  --vv-radius-pill: 99px;
+
+  /* Ombre */
+  --vv-shadow-soft: 0 18px 40px -28px rgba(70, 52, 24, 0.4);
 }

@@ -1,70 +1,93 @@
-/* ── Dashboard layout ── */
-.vv-dashboard-header {
+/* VasoVivo UI — dashboard a schede (stile carta / v2) */
+
+.vv-dash-cards {
+  max-width: var(--vv-max-dashboard);
+  margin: 0 auto;
+  padding: var(--vv-space-5) clamp(16px, 3vw, 40px) var(--vv-space-7);
+}
+
+.vv-dash-header {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 28px;
+  gap: var(--vv-space-4);
+  margin-bottom: var(--vv-space-6);
+  padding-bottom: var(--vv-space-4);
+  border-bottom: 1px solid var(--vv-hair);
 }
 
-.vv-dashboard-header__info h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text);
-  text-transform: none;
+.vv-dash-header__title {
+  font-family: var(--vv-serif);
+  font-size: var(--vv-text-xl);
+  font-weight: 400;
   letter-spacing: -0.01em;
-  margin-bottom: 4px;
+  color: var(--vv-ink);
+  margin: 0 0 4px;
 }
 
-.vv-dashboard-header__meta {
-  font-size: 0.88rem;
-  color: var(--muted);
+.vv-dash-header__meta {
+  font-size: var(--vv-text-sm);
+  color: var(--vv-ink-soft);
+  margin: 0;
 }
 
-.vv-dashboard-header__badges {
+.vv-dash-header__badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--vv-space-2);
   align-items: center;
 }
 
-.vv-ts {
-  font-size: 0.82rem;
-  color: var(--muted);
+.vv-dash-group {
+  margin-bottom: var(--vv-space-6);
 }
 
-/* ── Live metric grid ── */
+.vv-dash-group__title {
+  font-size: var(--vv-text-xs);
+  font-weight: 500;
+  color: var(--vv-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: var(--vv-space-3);
+}
+
 .vv-metric-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 12px;
+  gap: var(--vv-space-3);
 }
 
-/* Righe fisse (icona, titolo su 2 righe, valore, nota, barra in fondo):
-   i valori restano allineati tra schede vicine anche con titoli lunghi. */
 .vv-metric {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 16px 16px;
+  background: var(--vv-paper-light);
+  border: 1px solid var(--vv-border);
+  border-radius: var(--vv-radius);
+  padding: var(--vv-space-5) var(--vv-space-4) var(--vv-space-4);
   text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+              border-color 0.4s ease, background-color 0.4s ease, opacity 0.4s ease;
+}
+
+.vv-metric:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--vv-shadow-soft);
 }
 
 .vv-metric--highlight {
-  border-color: var(--warn);
-  background: var(--warn-light);
+  border-color: var(--vv-warn);
+  background: var(--vv-warn-light);
 }
 
 .vv-metric__icon {
   height: 1.5rem;
-  font-size: 1.5rem;
-  margin-bottom: 8px;
+  font-size: 1.35rem;
+  margin-bottom: var(--vv-space-2);
   line-height: 1;
+  color: var(--vv-accent);
 }
 
 .vv-metric__label {
@@ -73,37 +96,40 @@
   justify-content: center;
   min-height: 2.7em;
   text-wrap: balance;
-  font-size: 0.75rem;
+  font-size: var(--vv-text-xs);
   font-weight: 500;
   line-height: 1.35;
-  color: var(--muted);
+  color: var(--vv-ink-soft);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   margin-bottom: 6px;
 }
 
 .vv-metric__value {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--text);
+  font-family: var(--vv-serif);
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--vv-ink);
   letter-spacing: -0.02em;
   line-height: 1.2;
   white-space: nowrap;
+  display: inline-block;
 }
 
 .vv-metric__unit {
-  font-size: 0.9rem;
+  font-family: var(--vv-sans);
+  font-size: 0.85rem;
   font-weight: 400;
-  color: var(--muted);
+  color: var(--vv-ink-soft);
 }
 
 .vv-metric--highlight .vv-metric__value {
-  color: var(--warn);
+  color: var(--vv-warn);
 }
 
 .vv-metric__hint {
   font-size: 0.78rem;
-  color: var(--muted);
+  color: var(--vv-ink-soft);
   line-height: 1.35;
   text-wrap: balance;
   margin: 6px 0 12px;
@@ -111,83 +137,78 @@
 }
 
 .vv-metric--highlight .vv-metric__hint {
-  color: var(--warn);
+  color: var(--vv-warn);
 }
 
 .vv-metric__bar {
   align-self: stretch;
   height: 6px;
   margin-top: auto;
-  background: var(--border);
-  border-radius: 99px;
+  background: var(--vv-border);
+  border-radius: var(--vv-radius-pill);
   overflow: hidden;
 }
 
 .vv-metric__bar-fill {
   width: var(--fill, 0%);
   height: 100%;
-  background: var(--accent);
+  background: var(--vv-accent);
   border-radius: inherit;
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.4s ease;
 }
 
 .vv-metric--highlight .vv-metric__bar-fill {
-  background: var(--warn);
+  background: var(--vv-warn);
 }
 
 .vv-metric--na .vv-metric__value {
-  color: var(--muted);
+  color: var(--vv-ink-soft);
 }
 
-/* ── Stato con indicatore ── */
-.vv-status__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
+.vv-metric--loading .vv-metric__number {
+  color: transparent;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--vv-border) 25%, var(--vv-paper-light) 50%, var(--vv-border) 75%);
+  background-size: 200% 100%;
+  animation: vv-shimmer 1.4s linear infinite;
 }
 
-/* ── Dati non aggiornati ── */
-.vv-dashboard--stale .vv-metric {
+.vv-metric--updated {
+  animation: vv-ping 0.9s ease-out;
+}
+
+.vv-metric--updated .vv-metric__value {
+  animation: vv-pop 0.5s ease-out;
+}
+
+.vv-dash--stale .vv-metric {
   opacity: 0.55;
 }
 
-/* ── Elenco sensori e informazioni scheda ── */
 .vv-sensor-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: var(--vv-space-2);
+  margin-bottom: var(--vv-space-5);
 }
 
 .vv-info-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px 24px;
+  gap: var(--vv-space-3) var(--vv-space-5);
 }
 
 .vv-info-list dt {
-  font-size: 0.75rem;
+  font-size: var(--vv-text-xs);
   font-weight: 500;
-  color: var(--muted);
+  color: var(--vv-ink-soft);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .vv-info-list dd {
+  font-family: var(--vv-serif);
   font-size: 1rem;
-  font-weight: 500;
-}
-
-/* ── Dashboard section grouping ── */
-.vv-dashboard-group {
-  margin-bottom: 32px;
-}
-
-.vv-dashboard-group__title {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 12px;
+  font-weight: 400;
+  color: var(--vv-ink);
 }

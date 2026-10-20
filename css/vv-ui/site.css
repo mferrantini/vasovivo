@@ -1,0 +1,143 @@
+/* VasoVivo UI — pagine del mini sito (home, hardware, stampe) */
+
+.vv-hero {
+  max-width: var(--vv-max-site);
+  margin: 0 auto;
+  padding: clamp(40px, 8vh, 72px) clamp(16px, 4vw, 40px) var(--vv-space-6);
+  text-align: center;
+}
+
+.vv-hero__logo {
+  display: block;
+  height: clamp(40px, 6vw, 56px);
+  width: auto;
+  margin: 0 auto var(--vv-space-5);
+}
+
+.vv-hero__title {
+  font-family: var(--vv-serif);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--vv-ink);
+  margin-bottom: var(--vv-space-3);
+}
+
+.vv-hero__lede {
+  max-width: 42ch;
+  margin: 0 auto var(--vv-space-5);
+  font-size: var(--vv-text-md);
+  line-height: 1.55;
+  color: var(--vv-ink-soft);
+}
+
+/* Intestazione delle pagine interne (hardware, stampe, kit) */
+.vv-page-head {
+  margin-bottom: var(--vv-space-6);
+  padding-bottom: var(--vv-space-5);
+  border-bottom: 1px solid var(--vv-hair);
+}
+
+.vv-page-head .vv-eyebrow {
+  display: block;
+  margin-bottom: var(--vv-space-2);
+}
+
+.vv-page-head__title {
+  font-family: var(--vv-serif);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--vv-ink);
+  margin: 0 0 var(--vv-space-2);
+}
+
+.vv-page-head__lede {
+  max-width: 48ch;
+  margin: 0;
+  font-size: var(--vv-text-md);
+  line-height: 1.55;
+  color: var(--vv-ink-soft);
+}
+
+.vv-section {
+  margin-bottom: var(--vv-space-7);
+}
+
+.vv-section__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--vv-space-3);
+  margin-bottom: var(--vv-space-4);
+  padding-top: var(--vv-space-4);
+  border-top: 1px solid var(--vv-ink);
+}
+
+.vv-section__num {
+  font-size: var(--vv-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vv-accent);
+  flex-shrink: 0;
+}
+
+.vv-section__title {
+  font-family: var(--vv-serif);
+  font-size: var(--vv-text-xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--vv-ink);
+  text-transform: none;
+  margin: 0;
+}
+
+.vv-prose {
+  max-width: 62ch;
+}
+
+.vv-prose p {
+  margin-bottom: var(--vv-space-3);
+  color: var(--vv-ink);
+}
+
+.vv-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.vv-kit-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--vv-space-6) clamp(20px, 4vw, 48px) var(--vv-space-8);
+}
+
+.vv-kit-page > section {
+  margin-bottom: var(--vv-space-7);
+}
+
+.vv-kit-page > section > h2 {
+  font-family: var(--vv-serif);
+  font-size: var(--vv-text-xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--vv-ink);
+  margin-bottom: var(--vv-space-3);
+  border-top: 1px solid var(--vv-ink);
+  padding-top: 14px;
+}
+
+.vv-kit-page h3 {
+  font-family: var(--vv-serif);
+  font-size: var(--vv-text-lg);
+  font-weight: 400;
+  margin: var(--vv-space-5) 0 var(--vv-space-3);
+}
+
+.vv-kit-page p {
+  margin-bottom: var(--vv-space-3);
+  color: var(--vv-ink);
+  max-width: 62ch;
+}

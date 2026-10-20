@@ -5,7 +5,7 @@
  *   "/api/readings"  → dati veri dall'ESP32
  *   "demo"           → dati simulati, per l'anteprima sul sito
  *
- * Espone window.VVData, usato da vv-dashboard.js e js/v2/vv2-jar.js.
+ * Espone window.VVData, usato da vv-dashboard.js e vv-jar.js.
  */
 
 window.VVData = (function () {

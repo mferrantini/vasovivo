@@ -1,103 +1,93 @@
-/* Header */
-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 48px 24px 40px;
-  text-align: center;
+/* VasoVivo UI — guscio comune: topbar, brand, container, footer */
+
+.vv-top {
+  max-width: var(--vv-max);
+  margin: 0 auto;
+  padding: clamp(12px, 2vh, 22px) clamp(16px, 3vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--vv-space-4);
+  background: none;
+  border: 0;
+  text-align: left;
 }
 
-header img {
-  height: 80px;
-  width: auto;
-  margin-bottom: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-header h1 {
-  font-size: 2.4rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-
-.vv-tagline,
-header p.tagline {
-  color: var(--muted);
+.vv-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--vv-ink);
   font-size: 1.05rem;
-  font-weight: 300;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.vv-header--compact {
-  padding: 24px 24px 20px;
-}
-
-.vv-header--compact img {
-  height: 48px;
-  margin-bottom: 12px;
-}
-
-.vv-header--compact h1 {
-  font-size: 1.5rem;
-  margin-bottom: 4px;
-}
-
-/* Main */
-main {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 56px 24px 80px;
-}
-
-.vv-main--dashboard {
-  max-width: var(--max-w-dashboard);
-}
-
-/* Sections */
-section {
-  margin-bottom: 56px;
-}
-
-section h2,
-.vv-section-title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 16px;
-}
-
-section p {
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-section p:last-child {
-  margin-bottom: 0;
-}
-
-/* Divider */
-hr,
-.vv-divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0 0 56px;
-}
-
-/* Footer */
-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding: 32px 24px;
-  font-size: 0.88rem;
-  color: var(--muted);
-}
-
-footer a {
   font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.vv-brand:hover {
+  text-decoration: none;
+}
+
+/* Icona tonda (dashboard) */
+.vv-brand img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border-radius: 50%;
+}
+
+/* Logo SVG orizzontale (sito) */
+.vv-brand--logo img {
+  width: auto;
+  height: 28px;
+  border-radius: 0;
+}
+
+.vv-top__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--vv-space-3);
+}
+
+.vv-container {
+  max-width: var(--vv-max-site);
+  margin: 0 auto;
+  padding: var(--vv-space-7) clamp(16px, 4vw, 40px) var(--vv-space-8);
+}
+
+.vv-foot {
+  background: var(--vv-paper-light);
+  border-top: 1px solid var(--vv-hair);
+  text-align: center;
+  padding: var(--vv-space-5) var(--vv-space-5);
+  font-size: var(--vv-text-sm);
+  color: var(--vv-ink-soft);
+  line-height: 1.6;
+}
+
+.vv-foot a {
+  font-weight: 500;
+}
+
+.vv-foot__sep {
+  margin: 0 0.45em;
+  opacity: 0.45;
+}
+
+.vv-foot__meta {
+  font-variant-numeric: tabular-nums;
+}
+
+.vv-foot__logo {
+  display: inline-block;
+  height: 18px;
+  width: auto;
+  vertical-align: -3px;
+  margin-right: 6px;
+}
+
+.vv-back {
+  margin-top: var(--vv-space-7);
+  font-size: var(--vv-text-sm);
 }

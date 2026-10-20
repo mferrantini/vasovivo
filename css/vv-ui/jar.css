@@ -1,0 +1,362 @@
+/* VasoVivo UI — dashboard illustrata (tavola del barattolo)
+   Soglie:
+   · < 1200px (o altezza < 680): layout a colonna, scroll ok
+   · ≥ 1200×680: fit 100dvh, illustrazione | testi, letture ancora in 1 colonna
+   · ≥ 1400×680: letture in 2 colonne (Aria | Luce+Substrato)
+*/
+
+.vv-dash {
+  max-width: min(1480px, 100%);
+  margin: 0 auto;
+  padding: 20px clamp(16px, 3vw, 40px) 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.vv-plate {
+  position: sticky;
+  top: 12px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: vv-arrive 1.2s var(--vv-ease-out) both;
+}
+
+.vv-art {
+  width: 100%;
+  max-height: calc(100dvh - 160px);
+  overflow: visible;
+  transition: filter 1.2s ease;
+
+  --humidity: 0.6;
+  --light: 0.5;
+  --air: 0.2;
+  --soil: hsl(28 36% 42%);
+  --glow: hsl(130 40% 82%);
+}
+
+.vv-caption {
+  max-width: 44ch;
+  margin-top: 8px;
+  font-family: var(--vv-serif);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--vv-ink-soft);
+  text-align: center;
+}
+
+.vv-caption span {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--vv-sans);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--vv-accent);
+}
+
+.vv-copy {
+  min-width: 0;
+  margin: 0;
+  padding-top: clamp(4px, 2vh, 24px);
+}
+
+.vv-kicker {
+  margin-bottom: 10px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vv-accent);
+}
+
+.vv-verdict {
+  max-width: 18ch;
+  font-family: var(--vv-serif);
+  font-size: clamp(1.8rem, 3.6vw, 3.2rem);
+  font-weight: 350;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--vv-ink);
+  text-wrap: balance;
+}
+
+.vv-lede {
+  max-width: 48ch;
+  margin: 12px 0 28px;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--vv-ink-soft);
+}
+
+.vv-verdict span,
+.vv-lede span {
+  display: block;
+  transition: opacity 0.35s ease, transform 0.35s var(--vv-ease-out);
+}
+
+.vv-verdict span.is-changing,
+.vv-lede span.is-changing {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.vv-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(8px, 1.5vh, 16px);
+}
+
+
+/* ── Desktop medio (≥1200×680): fit a schermo, letture in 1 colonna ── */
+@media (min-width: 1200px) and (min-height: 680px) {
+  .vv-page--dash {
+    /* Scala unitless: 100dvh/900px ≈ 1 a 900px di altezza */
+    --vv-s: clamp(0.88, 100dvh / 900px, 1.5);
+    height: 100dvh;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  .vv-page--dash .vv-top {
+    padding-top: calc(12px * var(--vv-s));
+    padding-bottom: calc(8px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-brand {
+    font-size: calc(1.05rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-brand img {
+    width: calc(34px * var(--vv-s));
+    height: calc(34px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-status {
+    font-size: calc(0.78rem * var(--vv-s));
+    padding: calc(4px * var(--vv-s)) calc(12px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-ts {
+    font-size: calc(0.78rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-dash {
+    height: 100%;
+    min-height: 0;
+    max-width: min(1680px, 96vw);
+    width: 100%;
+    margin-inline: auto;
+    padding: calc(10px * var(--vv-s)) clamp(20px, 3vw, 56px);
+    box-sizing: border-box;
+    /* Più aria tra tavola e testi: i marker SVG non devono invadere le letture */
+    grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+    gap: clamp(36px, 4.5vw, 64px);
+    align-content: center;
+    align-items: center;
+  }
+
+  .vv-page--dash .vv-plate {
+    position: static;
+    height: auto;
+    max-height: calc(100dvh - 7.5rem);
+    min-height: 0;
+    justify-content: center;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .vv-page--dash .vv-art {
+    max-height: none;
+    height: clamp(300px, calc(68dvh * var(--vv-s) / 1.1), calc(100dvh - 8rem));
+    width: auto;
+    max-width: 100%;
+    aspect-ratio: 430 / 386;
+    margin-inline: auto;
+    flex: 0 1 auto;
+    overflow: visible;
+  }
+
+  .vv-page--dash .vv-caption {
+    font-size: calc(0.82rem * var(--vv-s));
+    margin-top: calc(8px * var(--vv-s));
+    max-width: 46ch;
+  }
+
+  .vv-page--dash .vv-copy {
+    height: auto;
+    max-height: calc(100dvh - 7.5rem);
+    min-height: 0;
+    min-width: 0;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .vv-page--dash .vv-kicker {
+    margin-bottom: calc(8px * var(--vv-s));
+    font-size: calc(0.72rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-verdict {
+    font-size: calc(2.4rem * var(--vv-s));
+    max-width: 18ch;
+  }
+
+  .vv-page--dash .vv-lede {
+    margin: calc(10px * var(--vv-s)) 0 calc(18px * var(--vv-s));
+    font-size: calc(1rem * var(--vv-s));
+  }
+
+  /* Una sola colonna: label + sparkline + valore hanno spazio */
+  .vv-page--dash .vv-columns {
+    flex: 0 1 auto;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: calc(12px * var(--vv-s));
+    align-content: start;
+  }
+
+  .vv-page--dash .vv-chapter {
+    margin-bottom: calc(22px * var(--vv-s));
+    padding-top: calc(12px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-chapter + .vv-chapter {
+    margin-top: calc(12px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-chapter__head {
+    margin-bottom: calc(8px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-chapter__head h2 {
+    font-size: calc(1.35rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-chapter__num {
+    font-size: calc(0.72rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-chapter__source {
+    font-size: calc(0.52rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-reading {
+    padding: calc(12px * var(--vv-s)) 0 calc(10px * var(--vv-s));
+    column-gap: calc(16px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-reading__label {
+    font-size: calc(0.9rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-reading__number {
+    font-size: calc(2rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-reading__unit {
+    font-size: calc(0.82rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-reading__spark {
+    height: calc(22px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-scale {
+    height: calc(12px * var(--vv-s));
+    margin: calc(10px * var(--vv-s)) 0 calc(6px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-reading__range,
+  .vv-page--dash .vv-reading__state {
+    font-size: calc(0.72rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-aside {
+    font-size: calc(0.72rem * var(--vv-s));
+    padding-top: calc(8px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-back {
+    display: none;
+  }
+
+  .vv-page--dash .vv-foot {
+    padding: calc(10px * var(--vv-s)) 24px;
+    font-size: calc(0.78rem * var(--vv-s));
+  }
+}
+
+/* ── Desktop largo (≥1400): letture in due colonne ── */
+@media (min-width: 1400px) and (min-height: 680px) {
+  .vv-page--dash .vv-dash {
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 1fr);
+    gap: calc(40px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-art {
+    height: clamp(340px, calc(76dvh * var(--vv-s) / 1.1), calc(100dvh - 8rem));
+  }
+
+  .vv-page--dash .vv-verdict {
+    font-size: calc(2.55rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-columns {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: calc(36px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-chapter {
+    margin-bottom: calc(26px * var(--vv-s));
+    padding-top: calc(14px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-chapter + .vv-chapter {
+    margin-top: calc(16px * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-reading__number {
+    font-size: calc(2.15rem * var(--vv-s));
+  }
+
+  .vv-page--dash .vv-chapter__head h2 {
+    font-size: calc(1.45rem * var(--vv-s));
+  }
+}
+
+/* Monitor molto alti: un po' più di scala e larghezza */
+@media (min-width: 1400px) and (min-height: 1000px) {
+  .vv-page--dash {
+    --vv-s: clamp(1.12, 100dvh / 900px, 1.55);
+  }
+
+  .vv-page--dash .vv-dash {
+    max-width: min(1760px, 96vw);
+  }
+}
+
+/* Sotto la soglia desktop: tavola più contenuta */
+@media (max-width: 1199px), (max-height: 679px) {
+  .vv-plate {
+    position: static;
+  }
+
+  .vv-art {
+    max-height: 48vh;
+  }
+}
+
+@media (max-width: 440px) {
+  .vv-caption {
+    font-size: 0.8rem;
+  }
+}

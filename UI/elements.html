@@ -6,216 +6,481 @@
   <title>Elementi UI — VasoVivo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body>
+<body class="vv-page">
 
-  <header class="vv-header--compact">
-    <a href="index.html" class="vv-header-link">
-      <img src="../img/logo-small.png" alt="VasoVivo logo" />
-      <h1>VasoVivo</h1>
+  <header class="vv-top">
+    <a class="vv-brand vv-brand--logo" href="../index.html">
+      <img src="../img/logo.svg" alt="VasoVivo" />
     </a>
-    <p class="vv-tagline">Glossario componenti UI</p>
+    <div class="vv-top__meta">
+      <a href="../index.html">Home</a>
+    </div>
   </header>
 
-  <main class="vv-main--dashboard">
+  <main class="vv-kit-page">
 
-    <p class="vv-intro">
-      Riferimento per costruire dashboard VasoVivo. Tutti i componenti usano il prefisso <code>vv-</code>
-      e sono definiti in <code>css/vv-ui/</code>. Includi <code>../css/style.css</code> e il font Lexend nella pagina.
-    </p>
-
-    <!-- TOKEN -->
-    <section>
-      <h2>Token e tipografia</h2>
-      <p>Paragrafo base con <strong>testo in evidenza</strong> e <a href="#">link</a>.</p>
-      <div class="vv-swatch-row">
-        <span class="vv-swatch vv-swatch--accent">--accent</span>
-        <span class="vv-swatch vv-swatch--accent-light">--accent-light</span>
-        <span class="vv-swatch vv-swatch--muted">--muted</span>
-      </div>
-      <code class="vv-code">body · font Lexend · 16px · weight 300</code>
-    </section>
-
-    <hr class="vv-divider" />
-
-    <!-- LAYOUT -->
-    <section>
-      <h2>Layout</h2>
-      <p class="vv-intro">.vv-intro — testo introduttivo attenuato</p>
-      <p class="vv-back-link"><a href="#">.vv-back-link</a></p>
-      <code class="vv-code">.vv-header--compact · .vv-header-link · .vv-tagline · .vv-main--dashboard · .vv-divider · .vv-section-title</code>
-    </section>
-
-    <hr class="vv-divider" />
-
-    <!-- DASHBOARD HEADER -->
-    <section>
-      <h2>Intestazione dashboard</h2>
-      <div class="vv-dashboard-header">
-        <div class="vv-dashboard-header__info">
-          <h2>EKLATANT #1</h2>
-          <p class="vv-dashboard-header__meta">IKEA EKLATANT · 4.2 l · Pioppino</p>
-        </div>
-        <div class="vv-dashboard-header__badges">
-          <span class="vv-status vv-status--ok">&#9679; Connesso</span>
-          <span class="vv-ts">Ultimo aggiornamento: 14:32:05</span>
-        </div>
-      </div>
-      <code class="vv-code">.vv-dashboard-header · .vv-dashboard-header__info · .vv-dashboard-header__meta · .vv-dashboard-header__badges · .vv-ts</code>
-    </section>
-
-    <hr class="vv-divider" />
-
-    <!-- BADGE -->
-    <section>
-      <h2>Badge e stato</h2>
-      <span class="vv-status vv-status--ok">&#9679; .vv-status--ok</span>
-      <span class="vv-status vv-status--warn" style="margin-left: 8px;">&#9679; .vv-status--warn</span>
-      <br /><br />
-      <span class="vv-badge vv-badge--no-margin">&#9679; .vv-badge</span>
-      <code class="vv-code">.vv-status · .vv-status--ok · .vv-status--warn · .vv-badge · .vv-badge--no-margin</code>
-      <br />
-      <span class="vv-status vv-status--ok"><span class="vv-status__dot"></span> Connesso</span>
-      <span class="vv-status vv-status--warn" style="margin-left: 8px;"><span class="vv-status__dot"></span> Non raggiungibile</span>
-      <code class="vv-code">.vv-status__dot — indicatore; pulsa dentro .vv-status--ok</code>
-      <br />
-      <div class="vv-sensor-list">
-        <span class="vv-status vv-status--ok">✓ AHT21</span>
-        <span class="vv-status vv-status--warn">✕ ENS160</span>
-      </div>
-      <code class="vv-code">.vv-sensor-list — elenco di badge di stato</code>
-    </section>
-
-    <hr class="vv-divider" />
-
-    <!-- GROUPS -->
-    <section>
-      <h2>Gruppi di metriche</h2>
-      <div class="vv-dashboard-group">
-        <h3 class="vv-dashboard-group__title">Aria</h3>
-        <div class="vv-metric-grid">
-          <div class="vv-metric">
-            <div class="vv-metric__icon">🌡️</div>
-            <div class="vv-metric__label">Temperatura aria</div>
-            <div class="vv-metric__value">22.4 <span class="vv-metric__unit">°C</span></div>
-          </div>
-          <div class="vv-metric">
-            <div class="vv-metric__icon">💧</div>
-            <div class="vv-metric__label">Umidità aria</div>
-            <div class="vv-metric__value">78 <span class="vv-metric__unit">% RH</span></div>
-          </div>
-        </div>
-      </div>
-      <code class="vv-code">.vv-dashboard-group · .vv-dashboard-group__title</code>
-    </section>
-
-    <hr class="vv-divider" />
-
-    <!-- LIVE METRICS -->
-    <section>
-      <h2>Metriche</h2>
-      <div class="vv-metric-grid">
-        <div class="vv-metric">
-          <div class="vv-metric__icon">🌡️</div>
-          <div class="vv-metric__label">Temperatura aria</div>
-          <div class="vv-metric__value">22.4 <span class="vv-metric__unit">°C</span></div>
-        </div>
-        <div class="vv-metric vv-metric--highlight">
-          <div class="vv-metric__icon">💨</div>
-          <div class="vv-metric__label">TVOC</div>
-          <div class="vv-metric__value">120 <span class="vv-metric__unit">ppb</span></div>
-        </div>
-      </div>
-      <code class="vv-code">.vv-metric-grid · .vv-metric · .vv-metric--highlight · .vv-metric__icon · .vv-metric__label · .vv-metric__value · .vv-metric__unit</code>
-    </section>
-
-    <hr class="vv-divider" />
-
-    <!-- LIVE METRICS -->
-    <section>
-      <h2>Metriche dal vivo</h2>
-      <div class="vv-metric-grid">
-        <div class="vv-metric">
-          <div class="vv-metric__icon">💧</div>
-          <div class="vv-metric__label">Con barra e nota</div>
-          <div class="vv-metric__value"><span class="vv-metric__number">86,0</span> <span class="vv-metric__unit">%</span></div>
-          <div class="vv-metric__hint">AHT21</div>
-          <div class="vv-metric__bar"><div class="vv-metric__bar-fill" style="--fill: 86%"></div></div>
-        </div>
-        <div class="vv-metric vv-metric--highlight">
-          <div class="vv-metric__icon">🌱</div>
-          <div class="vv-metric__label">Fuori soglia</div>
-          <div class="vv-metric__value"><span class="vv-metric__number">22</span> <span class="vv-metric__unit">%</span></div>
-          <div class="vv-metric__hint">troppo secco</div>
-          <div class="vv-metric__bar"><div class="vv-metric__bar-fill" style="--fill: 22%"></div></div>
-        </div>
-        <div class="vv-metric vv-metric--loading">
-          <div class="vv-metric__icon">🌿</div>
-          <div class="vv-metric__label">In attesa</div>
-          <div class="vv-metric__value"><span class="vv-metric__number">000</span> <span class="vv-metric__unit">ppm</span></div>
-          <div class="vv-metric__hint">primo dato</div>
-        </div>
-        <div class="vv-metric vv-metric--na">
-          <div class="vv-metric__icon">☀️</div>
-          <div class="vv-metric__label">Non disponibile</div>
-          <div class="vv-metric__value"><span class="vv-metric__number">—</span> <span class="vv-metric__unit">lux</span></div>
-          <div class="vv-metric__hint">sensore non trovato</div>
-        </div>
-      </div>
-      <code class="vv-code">.vv-metric__number · .vv-metric__hint · .vv-metric__bar · .vv-metric__bar-fill (--fill: 0–100%) · .vv-metric--loading · .vv-metric--na · .vv-dashboard--stale</code>
-    </section>
-
-    <hr class="vv-divider" />
-
-    <!-- MOTION -->
-    <section>
-      <h2>Animazioni</h2>
-      <p>
-        Definite in <code>css/vv-ui/motion.css</code> e disattivate se il sistema chiede di ridurre il movimento.
-        Le metriche si sollevano al passaggio del mouse; <code>.vv-metric--updated</code> segnala un valore appena cambiato.
+    <header class="vv-page-head">
+      <span class="vv-eyebrow">UI Kit</span>
+      <h1 class="vv-page-head__title">Elementi</h1>
+      <p class="vv-page-head__lede">
+        Unico UI Kit del progetto. I componenti usano il prefisso <code>vv-</code>
+        e sono definiti in <code>css/vv-ui/</code>. Entry point: <code>css/style.css</code>.
+        Font: Fraunces (titoli) e Lexend (dati). Sul sito e in anteprima i font arrivano da Google;
+        sulla scheda ESP32 si usano i fallback di sistema.
       </p>
-      <code class="vv-code">.vv-reveal (ingresso, ritardo con --i) · .vv-metric--updated · .vv-metric--loading · .vv-status--ok .vv-status__dot</code>
+    </header>
+
+    <section>
+      <h2>Principi</h2>
+      <p>Carta calda, inchiostro scuro, un solo accento verde. I titoli sono in serif; i numeri e le etichette in sans. L’illustrazione non è decorativa: reagisce alle letture. Le card generiche sono evitate: si raggruppa con linee e spazi.</p>
+      <code class="vv-code">--vv-paper · --vv-ink · --vv-accent · --vv-serif · --vv-sans · --vv-ease-out</code>
+    </section>
+
+    <section>
+      <h2>Token</h2>
+      <div class="vv-swatch-row">
+        <span class="vv-swatch vv-swatch--paper">--vv-paper</span>
+        <span class="vv-swatch vv-swatch--deep">--vv-paper-deep</span>
+        <span class="vv-swatch vv-swatch--light">--vv-paper-light</span>
+        <span class="vv-swatch vv-swatch--ink">--vv-ink</span>
+        <span class="vv-swatch vv-swatch--accent">--vv-accent</span>
+        <span class="vv-swatch vv-swatch--warn">--vv-warn</span>
+      </div>
+      <code class="vv-code">css/vv-ui/tokens.css</code>
+    </section>
+
+    <section>
+      <h2>Tipografia</h2>
+      <p>
+        Due famiglie: <strong>Fraunces</strong> per i titoli (serif, espressiva) e
+        <strong>Lexend</strong> per testi, etichette e numeri (sans).
+        La scala tipografica è nei token e nelle utility <code>.vv-text-*</code>.
+      </p>
+      <div class="vv-flex vv-flex-col vv-gap-3 vv-my-5">
+        <p class="vv-serif vv-text-3xl vv-leading-tight vv-mb-0">Fraunces — titolo grande</p>
+        <p class="vv-serif vv-text-2xl vv-leading-tight vv-mb-0">Fraunces — titolo</p>
+        <p class="vv-serif vv-text-xl vv-mb-0">Fraunces — sezione</p>
+        <p class="vv-text-lg vv-mb-0">Lexend — testo ampio</p>
+        <p class="vv-text-md vv-mb-0">Lexend — corpo del testo, leggibile e leggero.</p>
+        <p class="vv-text-sm vv-text-soft vv-mb-0">Lexend — testo secondario e metadati.</p>
+        <p class="vv-text-xs vv-text-soft vv-mb-0">Lexend — didascalie e note minute.</p>
+        <p class="vv-eyebrow vv-mb-0">Eyebrow / etichetta</p>
+        <p class="vv-tabular vv-text-2xl vv-serif vv-mb-0">12,4 · 847 · 55%</p>
+      </div>
+      <code class="vv-code">font     --vv-serif  --vv-sans
+scala    --vv-text-xs … --vv-text-3xl
+utility  .vv-serif  .vv-sans  .vv-text-xs…3xl  .vv-eyebrow  .vv-tabular
+         .vv-font-light|normal|medium|semibold  .vv-leading-tight|snug</code>
+    </section>
+
+    <section>
+      <h2>Classi utility</h2>
+      <p>
+        Per piccoli aggiustamenti di spazio, colore o allineamento si usano classi pronte,
+        basate sulla scala dei token. La scala degli spazi ha passo 4&nbsp;px:
+        <code>0 = 0</code>, <code>1 = 4</code>, <code>2 = 8</code>, <code>3 = 12</code>,
+        <code>4 = 16</code>, <code>5 = 24</code>, <code>6 = 32</code>, <code>7 = 48</code>, <code>8 = 64</code>.
+        Usarle evita stili inline e tiene le distanze coerenti.
+      </p>
+      <div class="vv-flex vv-flex-wrap vv-gap-2 vv-my-4">
+        <span class="vv-swatch vv-bg-light vv-p-3">vv-p-3</span>
+        <span class="vv-swatch vv-bg-light vv-px-5 vv-py-3">vv-px-5 vv-py-3</span>
+        <span class="vv-swatch vv-bg-accent vv-p-3">vv-bg-accent</span>
+      </div>
+      <code class="vv-code">margini   .vv-m-N  .vv-mt-N  .vv-mb-N  .vv-ml-N  .vv-mr-N  .vv-mx-N  .vv-my-N
+padding   .vv-p-N  .vv-pt-N  .vv-pb-N  .vv-px-N  .vv-py-N
+flex/gap  .vv-flex  .vv-flex-col  .vv-flex-wrap  .vv-items-center  .vv-gap-N
+griglie   .vv-grid-2  .vv-grid-3  .vv-grid-auto
+tipo      .vv-text-xs…3xl  .vv-serif  .vv-eyebrow  .vv-tabular
+testo     .vv-text-ink  .vv-text-soft  .vv-text-accent  .vv-text-warn
+sfondo    .vv-bg-paper  .vv-bg-deep  .vv-bg-light  .vv-bg-accent
+N = 0…8 sulla scala 0,4,8,12,16,24,32,48,64 px · css/vv-ui/utilities.css</code>
     </section>
 
     <hr class="vv-divider" />
 
-    <!-- INFO LIST -->
     <section>
-      <h2>Informazioni scheda</h2>
-      <div class="vv-panel">
-        <dl class="vv-info-list">
+      <h2>Illustrazione</h2>
+      <p>
+        Il disegno del barattolo EKLATANT 4,2&nbsp;l (diametro 20&nbsp;cm, altezza 18,5&nbsp;cm) con coperchio bianco stampato
+        e sensori sotto il coperchio. Le variabili CSS su <code>.vv-art</code> guidano l’aspetto.
+        Muovi i cursori per vederle cambiare.
+      </p>
+
+      <div class="vv-sliders" id="art-sliders">
+        <label>Umidità aria <input type="range" min="0" max="100" value="75" data-var="humidity" data-scale="0.01" /> <output>0.75</output></label>
+        <label>Luce <input type="range" min="0" max="100" value="55" data-var="light" data-scale="0.01" /> <output>0.55</output></label>
+        <label>Aria (gas) <input type="range" min="0" max="100" value="25" data-var="air" data-scale="0.01" /> <output>0.25</output></label>
+        <label>Temperatura °C <input type="range" min="10" max="35" value="22" data-var="temp" data-scale="1" /> <output>22</output></label>
+        <label>Substrato % <input type="range" min="0" max="100" value="55" data-var="moisture" data-scale="1" /> <output>55</output></label>
+      </div>
+
+      <div class="vv-demo-art" id="dashboard" data-manual="true">
+        <svg class="vv-art" id="jar-art" viewBox="36 36 430 386" role="img" aria-labelledby="jar-art-title">
+        <title id="jar-art-title">Barattolo IKEA EKLATANT con pioppini: condensa, luce, aria e substrato cambiano con le letture</title>
+        <defs>
+          <radialGradient id="vv-glow" cx="50%" cy="48%" r="55%">
+            <stop offset="0" class="vv-glow-stop" />
+            <stop offset="1" class="vv-glow-stop" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="vv-ray" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff7dc" stop-opacity="0.95" />
+            <stop offset="1" stop-color="#fff7dc" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="vv-glass" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.55" />
+            <stop offset="0.16" stop-color="#ffffff" stop-opacity="0.08" />
+            <stop offset="0.72" stop-color="#ffffff" stop-opacity="0" />
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0.28" />
+          </linearGradient>
+          <linearGradient id="vv-lid" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7f5f1" />
+            <stop offset="0.55" stop-color="#eceae4" />
+            <stop offset="1" stop-color="#ddd9d1" />
+          </linearGradient>
+          <radialGradient id="vv-cap" cx="50%" cy="20%" r="85%">
+            <stop offset="0" stop-color="#4f311d" />
+            <stop offset="0.5" stop-color="#83563a" />
+            <stop offset="1" stop-color="#c9a47c" />
+          </radialGradient>
+          <linearGradient id="vv-stem" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#e2d6c0" />
+            <stop offset="0.45" stop-color="#f6efe2" />
+            <stop offset="1" stop-color="#d5c6aa" />
+          </linearGradient>
+          <filter id="vv-blur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="8" />
+          </filter>
+          <!-- Interno del vetro: cilindro largo e basso, angoli morbidi in basso -->
+          <clipPath id="vv-inside">
+            <path d="M118 98 H402 V318 Q402 348 372 348 H148 Q118 348 118 318 Z" />
+          </clipPath>
+        </defs>
+
+        <!-- Alone soft (colore = temperatura), senza nicchia -->
+        <circle cx="260" cy="230" r="175" fill="url(#vv-glow)" opacity="0.7" />
+        <ellipse class="vv-shadow" cx="260" cy="392" rx="155" ry="10" />
+
+        <!-- Luce dall'alto -->
+        <g class="vv-rays">
+          <g class="vv-rays__flicker">
+            <polygon points="300,20 340,20 310,400 250,400" fill="url(#vv-ray)" />
+            <polygon points="360,20 382,20 350,400 312,400" fill="url(#vv-ray)" />
+            <polygon points="250,20 268,20 200,400 168,400" fill="url(#vv-ray)" />
+          </g>
+        </g>
+
+        <!-- Corpo in vetro (fondo) -->
+        <path class="vv-glass-back" d="M114 94 H406 V316 Q406 354 370 354 H150 Q114 354 114 316 Z" />
+
+        <g clip-path="url(#vv-inside)">
+          <g class="vv-mist">
+            <ellipse class="vv-mist__cloud" cx="200" cy="150" rx="110" ry="26" filter="url(#vv-blur)" />
+            <ellipse class="vv-mist__cloud vv-mist__cloud--slow" cx="320" cy="200" rx="95" ry="22" filter="url(#vv-blur)" />
+            <ellipse class="vv-mist__cloud" cx="250" cy="250" rx="120" ry="24" filter="url(#vv-blur)" />
+          </g>
+          <g id="jar-particles"></g>
+
+          <!-- Sensori sotto il coperchio, centrati sull'asse del barattolo (≈260) -->
+          <g id="jar-sensors">
+            <!-- Aria: ENS160 + AHT21 -->
+            <g class="vv-mod vv-mod--air" transform="translate(214 106)">
+              <rect class="vv-board" x="0" y="0" width="54" height="26" rx="3.5" />
+              <rect class="vv-board__edge" x="1.5" y="1.5" width="51" height="23" rx="2.5" />
+              <rect class="vv-chip-ic" x="8" y="6" width="16" height="12" rx="1.2" />
+              <rect class="vv-chip-ic vv-chip-ic--sm" x="28" y="8" width="10" height="8" rx="1" />
+              <circle class="vv-led" cx="46" cy="7" r="2.2" />
+              <g class="vv-pins">
+                <rect x="6" y="21" width="3" height="3.5" rx="0.4" />
+                <rect x="12" y="21" width="3" height="3.5" rx="0.4" />
+                <rect x="18" y="21" width="3" height="3.5" rx="0.4" />
+                <rect x="24" y="21" width="3" height="3.5" rx="0.4" />
+                <rect x="30" y="21" width="3" height="3.5" rx="0.4" />
+                <rect x="36" y="21" width="3" height="3.5" rx="0.4" />
+              </g>
+            </g>
+            <!-- Luce: BH1750 con finestra fotodiodo -->
+            <g class="vv-mod vv-mod--light" transform="translate(276 108)">
+              <rect class="vv-board vv-board--dark" x="0" y="0" width="34" height="24" rx="3" />
+              <circle class="vv-sense-window" cx="12" cy="12" r="7.5" />
+              <circle class="vv-sense-lens" cx="12" cy="12" r="4.2" />
+              <rect class="vv-chip-ic vv-chip-ic--sm" x="22" y="7" width="8" height="10" rx="1" />
+              <circle class="vv-pad" cx="26" cy="20" r="1.1" />
+              <circle class="vv-pad" cx="30" cy="20" r="1.1" />
+            </g>
+          </g>
+
+          <g id="jar-shrooms"></g>
+          <path class="vv-soil" d="M120 278 Q160 266 200 274 T280 270 T398 280 V348 H120 Z" />
+          <g id="jar-chips"></g>
+          <g id="jar-mycelium"></g>
+
+          <!-- Sensore capacitivo umidità (lama PCB nera infilata nel substrato) -->
+          <g id="jar-probe">
+            <path class="vv-wire" d="M220 132 C168 148 142 195 150 256" pathLength="1" />
+            <rect class="vv-cap-probe__head" x="141" y="250" width="18" height="22" rx="1.5" />
+            <rect class="vv-cap-probe__conn" x="145" y="248" width="10" height="5" rx="0.8" />
+            <rect class="vv-chip-ic vv-chip-ic--sm" x="145" y="256" width="7" height="5" rx="0.6" />
+            <circle class="vv-pad" cx="155" cy="258.5" r="0.9" />
+            <circle class="vv-pad" cx="155" cy="262" r="0.9" />
+            <path class="vv-cap-probe" d="M143 270 H157 V318 L150 336 L143 318 Z" />
+            <path class="vv-cap-probe__line" d="M150 276 V314" />
+          </g>
+
+          <rect class="vv-wash" x="114" y="94" width="292" height="260" fill="url(#vv-ray)" />
+          <g id="jar-drops"></g>
+        </g>
+
+        <!-- Vetro, bordo e coperchio bianco -->
+        <path d="M114 94 H406 V316 Q406 354 370 354 H150 Q114 354 114 316 Z"
+              fill="url(#vv-glass)" class="vv-outline" />
+        <path class="vv-shine" d="M132 118 Q124 220 132 320" />
+        <path class="vv-shine vv-shine--thin" d="M386 130 Q394 230 388 310" />
+        <!-- Spessore del fondo in vetro -->
+        <path d="M150 348 H370 Q390 348 396 336 H124 Q130 348 150 348 Z"
+              fill="rgba(255,255,255,0.22)" stroke="rgba(31,38,32,0.2)" stroke-width="0.8" />
+
+        <rect class="vv-glass-rim" x="118" y="88" width="284" height="10" rx="2" />
+        <rect class="vv-gasket" x="122" y="82" width="276" height="7" rx="2" />
+        <!-- Coperchio stampato 3D, bianco, a filo -->
+        <rect class="vv-lid vv-outline" x="110" y="58" width="300" height="28" rx="6" />
+        <path class="vv-lid-layers"
+              d="M120 66 H400 M118 72 H402 M122 78 H398" />
+
+        <!-- Richiami: 1 Aria (moduli sotto il coperchio), 2 Luce, 3 Substrato -->
+        <g class="vv-marker" data-marker="1" style="--i: 1">
+          <path d="M214 118 H84" />
+          <circle class="vv-marker__anchor" cx="214" cy="118" r="2.6" />
+          <circle class="vv-marker__ring" cx="70" cy="122" r="11" />
+          <text x="70" y="126">1</text>
+          <text class="vv-marker__label" x="70" y="150">Aria</text>
+        </g>
+        <g class="vv-marker" data-marker="2" style="--i: 2">
+          <path d="M310 120 H436" />
+          <circle class="vv-marker__anchor" cx="310" cy="120" r="2.6" />
+          <circle class="vv-marker__ring" cx="450" cy="121" r="11" />
+          <text x="450" y="125">2</text>
+          <text class="vv-marker__label" x="450" y="149">Luce</text>
+        </g>
+        <g class="vv-marker" data-marker="3" style="--i: 3">
+          <path d="M150 292 H84" />
+          <circle class="vv-marker__anchor" cx="150" cy="292" r="2.6" />
+          <circle class="vv-marker__ring" cx="70" cy="292" r="11" />
+          <text x="70" y="296">3</text>
+          <text class="vv-marker__label" x="70" y="320">Substrato</text>
+        </g>
+      </svg>
+      </div>
+
+      <code class="vv-code">.vv-art --humidity --light --air --glow --soil
+.js: VVArt.set({ humidity, light, air, temp, moisture })</code>
+    </section>
+
+    <hr class="vv-divider" />
+
+    <section>
+      <h2>Titolo e stato</h2>
+      <p class="vv-kicker">Barattolo n. 1 · Pioppino</p>
+      <h1 class="vv-verdict"><span>Il barattolo sta bene.</span></h1>
+      <p class="vv-lede"><span>Aria, luce e substrato sono nella fascia ideale per il pioppino.</span></p>
+      <div class="vv-flex vv-flex-wrap vv-gap-3 vv-my-4">
+        <span class="vv-status vv-status--ok"><span class="vv-status__dot"></span> Connesso</span>
+        <span class="vv-status vv-status--warn"><span class="vv-status__dot"></span> Non raggiungibile</span>
+        <span class="vv-ts">Aggiornato alle 17:48:02</span>
+      </div>
+      <code class="vv-code">.vv-kicker · .vv-verdict · .vv-lede · .vv-status · .vv-status--ok · .vv-status--warn · .vv-ts</code>
+    </section>
+
+    <section>
+      <h2>Capitolo e lettura</h2>
+      <section class="vv-chapter" aria-labelledby="ex-air">
+        <header class="vv-chapter__head">
+          <span class="vv-chapter__num">01</span>
+          <h2 id="ex-air">Aria</h2>
+          <span class="vv-chapter__source">AHT21 · ENS160</span>
+        </header>
+
+        <div class="vv-reading vv-reading--live vv-reading--ok" id="ex-temp" data-min="10" data-max="35" data-low="16" data-high="24">
+          <span class="vv-reading__label">Temperatura</span>
+          <svg class="vv-reading__spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,18 10,14 20,16 30,10 40,12 50,8 60,11 70,9 80,13 90,7 100,10" />
+          </svg>
+          <span class="vv-reading__value"><span class="vv-reading__number">22,4</span><span class="vv-reading__unit">°C</span></span>
+          <span class="vv-scale" aria-hidden="true" style="--from:24%;--to:56%">
+            <span class="vv-scale__ideal"></span>
+            <span class="vv-scale__needle" style="--pos:49.6%;opacity:1"></span>
+          </span>
+          <span class="vv-reading__range">ideale 16–24 °C</span>
+          <span class="vv-reading__state">nella fascia</span>
+        </div>
+
+        <div class="vv-reading vv-reading--live vv-reading--high" data-min="40" data-max="100" data-low="85" data-high="95">
+          <span class="vv-reading__label">Umidità</span>
+          <svg class="vv-reading__spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,12 20,10 40,8 60,6 80,4 100,3" />
+          </svg>
+          <span class="vv-reading__value"><span class="vv-reading__number">97</span><span class="vv-reading__unit">%</span></span>
+          <span class="vv-scale" aria-hidden="true" style="--from:75%;--to:91.7%">
+            <span class="vv-scale__ideal"></span>
+            <span class="vv-scale__needle" style="--pos:95%;opacity:1"></span>
+          </span>
+          <span class="vv-reading__range">ideale 85–95 %</span>
+          <span class="vv-reading__state">sopra la fascia</span>
+        </div>
+
+        <p class="vv-aside">Composti volatili 120 ppb. Indice di qualità dell’aria 2 su 5: buona.</p>
+      </section>
+      <code class="vv-code">.vv-chapter · .vv-reading · .vv-scale · .vv-scale__ideal · .vv-scale__needle
+data-min data-max data-low data-high [data-scale="log"]
+stati: --ok --low --high --live</code>
+    </section>
+
+    <section>
+      <h2>Cartellino</h2>
+      <aside class="vv-label">
+        <p class="vv-label__title"><span>04</span> Sensori e scheda</p>
+        <dl>
+          <div class="vv-label__wide"><dt>Sensori</dt><dd>
+            <span class="vv-sensor">AHT21</span>
+            <span class="vv-sensor">ENS160</span>
+            <span class="vv-sensor">BH1750</span>
+            <span class="vv-sensor vv-sensor--missing">LDR assente</span>
+          </dd></div>
           <div><dt>Rete Wi-Fi</dt><dd>VasoVivo</dd></div>
           <div><dt>Indirizzo</dt><dd>192.168.4.1</dd></div>
-          <div><dt>Accesa da</dt><dd>00:12:34</dd></div>
+          <div><dt>Dispositivi collegati</dt><dd>1</dd></div>
+          <div><dt>Accesa da</dt><dd>00:12:49</dd></div>
         </dl>
-      </div>
-      <code class="vv-code">.vv-info-list — coppie dt/dd in griglia</code>
+      </aside>
+      <code class="vv-code">.vv-label · .vv-sensor · .vv-sensor--missing</code>
+    </section>
+
+    <section>
+      <h2>Stati della pagina</h2>
+      <p><code>.vv-dash--loading</code> — numeri in shimmer in attesa della prima lettura.</p>
+      <p><code>.vv-dash--stale</code> — illustrazione in grigio e letture attenuate se la scheda non risponde.</p>
+      <p>Le animazioni continue (nebbia, oscillazione, LED) si disattivano con <code>prefers-reduced-motion</code>.</p>
     </section>
 
     <hr class="vv-divider" />
 
-    <!-- PANEL -->
+
     <section>
-      <h2>Panel</h2>
-      <div class="vv-panel">
-        <p>Contenitore superficie per avvisi, note o riepiloghi testuali nella dashboard.</p>
+      <h2>Componenti del sito</h2>
+      <p>Hero, sezioni a capitolo, card, pannelli e liste usati nel mini sito GitHub.</p>
+      <div class="vv-flex vv-flex-wrap vv-items-center vv-gap-3 vv-my-4">
+        <span class="vv-badge">Badge</span>
+        <span class="vv-badge vv-badge--solid">Solido</span>
+        <span class="vv-status vv-status--ok"><span class="vv-status__dot"></span> Ok</span>
+        <span class="vv-status vv-status--warn"><span class="vv-status__dot"></span> Attenzione</span>
       </div>
-      <code class="vv-code">.vv-panel</code>
+      <div class="vv-grid-2 vv-my-4">
+        <div class="vv-card vv-card--featured">
+          <div class="vv-card__title">Card in evidenza</div>
+          <div class="vv-card__subtitle">Sottotitolo</div>
+          <p>Testo di esempio sulla carta chiara.</p>
+        </div>
+        <div class="vv-card">
+          <div class="vv-card__title">Card semplice</div>
+          <div class="vv-card__subtitle">Sottotitolo</div>
+          <p>Stesso formato, senza bordo accent.</p>
+        </div>
+      </div>
+      <div class="vv-panel vv-my-4">
+        <p>Pannello / CTA: spazio per un invito all’azione.</p>
+        <a href="#" class="vv-link">Link di esempio →</a>
+      </div>
+      <code class="vv-code">.vv-hero · .vv-section · .vv-card · .vv-panel · .vv-item · .vv-param
+.vv-badge · .vv-badge.vv-badge--solid · .vv-status · .vv-page-head</code>
     </section>
 
-    <p class="vv-back-link">
-      <a href="index.html">← Dashboard dal vivo</a>
-    </p>
+    <section>
+      <h2>Come usarli</h2>
 
+      <h3>Pagina minima</h3>
+      <code class="vv-code">&lt;link rel="stylesheet" href="css/style.css" /&gt;
+&lt;body class="vv-page" data-source="demo"&gt;
+  … markup come in UI/index.html …
+  &lt;script src="js/vv-data.js"&gt;&lt;/script&gt;
+  &lt;script src="js/vv-jar.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+data-source="demo" → valori simulati
+data-source="/api/readings" → ESP32</code>
+
+      <h3>Aggiungere una lettura</h3>
+      <p>1. Aggiungi un blocco <code>.vv-reading</code> con <code>id</code>, <code>data-min/max/low/high</code> (e <code>data-scale="log"</code> se serve).</p>
+      <p>2. In <code>js/vv-jar.js</code>, estendi <code>valuesOf</code>, <code>DECIMALS</code> e, se vuoi un consiglio, <code>ADVICE</code> e <code>PRIORITY</code>.</p>
+
+      <h3>Copia per l’ESP32</h3>
+      <code class="vv-code">cd examples/wifi-illustrated
+./build-data.sh
+# poi carica data/ in LittleFS (vedi README dell’esempio)</code>
+
+      <h3>File del toolkit</h3>
+      <code class="vv-code">css/style.css             entry point
+css/vv-ui/tokens.css
+css/vv-ui/base.css
+css/vv-ui/layout.css
+css/vv-ui/site.css
+css/vv-ui/dashboard.css
+css/vv-ui/jar.css
+css/vv-ui/illustration.css
+css/vv-ui/readings.css
+css/vv-ui/components.css
+css/vv-ui/utilities.css   spazi, colori, tipografia
+css/vv-ui/motion.css
+js/vv-data.js             letture condivise
+js/vv-jar.js              tavola illustrata
+js/vv-dashboard.js        dashboard a schede
+UI/index.html             tavola illustrata
+UI/schede.html            dashboard a schede
+UI/elements.html          questo glossario
+img/logo.svg              wordmark orizzontale</code>
+    </section>
+
+    <p class="vv-back">
+      <a href="index.html">← Tavola illustrata</a>
+      <span class="vv-foot__sep">·</span>
+      <a href="schede.html">Dashboard a schede</a>
+      <span class="vv-foot__sep">·</span>
+      <a href="../index.html">Torna al sito</a>
+    </p>
   </main>
 
-  <footer>
-    VasoVivo UI Toolkit
-    &nbsp;·&nbsp;
-    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">GitHub</a>
+  <footer class="vv-foot">
+    <img class="vv-foot__logo" src="../img/logo.svg" alt="" />
+    Progetto open source
+    <span class="vv-foot__sep">·</span>
+    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">Vedi su GitHub</a>
+    <span class="vv-foot__sep">·</span>
+    Maker Faire Roma 2026 - Stand V13
   </footer>
 
+  <script src="../js/vv-data.js"></script>
+  <script src="../js/vv-jar.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById('art-sliders');
+      if (!root || !window.VVArt) return;
+
+      function apply() {
+        var opts = {};
+        root.querySelectorAll('input[type=range]').forEach(function (input) {
+          var scale = Number(input.dataset.scale) || 1;
+          var value = scale < 1 ? Number(input.value) * scale : Number(input.value);
+          opts[input.dataset.var] = value;
+          input.nextElementSibling.textContent = scale < 1 ? value.toFixed(2) : String(Math.round(value));
+        });
+        VVArt.set(opts);
+      }
+
+      root.addEventListener('input', apply);
+      apply();
+    })();
+  </script>
 </body>
 </html>

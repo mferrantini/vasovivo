@@ -1,5 +1,5 @@
 /**
- * VasoVivo UI v2 — dashboard illustrata
+ * VasoVivo — dashboard illustrata (tavola del barattolo)
  *
  * Disegna il barattolo EKLATANT e lo aggiorna a ogni lettura di VVData:
  *   umidità dell'aria → gocce di condensa e nebbia
@@ -72,14 +72,14 @@
       const top = -h;
 
       const place = make('g', { transform: 'translate(' + x + ' ' + SOIL_Y + ') rotate(' + lean + ')' }, group);
-      const grow = make('g', { class: 'vv2-shroom', style: '--i: ' + i }, place);
+      const grow = make('g', { class: 'vv-shroom', style: '--i: ' + i }, place);
       const sway = make('g', {
-        class: 'vv2-sway',
+        class: 'vv-sway',
         style: '--d: ' + between(4.5, 7.5).toFixed(2) + 's; --dd: -' + between(0, 6).toFixed(2) + 's'
       }, grow);
 
       make('path', {
-        class: 'vv2-stem',
+        class: 'vv-stem',
         d: path([
           'M', -w, 0,
           'C', -w, -h * 0.4, -w * 0.6 + bend, -h * 0.75, -w * 0.5 + bend, top,
@@ -88,7 +88,7 @@
         ])
       }, sway);
       make('path', {
-        class: 'vv2-cap',
+        class: 'vv-cap',
         d: path([
           'M', bend - r, top + 3,
           'C', bend - r, top - r * 0.95, bend + r, top - r * 0.95, bend + r, top + 3,
@@ -96,18 +96,18 @@
         ])
       }, sway);
       make('path', {
-        class: 'vv2-gills',
+        class: 'vv-gills',
         d: path(['M', bend - r * 0.82, top + 3, 'Q', bend, top + r * 0.32, bend + r * 0.82, top + 3])
       }, sway);
       make('ellipse', {
-        class: 'vv2-cap-shine',
+        class: 'vv-cap-shine',
         cx: round(bend - r * 0.35), cy: round(top - r * 0.42),
         rx: round(r * 0.28), ry: round(r * 0.12),
         transform: 'rotate(-18 ' + round(bend - r * 0.35) + ' ' + round(top - r * 0.42) + ')'
       }, sway);
 
       make('ellipse', {
-        class: 'vv2-foot', style: '--i: ' + i,
+        class: 'vv-foot', style: '--i: ' + i,
         cx: x, cy: SOIL_Y - 1, rx: round(w * 2), ry: 3
       }, feet);
     });
@@ -121,7 +121,7 @@
       const cy = round(between(286, 340));
       const rx = between(1.2, 3.6);
       make('ellipse', {
-        class: random() < 0.55 ? 'vv2-chip' : 'vv2-chip vv2-chip--dark',
+        class: random() < 0.55 ? 'vv-chip' : 'vv-chip vv-chip--dark',
         cx: cx, cy: cy, rx: round(rx), ry: round(rx * between(0.4, 0.8)),
         transform: 'rotate(' + Math.round(between(-40, 40)) + ' ' + cx + ' ' + cy + ')'
       }, chips);
@@ -140,7 +140,7 @@
         x = nx;
         y = ny;
       }
-      make('path', { class: 'vv2-hypha', d: path(parts), pathLength: 1, style: '--i: ' + i }, mycelium);
+      make('path', { class: 'vv-hypha', d: path(parts), pathLength: 1, style: '--i: ' + i }, mycelium);
     }
   }
 
@@ -153,17 +153,17 @@
       const x = band < 0.38 ? between(120, 138) : band < 0.76 ? between(382, 400) : between(150, 370);
       const y = band < 0.76 ? between(140, 270) : between(140, 220);
       const r = between(1.2, 3.4);
-      const drop = make('g', { class: 'vv2-drop', style: '--t: ' + ((i + random()) / count).toFixed(3) }, group);
+      const drop = make('g', { class: 'vv-drop', style: '--t: ' + ((i + random()) / count).toFixed(3) }, group);
 
       if (r > 2.6 && random() < 0.55) {
         make('path', {
-          class: 'vv2-drop__trail',
+          class: 'vv-drop__trail',
           'stroke-width': round(r * 0.55),
           d: path(['M', x, y + r, 'Q', x + 0.8, y + r + 6, x, y + r + between(6, 16)])
         }, drop);
       }
-      make('ellipse', { class: 'vv2-drop__bead', cx: round(x), cy: round(y), rx: round(r), ry: round(r * 1.18) }, drop);
-      make('circle', { class: 'vv2-drop__light', cx: round(x - r * 0.35), cy: round(y - r * 0.4), r: round(r * 0.3) }, drop);
+      make('ellipse', { class: 'vv-drop__bead', cx: round(x), cy: round(y), rx: round(r), ry: round(r * 1.18) }, drop);
+      make('circle', { class: 'vv-drop__light', cx: round(x - r * 0.35), cy: round(y - r * 0.4), r: round(r * 0.3) }, drop);
     }
   }
 
@@ -172,9 +172,9 @@
     if (!group) return;
     const count = 22;
     for (let i = 0; i < count; i++) {
-      const mote = make('g', { class: 'vv2-mote', style: '--t: ' + ((i + random()) / count).toFixed(3) }, group);
+      const mote = make('g', { class: 'vv-mote', style: '--t: ' + ((i + random()) / count).toFixed(3) }, group);
       make('circle', {
-        class: 'vv2-mote__dot',
+        class: 'vv-mote__dot',
         cx: round(between(130, 390)), cy: round(between(150, 270)), r: round(between(0.8, 1.9)),
         style: '--d: ' + between(7, 13).toFixed(1) + 's; --dd: -' + between(0, 13).toFixed(1) + 's; --x: ' + Math.round(between(-14, 14)) + 'px'
       }, mote);
@@ -197,7 +197,7 @@
     return Math.max(0, Math.min(1, p));
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll('.vv2-reading'), function (node) {
+  Array.prototype.forEach.call(document.querySelectorAll('.vv-reading'), function (node) {
     const reading = {
       node: node,
       min: Number(node.dataset.min),
@@ -207,12 +207,12 @@
       log: node.dataset.scale === 'log',
       value: null,
       history: [],
-      number: node.querySelector('.vv2-reading__number'),
-      state: node.querySelector('.vv2-reading__state'),
-      line: node.querySelector('.vv2-reading__spark polyline'),
-      needle: node.querySelector('.vv2-scale__needle')
+      number: node.querySelector('.vv-reading__number'),
+      state: node.querySelector('.vv-reading__state'),
+      line: node.querySelector('.vv-reading__spark polyline'),
+      needle: node.querySelector('.vv-scale__needle')
     };
-    const ideal = node.querySelector('.vv2-scale__ideal');
+    const ideal = node.querySelector('.vv-scale__ideal');
     if (ideal) {
       ideal.style.setProperty('--from', (position(reading, reading.low) * 100).toFixed(2) + '%');
       ideal.style.setProperty('--to', (position(reading, reading.high) * 100).toFixed(2) + '%');
@@ -263,13 +263,13 @@
     const reading = readings[id];
     if (!reading) return null;
     const decimals = DECIMALS[id];
-    reading.node.classList.remove('vv2-reading--ok', 'vv2-reading--low', 'vv2-reading--high');
+    reading.node.classList.remove('vv-reading--ok', 'vv-reading--low', 'vv-reading--high');
 
     if (value === null || value === undefined || isNaN(value)) {
       reading.value = null;
       reading.number.textContent = '—';
       reading.state.textContent = 'non disponibile';
-      reading.node.classList.remove('vv2-reading--live');
+      reading.node.classList.remove('vv-reading--live');
       return null;
     }
 
@@ -282,7 +282,7 @@
     reading.value = rounded;
 
     const state = rounded < reading.low ? 'low' : rounded > reading.high ? 'high' : 'ok';
-    reading.node.classList.add('vv2-reading--live', 'vv2-reading--' + state);
+    reading.node.classList.add('vv-reading--live', 'vv-reading--' + state);
     reading.state.textContent = STATE_TEXT[state];
     if (reading.needle) {
       reading.needle.style.setProperty('--pos', (position(reading, rounded) * 100).toFixed(2) + '%');
@@ -333,7 +333,7 @@
   }
 
   /** Esposto per il kit: aggiorna solo le variabili CSS dell'illustrazione. */
-  window.VV2Art = {
+  window.VVArt = {
     set: function (opts) {
       const style = art.style;
       if (opts.humidity !== undefined) style.setProperty('--humidity', clamp01(opts.humidity).toFixed(3));
@@ -450,10 +450,10 @@
   function setOnline(online) {
     const status = document.getElementById('status');
     if (status) {
-      status.classList.toggle('vv2-status--ok', online);
-      status.classList.toggle('vv2-status--warn', !online);
+      status.classList.toggle('vv-status--ok', online);
+      status.classList.toggle('vv-status--warn', !online);
     }
-    page.classList.toggle('vv2-dash--stale', !online);
+    page.classList.toggle('vv-dash--stale', !online);
 
     if (online) {
       setText('status-text', VVData.source === 'demo' ? 'Anteprima' : 'Connesso');
@@ -465,7 +465,7 @@
   }
 
   function render(data) {
-    page.classList.remove('vv2-dash--loading');
+    page.classList.remove('vv-dash--loading');
     const values = valuesOf(data);
     const states = {};
     Object.keys(values).forEach(function (id) {
@@ -478,8 +478,8 @@
     setOnline(true);
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll('.vv2-copy [data-marker]'), function (section) {
-    const marker = art.querySelector('.vv2-marker[data-marker="' + section.dataset.marker + '"]');
+  Array.prototype.forEach.call(document.querySelectorAll('.vv-copy [data-marker]'), function (section) {
+    const marker = art.querySelector('.vv-marker[data-marker="' + section.dataset.marker + '"]');
     if (!marker) return;
     section.addEventListener('mouseenter', function () { marker.classList.add('is-active'); });
     section.addEventListener('mouseleave', function () { marker.classList.remove('is-active'); });
