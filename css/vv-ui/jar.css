@@ -174,7 +174,8 @@
 
   .vv-page--dash .vv-art {
     max-height: none;
-    height: clamp(300px, calc(68dvh * var(--vv-s) / 1.1), calc(100dvh - 8rem));
+    /* Non moltiplicare per --vv-s: sui monitor alti il vaso non deve dominare il titolo */
+    height: clamp(300px, 68dvh, calc(100dvh - 8rem));
     width: auto;
     max-width: 100%;
     aspect-ratio: 430 / 386;
@@ -303,7 +304,7 @@
   }
 
   .vv-page--dash .vv-art {
-    height: clamp(340px, calc(76dvh * var(--vv-s) / 1.1), calc(100dvh - 8rem));
+    height: clamp(340px, 72dvh, calc(100dvh - 8rem));
   }
 
   .vv-page--dash .vv-verdict {
