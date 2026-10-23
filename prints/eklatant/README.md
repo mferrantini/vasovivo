@@ -16,12 +16,15 @@ Sostituisce il coperchio in bambù originale e integra gli alloggiamenti per sen
 
 | File | Descrizione |
 |---|---|
-| — | File STL in arrivo |
+| [`Coperchio.stl`](Coperchio.stl) | Coperchio principale |
+| [`Flangia.stl`](Flangia.stl) | Flangia |
+| [`Manopola.stl`](Manopola.stl) | Manopola |
+| [`Paratia.stl`](Paratia.stl) | Paratia |
 
 ---
 
 ## Note di stampa
 
 - Materiale consigliato: **PLA** o **PETG**
-- Orientamento e supporti: da definire con il file STL
+- Verifica orientamento e supporti nello slicer in base al pezzo
 - Il coperchio originale in bambù non va in lavastoviglie: lo stesso vale per le parti stampate in PLA
