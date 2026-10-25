@@ -18,7 +18,7 @@ Sensori, collegamenti e librerie sono gli stessi di [`wifi-page/`](../wifi-page/
 
 ## Collegamenti
 
-Tutti i moduli a **3.3V** e GND dell'ESP32.
+I moduli I²C a **3.3V** e GND. Il sensore capacitivo v1.2 va a **5V** (pin VIN): l'uscita analogica resta intorno ai 3 V.
 
 | Modulo | Pin modulo | Pin ESP32 |
 |---|---|---|
