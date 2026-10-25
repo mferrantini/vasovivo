@@ -5,17 +5,18 @@
  * moistureRead()   restituisce il valore ADC grezzo e la percentuale
  *
  * Nessuna libreria esterna.
- * VCC 3.3V, GND, AOUT → GPIO 34.
+ * VCC 5V (VIN dell'ESP32), GND, AOUT → GPIO 34.
+ * Il v1.2 non parte a 3,3V; l'uscita resta comunque entro circa 3 V.
  *
- * Calibrazione: annota l'ADC con il sensore asciutto in aria (DRY)
- * e con la lama immersa / substrato saturo (WET), poi aggiorna i due valori.
+ * Calibrazione sul modulo v1.2, lama inserita a metà:
+ * aria 4095 = 0 %, substrato umido 3054 = 55 %, da 2203 in giù = 100 %.
  */
 
 #pragma once
 
 const int MOISTURE_PIN = 34;
-const int MOISTURE_DRY = 2800;
-const int MOISTURE_WET = 900;
+const int MOISTURE_DRY = 4095;
+const int MOISTURE_WET = 2203;
 
 struct Moisture {
   int raw;       // 0 – 4095

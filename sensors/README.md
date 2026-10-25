@@ -64,7 +64,7 @@ I pin sono scelti in modo che tutti i sensori possano stare sulla stessa scheda.
 | GPIO 4 | DHT22 oppure DHT11 |
 | GPIO 18 | DS18B20 |
 
-Tutti i moduli sono alimentati a **3.3V**.
+I moduli I²C e le sonde digitali sono alimentati a **3.3V**. Il sensore capacitivo v1.2 va a **5V** (pin VIN).
 
 ---
 

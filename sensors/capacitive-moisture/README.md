@@ -20,12 +20,12 @@ Nel contesto di **VasoVivo**, viene infilato nella zolletta di substrato per mon
 
 | Pin modulo | Pin ESP32 |
 |---|---|
-| VCC | 3.3V |
+| VCC | 5V (VIN dell'ESP32, con la scheda alimentata via USB) |
 | GND | GND |
 | AOUT (analogico) | GPIO 34 |
 
 > Su ESP32, i pin ADC1 (GPIO32–GPIO39) sono preferibili. Evitare i pin ADC2 (GPIO0, 2, 4, 12–15, 25–27) se si usa il Wi-Fi.
-> Alimentare a **3.3V**, non a 5V: l'uscita analogica resta nel range dell'ADC ESP32.
+> Il v1.2 va alimentato a **5V**: a 3,3V il regolatore a bordo non parte e l'uscita resta a zero. L'uscita analogica resta intorno ai 3 V, nel range dell'ADC.
 
 ---
 
@@ -42,6 +42,8 @@ Il sensore non fornisce valori in percentuale direttamente: è necessario calibr
 1. **Valore in aria** (sensore completamente asciutto) → annotare il valore ADC, è `MOISTURE_DRY`
 2. **Valore immerso** (lama in acqua o substrato saturo) → annotare il valore ADC, è `MOISTURE_WET`
 3. Aggiornare i due valori in [`example/substrate_moisture.h`](example/substrate_moisture.h)
+
+Sul modulo misurato, con la lama inserita a metà: aria `4095` (0 %), substrato umido `3054` (55 %), da `2203` in giù il valore resta a 100 %.
 
 Lo sketch stampa sempre anche l'ADC grezzo, così la calibrazione si fa con lo stesso esempio.
 
