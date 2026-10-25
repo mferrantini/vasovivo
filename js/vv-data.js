@@ -54,8 +54,14 @@ window.VVData = (function () {
     setInterval(tick, REFRESH_MS);
   }
 
+  function locale() {
+    return (typeof VVSettings !== 'undefined' && VVSettings.locale)
+      ? VVSettings.locale()
+      : 'it-IT';
+  }
+
   function formatNumber(value, decimals) {
-    return value.toLocaleString('it-IT', {
+    return value.toLocaleString(locale(), {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals
     });

@@ -187,14 +187,33 @@
   drawDrops();
 
   const DECIMALS = { 'r-temp': 1, 'r-hum': 0, 'r-eco2': 0, 'r-lux': 0, 'r-moisture': 0 };
-  const STATE_TEXT = { ok: 'nella fascia', low: 'sotto la fascia', high: 'sopra la fascia' };
   const readings = {};
+
+  function t(key, vars) {
+    return (typeof VVSettings !== 'undefined') ? VVSettings.t(key, vars) : key;
+  }
+
+  function stateText(state) {
+    return t('jar.state.' + state);
+  }
 
   function position(reading, value) {
     const p = reading.log
       ? (Math.log10(Math.max(value, reading.min)) - Math.log10(reading.min)) / (Math.log10(reading.max) - Math.log10(reading.min))
       : (value - reading.min) / (reading.max - reading.min);
     return Math.max(0, Math.min(1, p));
+  }
+
+  function syncReadingBounds(reading) {
+    reading.min = Number(reading.node.dataset.min);
+    reading.max = Number(reading.node.dataset.max);
+    reading.low = Number(reading.node.dataset.low);
+    reading.high = Number(reading.node.dataset.high);
+    const ideal = reading.node.querySelector('.vv-scale__ideal');
+    if (ideal) {
+      ideal.style.setProperty('--from', (position(reading, reading.low) * 100).toFixed(2) + '%');
+      ideal.style.setProperty('--to', (position(reading, reading.high) * 100).toFixed(2) + '%');
+    }
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.vv-reading'), function (node) {
@@ -212,13 +231,16 @@
       line: node.querySelector('.vv-reading__spark polyline'),
       needle: node.querySelector('.vv-scale__needle')
     };
-    const ideal = node.querySelector('.vv-scale__ideal');
-    if (ideal) {
-      ideal.style.setProperty('--from', (position(reading, reading.low) * 100).toFixed(2) + '%');
-      ideal.style.setProperty('--to', (position(reading, reading.high) * 100).toFixed(2) + '%');
-    }
+    syncReadingBounds(reading);
     readings[node.id] = reading;
   });
+
+  if (typeof VVSettings !== 'undefined') {
+    VVSettings.applyRanges();
+    Object.keys(readings).forEach(function (id) {
+      syncReadingBounds(readings[id]);
+    });
+  }
 
   function valuesOf(data) {
     const air = data.air;
@@ -268,7 +290,7 @@
     if (value === null || value === undefined || isNaN(value)) {
       reading.value = null;
       reading.number.textContent = '—';
-      reading.state.textContent = 'non disponibile';
+      reading.state.textContent = stateText('na');
       reading.node.classList.remove('vv-reading--live');
       return null;
     }
@@ -283,7 +305,7 @@
 
     const state = rounded < reading.low ? 'low' : rounded > reading.high ? 'high' : 'ok';
     reading.node.classList.add('vv-reading--live', 'vv-reading--' + state);
-    reading.state.textContent = STATE_TEXT[state];
+    reading.state.textContent = stateText(state);
     if (reading.needle) {
       reading.needle.style.setProperty('--pos', (position(reading, rounded) * 100).toFixed(2) + '%');
     }
@@ -350,33 +372,23 @@
     }
   };
 
-  const ADVICE = {
-    'r-hum': {
-      name: 'umidità dell\'aria',
-      low: ['L\'aria è troppo secca.', 'Nebulizza un po\' d\'acqua sulle pareti del barattolo.'],
-      high: ['L\'aria è satura.', 'Socchiudi il coperchio qualche minuto: troppa condensa rovina i cappelli.']
-    },
-    'r-temp': {
-      name: 'temperatura',
-      low: ['Fa troppo freddo.', 'Sposta il barattolo in un punto più caldo, lontano da finestre e spifferi.'],
-      high: ['Fa troppo caldo.', 'Allontanalo da termosifoni e sole diretto.']
-    },
-    'r-eco2': {
-      name: 'CO₂',
-      high: ['Serve aria fresca.', 'Apri il coperchio qualche minuto: il micelio respira e accumula CO₂.']
-    },
-    'r-moisture': {
-      name: 'umidità del substrato',
-      low: ['Il substrato è asciutto.', 'Bagnalo con poca acqua, senza lasciare ristagni sul fondo.'],
-      high: ['Il substrato è zuppo.', 'Togli l\'acqua in eccesso e lascialo respirare.']
-    },
-    'r-lux': {
-      name: 'luce',
-      low: ['Serve un po\' di luce.', 'Basta luce indiretta: i funghi la usano per orientarsi e formare i cappelli.'],
-      high: ['Troppa luce diretta.', 'Spostalo dal sole: scalda e asciuga il barattolo.']
-    }
+  const ADVICE_KEYS = {
+    'r-hum': 'hum',
+    'r-temp': 'temp',
+    'r-eco2': 'eco2',
+    'r-moisture': 'moisture',
+    'r-lux': 'lux'
   };
   const PRIORITY = ['r-hum', 'r-temp', 'r-eco2', 'r-moisture', 'r-lux'];
+
+  function adviceFor(id, state) {
+    const key = ADVICE_KEYS[id];
+    return {
+      name: t('advice.' + key + '.name'),
+      title: t('advice.' + key + '.' + state + '.t'),
+      detail: t('advice.' + key + '.' + state + '.d')
+    };
+  }
 
   function setVerdict(title, detail) {
     const titleNode = document.getElementById('verdict');
@@ -404,23 +416,28 @@
     let title;
     let detail;
 
+    const species = (typeof VVSettings !== 'undefined') ? VVSettings.get().species : 'Pioppino';
+
     if (!known.length) {
-      title = 'Il barattolo tace.';
-      detail = 'Nessun sensore ha dato una lettura: controlla i collegamenti.';
+      title = t('jar.verdict.silent');
+      detail = t('jar.verdict.silent.d');
     } else if (!issues.length) {
-      title = 'Il barattolo sta bene.';
-      detail = 'Aria, luce e substrato sono nella fascia ideale per il pioppino.';
+      title = t('jar.verdict.ok');
+      detail = t('jar.verdict.ok.d', { species: species });
     } else {
-      const advice = ADVICE[issues[0]][states[issues[0]]];
-      title = advice[0];
-      detail = advice[1];
+      const advice = adviceFor(issues[0], states[issues[0]]);
+      title = advice.title;
+      detail = advice.detail;
       if (issues.length > 1) {
-        detail += ' Da controllare anche: ' + issues.slice(1).map(function (id) { return ADVICE[id].name; }).join(', ') + '.';
+        detail += t('jar.also', {
+          list: issues.slice(1).map(function (id) { return adviceFor(id, states[id]).name; }).join(', ')
+        });
       }
     }
 
     if (data.air.gasOk && data.air.validity !== 0) {
-      detail += ' Sensore dei gas: ' + data.air.validityText + '.';
+      const validity = t('validity.ok');
+      detail += t('jar.gas', { text: validity });
     }
     setVerdict(title, detail);
   }
@@ -433,11 +450,19 @@
   function renderNotes(data) {
     const air = data.air;
     setText('air-aside', air.gasOk
-      ? 'Composti volatili ' + VVData.formatNumber(air.tvoc, 0) + ' ppb. Indice di qualità dell\'aria ' + air.aqi + ' su 5: ' + air.aqiText + '.'
-      : 'Il sensore dei gas non risponde: CO₂, composti volatili e qualità dell\'aria non sono disponibili.');
+      ? t('jar.aside.air.ok', {
+          tvoc: VVData.formatNumber(air.tvoc, 0),
+          aqi: air.aqi,
+          aqiText: t('aqi.' + air.aqi)
+        })
+      : t('jar.aside.air.off'));
 
     const s = data.substrate;
-    setText('substrate-aside', 'Valore grezzo ' + s.raw + ' su 4095, tarato tra ' + s.dry + ' (secco) e ' + s.wet + ' (bagnato).');
+    setText('substrate-aside', t('jar.aside.sub', {
+      raw: s.raw,
+      dry: s.dry,
+      wet: s.wet
+    }));
   }
 
   function renderLabel(data) {
@@ -454,13 +479,14 @@
       status.classList.toggle('vv-status--warn', !online);
     }
     page.classList.toggle('vv-dash--stale', !online);
+    const loc = (typeof VVSettings !== 'undefined') ? VVSettings.locale() : 'it-IT';
 
     if (online) {
-      setText('status-text', VVData.source === 'demo' ? 'Anteprima' : 'Connesso');
-      setText('updated', 'Aggiornato alle ' + new Date().toLocaleTimeString('it-IT'));
+      setText('status-text', VVData.source === 'demo' ? t('dash.preview') : t('dash.online'));
+      setText('updated', t('dash.updated', { time: new Date().toLocaleTimeString(loc) }));
     } else {
-      setText('status-text', 'Non raggiungibile');
-      setVerdict('Il barattolo non risponde.', 'Controlla che la scheda sia accesa e di essere collegato alla rete VasoVivo.');
+      setText('status-text', t('dash.offline'));
+      setVerdict(t('jar.verdict.offline'), t('jar.verdict.offline.d'));
     }
   }
 
@@ -485,12 +511,30 @@
     section.addEventListener('mouseleave', function () { marker.classList.remove('is-active'); });
   });
 
-  setText('footer-source', typeof VVData !== 'undefined' && VVData.source === 'demo'
-    ? 'Dati simulati: anteprima della dashboard'
-    : 'Dati letti in tempo reale dall\'ESP32');
+  function refreshFooter() {
+    setText('footer-source', typeof VVData !== 'undefined' && VVData.source === 'demo'
+      ? t('dash.footer.demo')
+      : t('dash.footer.live'));
+  }
+  refreshFooter();
+
+  let lastData = null;
+
+  if (typeof VVSettings !== 'undefined') {
+    VVSettings.onChange(function () {
+      Object.keys(readings).forEach(function (id) {
+        syncReadingBounds(readings[id]);
+      });
+      refreshFooter();
+      if (lastData) render(lastData);
+    });
+  }
 
   if (typeof VVData !== 'undefined' && !page.dataset.manual) {
-    VVData.watch(render, function () {
+    VVData.watch(function (data) {
+      lastData = data;
+      render(data);
+    }, function () {
       setOnline(false);
     });
   }

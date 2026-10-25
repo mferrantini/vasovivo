@@ -1,8 +1,10 @@
 /* VasoVivo UI — guscio comune: topbar, brand, container, footer */
 
 .vv-top {
-  max-width: var(--vv-max);
-  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: clamp(12px, 2vh, 22px) clamp(16px, 3vw, 40px);
   display: flex;
   align-items: center;
@@ -11,6 +13,7 @@
   background: none;
   border: 0;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .vv-brand {
@@ -47,7 +50,12 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start;
   gap: var(--vv-space-3);
+  flex: 1;
+  min-width: 0;
+  /* Lascia spazio ai controlli assoluti a destra */
+  padding-right: 12rem;
 }
 
 .vv-container {

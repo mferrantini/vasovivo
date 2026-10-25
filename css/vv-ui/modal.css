@@ -1,0 +1,71 @@
+/* VasoVivo UI — modal / overlay */
+
+body.vv-modal-open {
+  overflow: hidden;
+}
+
+.vv-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--vv-space-4);
+  box-sizing: border-box;
+}
+
+.vv-modal[hidden] {
+  display: none !important;
+}
+
+.vv-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 38, 32, 0.28);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  animation: vv-modal-fade 0.2s var(--vv-ease-out, ease) both;
+}
+
+.vv-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: min(400px, calc(100vw - 32px));
+  max-height: min(90dvh, 860px);
+  overflow: auto;
+  background: var(--vv-paper-light);
+  color: var(--vv-ink);
+  border: 1px solid var(--vv-hair);
+  border-radius: var(--vv-radius);
+  box-shadow: var(--vv-shadow-soft);
+  font-family: var(--vv-sans);
+  font-weight: 300;
+  animation: vv-modal-rise 0.28s var(--vv-ease-out, ease) both;
+}
+
+@keyframes vv-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes vv-modal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vv-modal__backdrop,
+  .vv-modal__panel {
+    animation-duration: 0.01ms !important;
+  }
+}

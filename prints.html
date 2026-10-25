@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stampa 3D — VasoVivo</title>
+  <title data-i18n="pr.title">Stampa 3D — VasoVivo</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1X45DY3BR6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,16 +23,16 @@
       <img src="img/logo.svg" alt="VasoVivo" />
     </a>
     <div class="vv-top__meta">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
     </div>
   </header>
 
   <main class="vv-container">
 
     <header class="vv-page-head">
-      <span class="vv-eyebrow">Guida</span>
-      <h1 class="vv-page-head__title">Stampa 3D</h1>
-      <p class="vv-page-head__lede">
+      <span class="vv-eyebrow" data-i18n="pr.eyebrow">Guida</span>
+      <h1 class="vv-page-head__title" data-i18n="pr.h1">Stampa 3D</h1>
+      <p class="vv-page-head__lede" data-i18n="pr.lede">
         Modelli STL per i coperchi intelligenti di VasoVivo. Per ogni barattolo trovi nella repository
         documentazione e note di stampa; i file verranno aggiunti nelle rispettive cartelle.
       </p>
@@ -43,41 +43,46 @@
       <li class="vv-item">
         <div class="vv-item__header">
           <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">🧩</span> Coperchio generico</h3>
-          <span class="vv-item__meta">Adattabile · multi-barattolo</span>
+          <span class="vv-item__meta" data-i18n="pr.gen.meta">Adattabile · multi-barattolo</span>
         </div>
-        <p>Coperchio universale per barattoli con bocca circolare compatibile, utile per sperimentare con contenitori diversi.</p>
+        <p data-i18n="pr.gen.p">Coperchio universale per barattoli con bocca circolare compatibile, utile per sperimentare con contenitori diversi.</p>
         <div class="vv-item__links">
-          <a href="https://github.com/mferrantini/vasovivo/tree/main/prints/generic-lid" target="_blank" rel="noopener">Documentazione su GitHub →</a>
+          <a href="https://github.com/mferrantini/vasovivo/tree/main/prints/generic-lid" target="_blank" rel="noopener" data-i18n="link.docs">Documentazione su GitHub →</a>
         </div>
       </li>
 
       <li class="vv-item">
         <div class="vv-item__header">
           <h3 class="vv-item__title"><span class="vv-item__icon" aria-hidden="true">🫙</span> Coperchio per EKLATANT</h3>
-          <span class="vv-item__meta">IKEA EKLATANT · 4.2 l</span>
+          <span class="vv-item__meta" data-i18n="pr.ek.meta">IKEA EKLATANT · 4.2 l</span>
         </div>
-        <p>Coperchio su misura per il barattolo IKEA EKLATANT da 4.2 l, contenitore di riferimento del progetto.</p>
+        <p data-i18n="pr.ek.p">Coperchio su misura per il barattolo IKEA EKLATANT da 4.2 l, contenitore di riferimento del progetto.</p>
         <div class="vv-item__links">
-          <a href="https://github.com/mferrantini/vasovivo/tree/main/prints/eklatant" target="_blank" rel="noopener">Documentazione su GitHub →</a>
+          <a href="https://github.com/mferrantini/vasovivo/tree/main/prints/eklatant" target="_blank" rel="noopener" data-i18n="link.docs">Documentazione su GitHub →</a>
         </div>
       </li>
 
     </ul>
 
     <p class="vv-back">
-      <a href="index.html">← Torna alla home</a>
+      <a href="index.html" data-i18n="back.home">← Torna alla home</a>
     </p>
 
   </main>
 
   <footer class="vv-foot">
     <img class="vv-foot__logo" src="img/logo.svg" alt="" />
-    Progetto open source
+    <span data-i18n="footer.open">Progetto open source</span>
     <span class="vv-foot__sep">·</span>
-    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">Vedi su GitHub</a>
+    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener" data-i18n="footer.github">Vedi su GitHub</a>
     <span class="vv-foot__sep">·</span>
-    Maker Faire Roma 2026 - Stand V13
+    <a href="https://www.instagram.com/vasovivo_/" target="_blank" rel="noopener" data-i18n="footer.instagram">Instagram</a>
+    <span class="vv-foot__sep">·</span>
+    <a href="https://www.linkedin.com/in/marcoferrantini/" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+    <span class="vv-foot__sep">·</span>
+    <span data-i18n="footer.mf">Maker Faire Roma 2026 - Stand V13</span>
   </footer>
 
+  <script src="js/vv-settings.js"></script>
 </body>
 </html>

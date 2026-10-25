@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VasoVivo</title>
+  <title data-i18n="home.title">VasoVivo</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1X45DY3BR6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,18 +23,18 @@
       <img src="img/logo.svg" alt="VasoVivo" />
     </a>
     <div class="vv-top__meta">
-      <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
     </div>
   </header>
 
   <div class="vv-hero">
     <img class="vv-hero__logo" src="img/logo.svg" alt="" />
-    <h1 class="vv-hero__title">Il barattolo che ascolta</h1>
-    <p class="vv-hero__lede">
+    <h1 class="vv-hero__title" data-i18n="home.hero">Il barattolo che ascolta</h1>
+    <p class="vv-hero__lede" data-i18n="home.lede">
       Monitoraggio intelligente per la coltivazione di funghi in barattolo,
       con ESP32 e sensori ambientali.
     </p>
-    <span class="vv-badge">Maker Faire Roma 2026 - Stand V13</span>
+    <span class="vv-badge" data-i18n="home.badge">Maker Faire Roma 2026 - Stand V13</span>
   </div>
 
   <main class="vv-container">
@@ -42,14 +42,14 @@
     <section class="vv-section">
       <div class="vv-section__head">
         <span class="vv-section__num">01</span>
-        <h2 class="vv-section__title">Il progetto</h2>
+        <h2 class="vv-section__title" data-i18n="home.s1">Il progetto</h2>
       </div>
       <div class="vv-prose">
-        <p>
+        <p data-i18n="home.s1.p1">
           <strong>VasoVivo</strong> è un sistema di monitoraggio attivo per la coltivazione di funghi in piccolo contenitore:
           un barattolo che ospita una zolletta di substrato, chiuso da un coperchio intelligente su cui è integrata una sensoristica completa.
         </p>
-        <p>
+        <p data-i18n="home.s1.p2">
           I sensori, collegati a una scheda <strong>ESP32</strong>, misurano in tempo reale i parametri ambientali rilevanti per la crescita.
           I dati sono accessibili in diversi modi — tramite <strong>Bluetooth</strong>, <strong>Wi-Fi</strong> o un <strong>bot Telegram</strong> —
           a seconda di come si sceglie di configurare la scheda.
@@ -59,34 +59,34 @@
       <div class="vv-grid-auto vv-my-5">
         <div class="vv-param">
           <span class="vv-param__mark" aria-hidden="true"></span>
-          <div class="vv-param__label">Temperatura</div>
-          <div class="vv-param__value">aria &amp; substrato</div>
+          <div class="vv-param__label" data-i18n="home.param.temp">Temperatura</div>
+          <div class="vv-param__value" data-i18n="home.param.temp.v">aria &amp; substrato</div>
         </div>
         <div class="vv-param">
           <span class="vv-param__mark" aria-hidden="true"></span>
-          <div class="vv-param__label">Umidità</div>
-          <div class="vv-param__value">aria &amp; substrato</div>
+          <div class="vv-param__label" data-i18n="home.param.hum">Umidità</div>
+          <div class="vv-param__value" data-i18n="home.param.hum.v">aria &amp; substrato</div>
         </div>
         <div class="vv-param">
           <span class="vv-param__mark" aria-hidden="true"></span>
-          <div class="vv-param__label">CO₂ / VOC</div>
-          <div class="vv-param__value">qualità dell'aria</div>
+          <div class="vv-param__label" data-i18n="home.param.co2">CO₂ / VOC</div>
+          <div class="vv-param__value" data-i18n="home.param.co2.v">qualità dell'aria</div>
         </div>
         <div class="vv-param">
           <span class="vv-param__mark" aria-hidden="true"></span>
-          <div class="vv-param__label">Luminosità</div>
-          <div class="vv-param__value">luce ambientale</div>
+          <div class="vv-param__label" data-i18n="home.param.light">Luminosità</div>
+          <div class="vv-param__value" data-i18n="home.param.light.v">luce ambientale</div>
         </div>
       </div>
 
       <div class="vv-prose">
-        <p>
+        <p data-i18n="home.s1.p3">
           Il contenitore di riferimento è il barattolo
           <a href="https://www.ikea.com/it/it/p/eklatant-contenitore-con-coperchio-vetro-trasparente-bambu-50621766/" target="_blank" rel="noopener"><strong>IKEA EKLATANT</strong></a>
           — una scelta in pieno spirito <em>IKEA hack</em>. I componenti stampati in 3D si adattano a diversi modelli
           del catalogo IKEA. Tutta l'elettronica è composta da componenti economici e facilmente reperibili online.
         </p>
-        <p>
+        <p data-i18n="home.s1.p4">
           Codice, istruzioni e schema elettrico sono disponibili pubblicamente su
           <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">GitHub</a>.
         </p>
@@ -96,112 +96,101 @@
     <section class="vv-section">
       <div class="vv-section__head">
         <span class="vv-section__num">02</span>
-        <h2 class="vv-section__title">Hardware</h2>
+        <h2 class="vv-section__title" data-i18n="home.s2">Hardware</h2>
       </div>
       <div class="vv-panel">
-        <p>
+        <p data-i18n="home.s2.p">
           Per replicare VasoVivo servono una scheda ESP32 e i sensori per monitorare aria, substrato e luminosità.
           Nella repository trovi documentazione e sketch di esempio; nella pagina dedicata puoi anche trovare i link per l'acquisto.
         </p>
-        <a href="hardware.html" class="vv-link">Vedi l'elenco hardware →</a>
+        <a href="hardware.html" class="vv-link" data-i18n="home.s2.link">Vedi l'elenco hardware →</a>
       </div>
     </section>
 
     <section class="vv-section">
       <div class="vv-section__head">
         <span class="vv-section__num">03</span>
-        <h2 class="vv-section__title">Esempi completi</h2>
+        <h2 class="vv-section__title" data-i18n="home.s3">Esempi completi</h2>
       </div>
       <div class="vv-panel">
-        <p>
+        <p data-i18n="home.s3.p">
           Sketch pronti da caricare, che mettono insieme più sensori e un modo per leggere i dati.
           Tre esempi Wi-Fi mostrano temperatura, umidità, CO₂, luce e umidità del substrato, aggiornate ogni 5 secondi:
           una pagina essenziale, una dashboard a schede e una tavola illustrata del barattolo.
         </p>
-        <a href="https://github.com/mferrantini/vasovivo/tree/main/examples" target="_blank" rel="noopener" class="vv-link">Vedi gli esempi su GitHub →</a>
+        <a href="https://github.com/mferrantini/vasovivo/tree/main/examples" target="_blank" rel="noopener" class="vv-link" data-i18n="home.s3.link">Vedi gli esempi su GitHub →</a>
       </div>
     </section>
 
     <section class="vv-section">
       <div class="vv-section__head">
         <span class="vv-section__num">04</span>
-        <h2 class="vv-section__title">Le dashboard</h2>
+        <h2 class="vv-section__title" data-i18n="home.s4">Le dashboard</h2>
       </div>
       <div class="vv-prose vv-mb-4">
-        <p>
+        <p data-i18n="home.s4.p">
           I dati si leggono dal browser, senza installare nulla: la scheda crea la sua rete Wi-Fi e serve la pagina.
           Entrambe le interfacce condividono un unico UI Kit.
         </p>
       </div>
       <div class="vv-grid-2">
         <div class="vv-card vv-card--featured">
-          <div class="vv-card__title">Tavola illustrata</div>
-          <div class="vv-card__subtitle">Il barattolo che reagisce ai dati</div>
-          <p>Il disegno del barattolo EKLATANT cambia con le letture. <a href="UI/index.html">Anteprima →</a></p>
+          <div class="vv-card__title" data-i18n="home.s4.c1.t">Tavola illustrata</div>
+          <div class="vv-card__subtitle" data-i18n="home.s4.c1.s">Il barattolo che reagisce ai dati</div>
+          <p><span data-i18n="home.s4.c1.p">Il disegno del barattolo EKLATANT cambia con le letture.</span> <a href="UI/index.html" data-i18n="home.s4.c1.link">Anteprima →</a></p>
         </div>
         <div class="vv-card">
-          <div class="vv-card__title">Dashboard a schede</div>
-          <div class="vv-card__subtitle">Essenziale e leggibile</div>
-          <p>Ogni misura in una scheda, con stato e fascia ideale. <a href="UI/schede.html">Anteprima →</a></p>
+          <div class="vv-card__title" data-i18n="home.s4.c2.t">Dashboard a schede</div>
+          <div class="vv-card__subtitle" data-i18n="home.s4.c2.s">Essenziale e leggibile</div>
+          <p><span data-i18n="home.s4.c2.p">Ogni misura in una scheda, con stato e fascia ideale.</span> <a href="UI/schede.html" data-i18n="home.s4.c2.link">Anteprima →</a></p>
         </div>
       </div>
       <p class="vv-mt-4 vv-text-sm vv-text-soft">
-        Glossario dei componenti: <a href="UI/elements.html">UI/elements.html</a>
+        <span data-i18n="home.s4.gloss">Glossario dei componenti:</span> <a href="UI/elements.html">UI/elements.html</a>
       </p>
     </section>
 
     <section class="vv-section">
       <div class="vv-section__head">
         <span class="vv-section__num">05</span>
-        <h2 class="vv-section__title">Stampa 3D</h2>
+        <h2 class="vv-section__title" data-i18n="home.s5">Stampa 3D</h2>
       </div>
       <div class="vv-panel">
-        <p>
+        <p data-i18n="home.s5.p">
           I coperchi intelligenti sono progettati per essere stampati in 3D. Nella repository trovi i modelli
           per barattolo, con note di compatibilità e istruzioni di stampa.
         </p>
-        <a href="prints.html" class="vv-link">Vedi i file da stampare →</a>
+        <a href="prints.html" class="vv-link" data-i18n="home.s5.link">Vedi i file da stampare →</a>
       </div>
     </section>
 
     <section class="vv-section">
       <div class="vv-section__head">
         <span class="vv-section__num">06</span>
-        <h2 class="vv-section__title">Le specie coltivate</h2>
+        <h2 class="vv-section__title" data-i18n="home.s6">Varietà per il barattolo</h2>
       </div>
-      <div class="vv-prose vv-mb-4">
-        <p>
-          Le specie coltivabili con substrato in zolletta variano per dimensioni e facilità di gestione.
-          Il formato barattolo si adatta meglio a specie con corpi fruttiferi contenuti.
+      <div class="vv-panel">
+        <p data-i18n="home.s6.p">
+          Il formato barattolo funziona meglio con specie a corpi fruttiferi contenuti.
+          Nella guida trovi varietà comuni in Italia — pioppino, enoki, nameko, shimeji, shiitake —
+          con le finestre ambientali consigliate per la fruttificazione.
         </p>
-      </div>
-      <div class="vv-grid-2">
-        <div class="vv-card vv-card--featured">
-          <span class="vv-badge vv-badge--solid vv-mb-2">Ideale per il barattolo</span>
-          <div class="vv-card__title">Pioppino</div>
-          <div class="vv-card__subtitle">Cyclocybe aegerita</div>
-          <p>Fungo commestibile tipico della tradizione italiana, dal sapore deciso. Le sue dimensioni contenute lo rendono perfetto per la coltivazione in barattolo.</p>
-        </div>
-        <div class="vv-card">
-          <div class="vv-card__title">Pleurotus ostreatus</div>
-          <div class="vv-card__subtitle">Fungo ostrica</div>
-          <p>Specie molto diffusa in cucina, adatta alla coltivazione in zolletta. Tende a sviluppare corpi fruttiferi più grandi: preferibile con contenitori più ampi.</p>
-        </div>
+        <a href="varieties.html" class="vv-link" data-i18n="home.s6.link">Vedi le varietà →</a>
       </div>
     </section>
 
     <section class="vv-section">
       <div class="vv-section__head">
         <span class="vv-section__num">07</span>
-        <h2 class="vv-section__title">Cosa trovi allo stand</h2>
+        <h2 class="vv-section__title" data-i18n="home.s7">Cosa trovi allo stand</h2>
       </div>
       <div class="vv-panel">
-        <p>
+        <p data-i18n="home.s7.p1">
           Allo stand puoi vedere <strong>VasoVivo</strong> in funzione: più contenitori con coltivazioni attive,
           i funghi in crescita e tutti i sensori al lavoro. Un display mostra i dati ambientali
           in tempo reale di ciascun contenitore.
         </p>
-        <p>
+        <p data-i18n="home.s7.p2">
           Trovi anche la documentazione del progetto e un QR code che rimanda
           alla repository GitHub con tutti i file per replicarlo.
         </p>
@@ -212,12 +201,17 @@
 
   <footer class="vv-foot">
     <img class="vv-foot__logo" src="img/logo.svg" alt="" />
-    Progetto open source
+    <span data-i18n="footer.open">Progetto open source</span>
     <span class="vv-foot__sep">·</span>
-    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">Vedi su GitHub</a>
+    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener" data-i18n="footer.github">Vedi su GitHub</a>
     <span class="vv-foot__sep">·</span>
-    Maker Faire Roma 2026 - Stand V13
+    <a href="https://www.instagram.com/vasovivo_/" target="_blank" rel="noopener" data-i18n="footer.instagram">Instagram</a>
+    <span class="vv-foot__sep">·</span>
+    <a href="https://www.linkedin.com/in/marcoferrantini/" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+    <span class="vv-foot__sep">·</span>
+    <span data-i18n="footer.mf">Maker Faire Roma 2026 - Stand V13</span>
   </footer>
 
+  <script src="js/vv-settings.js"></script>
 </body>
 </html>

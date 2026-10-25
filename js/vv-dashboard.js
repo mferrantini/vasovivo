@@ -9,6 +9,19 @@
   const formatNumber = VVData.formatNumber;
   const animateNumber = VVData.animateNumber;
 
+  function t(key, vars) {
+    return (typeof VVSettings !== 'undefined') ? VVSettings.t(key, vars) : key;
+  }
+
+  function locale() {
+    return (typeof VVSettings !== 'undefined') ? VVSettings.locale() : 'it-IT';
+  }
+
+  function moistureRange() {
+    if (typeof VVSettings !== 'undefined') return VVSettings.get().ranges.moisture;
+    return { low: 40, high: 80 };
+  }
+
   // ── Aggiornamento di una metrica ─────────────────────────────────
 
   /**
@@ -32,7 +45,7 @@
       metric.classList.add('vv-metric--na');
       metric.classList.remove('vv-metric--highlight');
       number.textContent = '—';
-      if (hint) hint.textContent = options.hint || 'non disponibile';
+      if (hint) hint.textContent = options.hint || t('sub.na');
       if (fill) fill.style.setProperty('--fill', '0%');
       metric.dataset.value = '';
       return;
@@ -71,9 +84,10 @@
   }
 
   function substrateHint(percent) {
-    if (percent < 30) return 'troppo secco';
-    if (percent > 85) return 'troppo umido';
-    return 'nella norma';
+    const range = moistureRange();
+    if (percent < range.low) return t('sub.dry');
+    if (percent > range.high) return t('sub.wet');
+    return t('sub.ok');
   }
 
   function luxFill(lux) {
@@ -87,7 +101,7 @@
       ['AHT21', data.air.aht21],
       ['ENS160', data.air.ens160],
       ['BH1750', data.light.bh1750],
-      ['Umidità substrato · GPIO ' + data.substrate.pin, true]
+      ['GPIO ' + data.substrate.pin, true]
     ];
     list.innerHTML = '';
     sensors.forEach(function (sensor) {
@@ -100,14 +114,14 @@
 
   function render(data) {
     const air = data.air;
-    const gasHint = air.gasOk && air.validity !== 0 ? air.validityText : 'ENS160';
+    const gasHint = air.gasOk && air.validity !== 0 ? t('validity.ok') : 'ENS160';
 
     setMetric('m-temp', air.climateOk ? air.tempC : null, { decimals: 1, hint: 'AHT21' });
     setMetric('m-hum', air.climateOk ? air.humRh : null, { decimals: 1, hint: 'AHT21', fill: air.humRh });
     setMetric('m-eco2', air.gasOk ? air.eco2 : null, { hint: gasHint });
     setMetric('m-tvoc', air.gasOk ? air.tvoc : null, { hint: gasHint });
     setMetric('m-aqi', air.gasOk ? air.aqi : null, {
-      hint: air.gasOk ? air.aqiText : undefined,
+      hint: air.gasOk ? t('aqi.' + air.aqi) : undefined,
       fill: air.aqi * 20,
       warn: air.aqi >= 4
     });
@@ -118,14 +132,15 @@
     });
 
     const substrate = data.substrate;
-    const dryOrWet = substrate.percent < 30 || substrate.percent > 85;
+    const range = moistureRange();
+    const dryOrWet = substrate.percent < range.low || substrate.percent > range.high;
     setMetric('m-moisture', substrate.percent, {
       hint: substrateHint(substrate.percent),
       fill: substrate.percent,
       warn: dryOrWet
     });
     setMetric('m-adc', substrate.raw, {
-      hint: 'secco ' + substrate.dry + ' · bagnato ' + substrate.wet,
+      hint: t('metric.drywet', { dry: substrate.dry, wet: substrate.wet }),
       fill: (substrate.raw / 4095) * 100
     });
 
@@ -144,19 +159,35 @@
     dashboard.classList.toggle('vv-dash--stale', !online);
 
     if (online) {
-      setText('status-text', source === 'demo' ? 'Anteprima' : 'Connesso');
-      setText('updated', 'Aggiornato alle ' + new Date().toLocaleTimeString('it-IT'));
+      setText('status-text', source === 'demo' ? t('dash.preview') : t('dash.online'));
+      setText('updated', t('dash.updated', { time: new Date().toLocaleTimeString(locale()) }));
     } else {
-      setText('status-text', 'Non raggiungibile');
+      setText('status-text', t('dash.offline'));
     }
   }
 
-  setText('footer-source', source === 'demo'
-    ? 'Dati simulati: anteprima della dashboard'
-    : 'Dati letti in tempo reale dall\'ESP32');
+  function refreshFooter() {
+    setText('footer-source', source === 'demo'
+      ? t('dash.footer.demo')
+      : t('dash.footer.live'));
+  }
+  refreshFooter();
+
+  let lastData = null;
+
+  if (typeof VVSettings !== 'undefined') {
+    VVSettings.onChange(function () {
+      refreshFooter();
+      if (lastData) {
+        render(lastData);
+        setOnline(true);
+      }
+    });
+  }
 
   VVData.watch(
     function (data) {
+      lastData = data;
       render(data);
       setOnline(true);
     },
