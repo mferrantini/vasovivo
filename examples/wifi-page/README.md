@@ -1,6 +1,6 @@
 # Wi-Fi e pagina HTML
 
-L'ESP32 crea una propria rete Wi-Fi e mostra le letture dei sensori su una pagina web, senza stile, che si aggiorna da sola ogni 5 secondi. Non serve internet né un router: è l'esempio usato allo stand della Maker Faire.
+L'ESP32-WROOM crea una propria rete Wi-Fi e mostra le letture dei sensori su una pagina web, senza stile, che si aggiorna da sola ogni 5 secondi. Non serve internet né un router. È l'esempio più semplice per verificare cablaggio e letture; allo stand si usano anche le dashboard con UI Kit.
 
 ---
 
@@ -43,7 +43,7 @@ Dal Library Manager di Arduino IDE:
 
 ## Uso
 
-1. Apri `wifi-page/wifi-page.ino` dalla repository completa e caricalo sulla scheda (ESP32 Dev Module).
+1. Apri `wifi-page/wifi-page.ino` dalla repository completa e caricalo sulla scheda (ESP32-WROOM, board package `esp32`).
 2. Collegati alla rete **VasoVivo**, password **VasoVivo123**.
 3. Apri **http://192.168.4.1** nel browser. Su questa rete non c'è internet: l'indirizzo va digitato.
 

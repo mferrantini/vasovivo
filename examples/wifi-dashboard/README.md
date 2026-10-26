@@ -1,6 +1,6 @@
 # Wi-Fi e dashboard a schede
 
-L'ESP32 crea una propria rete Wi-Fi e mostra le letture dei sensori sulla [dashboard a schede](../../UI/schede.html): metriche animate, barre di livello, stato dei sensori e aggiornamento ogni 5 secondi. Non serve internet né un router.
+L'ESP32-WROOM crea una propria rete Wi-Fi e mostra le letture dei sensori sulla [dashboard a schede](../../UI/schede.html): metriche animate, barre di livello, stato dei sensori e aggiornamento ogni 5 secondi. Non serve internet né un router.
 
 Sensori, collegamenti e librerie sono gli stessi di [`wifi-page/`](../wifi-page/). Cambia solo la pagina: invece di essere scritta nello sketch, sta nella memoria della scheda (LittleFS) e chiede i dati allo sketch in formato JSON.
 
@@ -54,6 +54,7 @@ LittleFS e WebServer sono già inclusi nel board package `esp32`.
 | `wifi-dashboard.ino` | Rete Wi-Fi, letture dei sensori, risposta JSON su `/api/readings` |
 | `data/index.html` | La dashboard a schede, generata da [`UI/schede.html`](../../UI/schede.html) |
 | `data/vasovivo.css` | Il toolkit [`css/vv-ui/`](../../css/vv-ui/) in un unico file |
+| `data/vv-settings.js` | Lingua, specie e soglie ([`js/vv-settings.js`](../../js/vv-settings.js)) |
 | `data/vv-data.js` | Richiesta delle letture ([`js/vv-data.js`](../../js/vv-data.js)) |
 | `data/vv-dashboard.js` | Aggiornamento della pagina ([`js/vv-dashboard.js`](../../js/vv-dashboard.js)) |
 | `data/logo.png` | Logo ridotto |
@@ -67,7 +68,7 @@ La cartella `data/` è già pronta: `build-data.sh` serve solo se cambi la UI.
 
 Vanno caricate **due cose**: lo sketch e la cartella `data/`. L'ordine non conta; la cartella resta in memoria anche quando ricarichi lo sketch.
 
-1. Apri `wifi-dashboard/wifi-dashboard.ino` dalla repository completa e caricalo sulla scheda (ESP32 Dev Module).
+1. Apri `wifi-dashboard/wifi-dashboard.ino` dalla repository completa e caricalo sulla scheda (ESP32-WROOM, board package `esp32`).
 2. Carica la cartella `data/` in LittleFS (vedi sotto).
 3. Collegati alla rete **VasoVivo**, password **VasoVivo123**.
 4. Apri **http://192.168.4.1** nel browser. Su questa rete non c'è internet: l'indirizzo va digitato.
@@ -94,7 +95,7 @@ Se manca la cartella `data/`, l'avvio lo segnala con `[ERRORE] Dashboard assente
 
 ### Caricare `data/` da riga di comando
 
-Con gli strumenti installati dal board package `esp32` (le versioni nel percorso possono cambiare). Per la tabella partizioni predefinita, LittleFS parte da `0x290000` ed è grande `0x160000`:
+Con gli strumenti installati dal board package `esp32` (le versioni nel percorso possono cambiare). Gli indirizzi sotto valgono per lo schema partizioni **predefinito** di Arduino IDE (`Default 4MB with spiffs` / LittleFS equivalente): LittleFS parte da `0x290000` ed è grande `0x160000`. Se cambi schema partizioni, aggiorna offset e dimensione.
 
 ```sh
 TOOLS=~/Library/Arduino15/packages/esp32/tools   # Linux: ~/.arduino15/packages/esp32/tools
@@ -104,7 +105,7 @@ $TOOLS/esptool_py/*/esptool --chip esp32 --port /dev/cu.usbserial-0001 \
   write-flash 0x290000 littlefs.bin
 ```
 
-Sostituisci la porta con quella della tua scheda.
+Sostituisci la porta con quella della tua scheda. Non committare `littlefs.bin`: è solo un artefatto di flash.
 
 ---
 
@@ -127,12 +128,12 @@ Lo stato in alto indica **Connesso** quando le letture arrivano e **Non raggiung
   "uptime": 120,
   "air": { "tempC": 22.4, "humRh": 81.0, "eco2": 650, "tvoc": 120, "aqi": 2, "aqiText": "buona", ... },
   "light": { "lux": 310 },
-  "substrate": { "raw": 1650, "percent": 61, "dry": 2800, "wet": 900, "pin": 34 },
+  "substrate": { "raw": 3054, "percent": 55, "dry": 4095, "wet": 2203, "pin": 34 },
   "wifi": { "name": "VasoVivo", "ip": "192.168.4.1", "clients": 1 }
 }
 ```
 
-I valori non disponibili valgono `null`.
+I valori non disponibili valgono `null`. `dry` e `wet` sono i limiti di calibrazione del sensore capacitivo.
 
 ---
 
@@ -140,7 +141,7 @@ I valori non disponibili valgono `null`.
 
 La pagina nasce da [`UI/schede.html`](../../UI/schede.html), che si apre anche dal computer con dati dimostrativi.
 
-1. Modifica `UI/schede.html`, i CSS in `css/vv-ui/` o gli script in `js/`.
+1. Modifica `UI/schede.html`, i CSS in `css/vv-ui/` o gli script in `js/` (incluso `vv-settings.js`).
 2. Esegui `./build-data.sh` da questa cartella: rigenera `data/`, toglie font esterni e link al sito (sulla rete dell'ESP32 non c'è internet) e collega la pagina a `/api/readings`.
 3. Ricarica la cartella `data/` sulla scheda.
 
@@ -150,3 +151,4 @@ La pagina nasce da [`UI/schede.html`](../../UI/schede.html), che si apre anche d
 
 - Nome e password della rete: `WIFI_NAME` e `WIFI_PASSWORD` in `wifi-dashboard.ino`.
 - Calibrazione dell'umidità: `MOISTURE_DRY` e `MOISTURE_WET` in [`substrate_moisture.h`](../../sensors/capacitive-moisture/example/substrate_moisture.h).
+- Lingua (it/en), nome specie e soglie delle fasce: switch bandiere e pulsante impostazioni in alto a destra nella pagina (salvati nel browser in `localStorage`). Le fasce di default restano anche negli attributi `data-low` / `data-high` del markup.

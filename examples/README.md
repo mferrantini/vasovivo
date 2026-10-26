@@ -20,7 +20,7 @@ Ogni esempio include i blocchi di lettura degli [esempi singoli](../sensors/): u
 
 ## Requisiti comuni
 
-- **Scheda:** ESP32 (testato su ESP32-WROOM-32), board package `esp32` by Espressif
+- **Scheda:** ESP32-WROOM, board package `esp32` by Espressif
 - **IDE:** Arduino IDE 2.x
 - Le librerie dei sensori usati, indicate nel README di ogni esempio
 

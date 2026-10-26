@@ -37,15 +37,15 @@ Nessuna libreria esterna richiesta — lettura tramite `analogRead()` nativo di 
 
 ## Calibrazione
 
-Il sensore non fornisce valori in percentuale direttamente: è necessario calibrare i valori limite:
+Il sensore non fornisce valori in percentuale direttamente: si mappa l'ADC tra due estremi in [`example/substrate_moisture.h`](example/substrate_moisture.h).
 
-1. **Valore in aria** (sensore completamente asciutto) → annotare il valore ADC, è `MOISTURE_DRY`
-2. **Valore immerso** (lama in acqua o substrato saturo) → annotare il valore ADC, è `MOISTURE_WET`
-3. Aggiornare i due valori in [`example/substrate_moisture.h`](example/substrate_moisture.h)
+1. **`MOISTURE_DRY`** — sensore in aria (asciutto): tipicamente vicino a `4095` → 0 %.
+2. **`MOISTURE_WET`** — soglia a cui consideri il substrato saturo al 100 % (non serve immergere tutta la lama): sotto questo ADC la percentuale resta a 100.
+3. Aggiorna i due valori nel file e ricarica lo sketch.
 
-Sul modulo misurato, con la lama inserita a metà: aria `4095` (0 %), substrato umido `3054` (55 %), da `2203` in giù il valore resta a 100 %.
+Sul modulo v1.2 usato nel progetto (lama infilata a metà nella zolletta): aria `4095` = 0 %, substrato umido `3054` ≈ 55 %, da `2203` in giù = 100 %. I default nello header sono quindi `MOISTURE_DRY = 4095` e `MOISTURE_WET = 2203`.
 
-Lo sketch stampa sempre anche l'ADC grezzo, così la calibrazione si fa con lo stesso esempio.
+Lo sketch stampa sempre anche l'ADC grezzo, così la calibrazione si fa con lo stesso esempio. Ricalibra se cambi modulo o substrato.
 
 ---
 

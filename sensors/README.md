@@ -70,8 +70,8 @@ I moduli I²C e le sonde digitali sono alimentati a **3.3V**. Il sensore capacit
 
 ## Requisiti comuni
 
-- **Scheda:** ESP32 (testato su ESP32-WROOM-32)
-- **IDE:** Arduino IDE 2.x o PlatformIO
+- **Scheda:** ESP32-WROOM
+- **IDE:** Arduino IDE 2.x
 - **Board package:** `esp32` by Espressif — installabile dal Board Manager con URL:
   ```
   https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
