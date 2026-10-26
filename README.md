@@ -71,7 +71,7 @@ Lingua (it/en), specie e soglie consigliate si impostano da [`js/vv-settings.js`
 | [UI/index.html](UI/index.html) | Tavola illustrata del barattolo EKLATANT (letture vere in [`wifi-illustrated`](examples/wifi-illustrated/)) |
 | [UI/schede.html](UI/schede.html) | Dashboard a schede (letture vere in [`wifi-dashboard`](examples/wifi-dashboard/)) |
 | [UI/elements.html](UI/elements.html) | Glossario componenti, token e utility |
-| [varieties.html](varieties.html) | Varietà coltivabili in barattolo e finestre ambientali |
+| [varieties.html](varieties.html) | Varietà per il barattolo (per ora pioppino; altre in arrivo) |
 
 Componenti principali: `.vv-art` / `.vv-reading` / `.vv-scale` (tavola), `.vv-metric` (schede),
 `.vv-card`, `.vv-panel`, `.vv-item`, `.vv-section` (sito), `.vv-modal` (overlay impostazioni).

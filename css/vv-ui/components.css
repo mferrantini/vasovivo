@@ -234,6 +234,37 @@
   font-weight: 500;
 }
 
+.vv-variety-ranges {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px 16px;
+  margin: 4px 0 0;
+  padding: 12px 14px;
+  background: var(--vv-bg, #f9f8f6);
+  border: 1px solid var(--vv-border, #e5e3de);
+  border-radius: var(--vv-radius, 12px);
+}
+
+.vv-variety-ranges div {
+  margin: 0;
+}
+
+.vv-variety-ranges dt {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--vv-ink-soft, #6b6860);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 2px;
+}
+
+.vv-variety-ranges dd {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--vv-ink, #1a1a18);
+}
+
 /* ── Cartellino (dashboard illustrata / kit) ── */
 .vv-label {
   margin-top: var(--vv-space-1);
