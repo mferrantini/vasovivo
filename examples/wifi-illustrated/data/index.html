@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Il barattolo — VasoVivo</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1X45DY3BR6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1X45DY3BR6');
+  </script>
   <link rel="stylesheet" href="vasovivo.css" />
 </head>
 <!--
@@ -20,9 +27,9 @@
     <div class="vv-top__meta">
       <span class="vv-status vv-status--ok" id="status">
         <span class="vv-status__dot"></span>
-        <span id="status-text">Connessione…</span>
+        <span id="status-text" data-i18n="dash.connecting">Connessione…</span>
       </span>
-      <span class="vv-ts" id="updated">In attesa dei dati</span>
+      <span class="vv-ts" id="updated" data-i18n="dash.waiting">In attesa dei dati</span>
     </div>
   </header>
 
@@ -173,41 +180,41 @@
           <circle class="vv-marker__anchor" cx="214" cy="118" r="2.6" />
           <circle class="vv-marker__ring" cx="70" cy="118" r="11" />
           <text x="70" y="122">1</text>
-          <text class="vv-marker__label" x="70" y="146">Aria</text>
+          <text class="vv-marker__label" x="70" y="146" data-i18n="jar.ch.air">Aria</text>
         </g>
         <g class="vv-marker" data-marker="2" style="--i: 2">
           <path d="M310 120 H436" />
           <circle class="vv-marker__anchor" cx="310" cy="120" r="2.6" />
           <circle class="vv-marker__ring" cx="450" cy="121" r="11" />
           <text x="450" y="125">2</text>
-          <text class="vv-marker__label" x="450" y="149">Luce</text>
+          <text class="vv-marker__label" x="450" y="149" data-i18n="jar.ch.light">Luce</text>
         </g>
         <g class="vv-marker" data-marker="3" style="--i: 3">
           <path d="M150 292 H84" />
           <circle class="vv-marker__anchor" cx="150" cy="292" r="2.6" />
           <circle class="vv-marker__ring" cx="70" cy="292" r="11" />
           <text x="70" y="296">3</text>
-          <text class="vv-marker__label" x="70" y="320">Substrato</text>
+          <text class="vv-marker__label" x="70" y="320" data-i18n="jar.ch.substrate">Substrato</text>
         </g>
       </svg>
     </figure>
 
     <section class="vv-copy">
-      <p class="vv-kicker vv-reveal" style="--i: 1">Barattolo n. 1 · Pioppino</p>
-      <h1 class="vv-verdict vv-reveal" style="--i: 2" aria-live="polite"><span id="verdict">Ascolto il barattolo…</span></h1>
-      <p class="vv-lede vv-reveal" style="--i: 3"><span id="verdict-detail">Le prime letture arrivano in pochi secondi.</span></p>
+      <p class="vv-kicker vv-reveal" style="--i: 1" data-i18n-species="dash.kicker">Barattolo n. 1 · Pioppino</p>
+      <h1 class="vv-verdict vv-reveal" style="--i: 2" aria-live="polite"><span id="verdict" data-i18n="jar.verdict.listen">Ascolto il barattolo…</span></h1>
+      <p class="vv-lede vv-reveal" style="--i: 3"><span id="verdict-detail" data-i18n="jar.verdict.listen.d">Le prime letture arrivano in pochi secondi.</span></p>
 
       <div class="vv-columns">
         <div class="vv-col">
           <section class="vv-chapter vv-reveal" style="--i: 4" aria-labelledby="ch-air" data-marker="1">
             <header class="vv-chapter__head">
               <span class="vv-chapter__num">01</span>
-              <h2 id="ch-air">Aria</h2>
+              <h2 id="ch-air" data-i18n="jar.ch.air">Aria</h2>
               <span class="vv-chapter__source">AHT21 · ENS160</span>
             </header>
 
             <div class="vv-reading" id="r-temp" data-min="10" data-max="35" data-low="16" data-high="24">
-              <span class="vv-reading__label">Temperatura</span>
+              <span class="vv-reading__label" data-i18n="jar.label.temp">Temperatura</span>
               <svg class="vv-reading__spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline /></svg>
               <span class="vv-reading__value"><span class="vv-reading__number">—</span><span class="vv-reading__unit">°C</span></span>
               <span class="vv-scale" aria-hidden="true"><span class="vv-scale__ideal"></span><span class="vv-scale__needle"></span></span>
@@ -216,7 +223,7 @@
             </div>
 
             <div class="vv-reading" id="r-hum" data-min="40" data-max="100" data-low="85" data-high="95">
-              <span class="vv-reading__label">Umidità</span>
+              <span class="vv-reading__label" data-i18n="jar.label.hum">Umidità</span>
               <svg class="vv-reading__spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline /></svg>
               <span class="vv-reading__value"><span class="vv-reading__number">—</span><span class="vv-reading__unit">%</span></span>
               <span class="vv-scale" aria-hidden="true"><span class="vv-scale__ideal"></span><span class="vv-scale__needle"></span></span>
@@ -225,7 +232,7 @@
             </div>
 
             <div class="vv-reading" id="r-eco2" data-min="400" data-max="2000" data-low="0" data-high="1000">
-              <span class="vv-reading__label">CO₂ equivalente</span>
+              <span class="vv-reading__label" data-i18n="jar.label.eco2">CO₂ equivalente</span>
               <svg class="vv-reading__spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline /></svg>
               <span class="vv-reading__value"><span class="vv-reading__number">—</span><span class="vv-reading__unit">ppm</span></span>
               <span class="vv-scale" aria-hidden="true"><span class="vv-scale__ideal"></span><span class="vv-scale__needle"></span></span>
@@ -233,7 +240,7 @@
               <span class="vv-reading__state"></span>
             </div>
 
-            <p class="vv-aside" id="air-aside">Composti volatili e qualità dell'aria in arrivo.</p>
+            <p class="vv-aside" id="air-aside" data-i18n="jar.aside.air.wait">Composti volatili e qualità dell'aria in arrivo.</p>
           </section>
         </div>
 
@@ -241,12 +248,12 @@
           <section class="vv-chapter vv-reveal" style="--i: 5" aria-labelledby="ch-light" data-marker="2">
             <header class="vv-chapter__head">
               <span class="vv-chapter__num">02</span>
-              <h2 id="ch-light">Luce</h2>
+              <h2 id="ch-light" data-i18n="jar.ch.light">Luce</h2>
               <span class="vv-chapter__source">BH1750</span>
             </header>
 
             <div class="vv-reading" id="r-lux" data-min="1" data-max="10000" data-low="200" data-high="1000" data-scale="log">
-              <span class="vv-reading__label">Intensità</span>
+              <span class="vv-reading__label" data-i18n="jar.label.lux">Intensità</span>
               <svg class="vv-reading__spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline /></svg>
               <span class="vv-reading__value"><span class="vv-reading__number">—</span><span class="vv-reading__unit">lux</span></span>
               <span class="vv-scale" aria-hidden="true"><span class="vv-scale__ideal"></span><span class="vv-scale__needle"></span></span>
@@ -258,12 +265,12 @@
           <section class="vv-chapter vv-reveal" style="--i: 6" aria-labelledby="ch-substrate" data-marker="3">
             <header class="vv-chapter__head">
               <span class="vv-chapter__num">03</span>
-              <h2 id="ch-substrate">Substrato</h2>
+              <h2 id="ch-substrate" data-i18n="jar.ch.substrate">Substrato</h2>
               <span class="vv-chapter__source">Sens. capacitivo</span>
             </header>
 
             <div class="vv-reading" id="r-moisture" data-min="0" data-max="100" data-low="40" data-high="80">
-              <span class="vv-reading__label">Umidità</span>
+              <span class="vv-reading__label" data-i18n="jar.label.moisture">Umidità</span>
               <svg class="vv-reading__spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline /></svg>
               <span class="vv-reading__value"><span class="vv-reading__number">—</span><span class="vv-reading__unit">%</span></span>
               <span class="vv-scale" aria-hidden="true"><span class="vv-scale__ideal"></span><span class="vv-scale__needle"></span></span>
@@ -271,7 +278,7 @@
               <span class="vv-reading__state"></span>
             </div>
 
-            <p class="vv-aside" id="substrate-aside">Valore grezzo del sensore in arrivo.</p>
+            <p class="vv-aside" id="substrate-aside" data-i18n="jar.aside.sub.wait">Valore grezzo del sensore in arrivo.</p>
           </section>
         </div>
       </div>
@@ -282,18 +289,24 @@
 
   <footer class="vv-foot">
     <img class="vv-foot__logo" src="logo.svg" alt="" />
-    <span id="footer-source">Progetto open source</span>
+    <span id="footer-source" data-i18n="footer.open">Progetto open source</span>
     <span class="vv-foot__sep">·</span>
-    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener">Vedi su GitHub</a>
+    <a href="https://github.com/mferrantini/vasovivo" target="_blank" rel="noopener" data-i18n="footer.github">Vedi su GitHub</a>
     <span class="vv-foot__sep">·</span>
-    Maker Faire Roma 2026 - Stand V13
+    <a href="https://www.instagram.com/vasovivo_/" target="_blank" rel="noopener" data-i18n="footer.instagram">Instagram</a>
+    <span class="vv-foot__sep">·</span>
+    <a href="https://www.linkedin.com/in/marcoferrantini/" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+    <span class="vv-foot__sep">·</span>
+    <span data-i18n="footer.mf">Maker Faire Roma 2026 - Stand V13</span>
     <span class="vv-foot__sep">·</span>
     <span class="vv-foot__meta"><span id="info-network">—</span>
       · <span id="info-ip">—</span>
-      · <span id="info-clients">—</span> dispositivi
-      · accesa da <span id="info-uptime">—</span></span>
+      · <span id="info-clients">—</span>
+      · <span id="info-uptime-label" data-i18n="dash.dt.uptime">Accesa da</span>
+      <span id="info-uptime">—</span></span>
   </footer>
 
+  <script src="vv-settings.js"></script>
   <script src="vv-data.js"></script>
   <script src="vv-jar.js"></script>
 </body>
