@@ -15,7 +15,7 @@ sed -n "s|^@import url('\(vv-ui/[^'?]*\)[^']*');|\1|p" "$ROOT/css/style.css" | w
   printf '\n' >> data/vasovivo.css
 done
 
-cp "$ROOT/js/vv-data.js" "$ROOT/js/vv-dashboard.js" data/
+cp "$ROOT/js/vv-settings.js" "$ROOT/js/vv-data.js" "$ROOT/js/vv-dashboard.js" data/
 cp "$ROOT/img/logo-small.png" data/logo.png
 cp "$ROOT/img/logo.svg" data/logo.svg
 
